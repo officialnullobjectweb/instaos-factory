@@ -169,6 +169,14 @@ const serverSchema = z.object({
   OPENROUTER_REFERER: z.string().trim().default("https://factory.os"),
   OPENROUTER_TITLE: z.string().trim().default("Instagram Factory OS"),
 
+  NARA_API_KEY: optionalString(),
+  NARA_MODEL: z.string().trim().default("laguna-s-2.1"),
+  NARA_BASE_URL: z
+    .string()
+    .trim()
+    .url()
+    .default("https://router.bynara.id/v1"),
+
   /**
    * The offline engine, last in the chain and deterministic. It is what makes
    * the pipeline runnable end to end with no hosted key, so it is on by default
@@ -424,6 +432,7 @@ export function envReport(): EnvReport[] {
     ["AI provider order", env.AI_PROVIDER_ORDER.length > 0, "Fallback chain order", null],
     ["Gemini key", env.GEMINI_API_KEY, "Primary generation model", "Content generation"],
     ["Groq key", env.GROQ_API_KEY, "First fallback model", null],
+    ["Nara key", env.NARA_API_KEY, "Third fallback model", null],
     ["OpenRouter key", env.OPENROUTER_API_KEY, "Second fallback model", null],
     ["Offline provider", env.AI_ENABLE_LOCAL_PROVIDER, "Runs the pipeline with no hosted key", null],
     ["Token encryption", env.TOKEN_ENCRYPTION_KEY, "Encrypts Instagram tokens at rest", "Instagram accounts"],

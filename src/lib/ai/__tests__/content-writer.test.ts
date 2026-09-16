@@ -110,8 +110,8 @@ describe("Content Writer", () => {
         topic: "Test topic",
         pillar: "Pillar",
         hook: "Test hook line",
-        plan,
-        facts: ["Fact 1", "Fact 2", "Fact 3"],
+        secondPillar: "Second Pillar",
+        thirdPillar: "Third Pillar",
       });
       expect(Array.isArray(slides)).toBe(true);
       expect(slides.length).toBeGreaterThanOrEqual(3);
@@ -124,8 +124,8 @@ describe("Content Writer", () => {
         topic: "Test topic",
         pillar: "Pillar",
         hook: "Test hook",
-        plan,
-        facts: ["Fact 1", "Fact 2", "Fact 3"],
+        secondPillar: "Second Pillar",
+        thirdPillar: "Third Pillar",
       });
       expect(slides[0].kind).toBe("cover");
     });
@@ -137,8 +137,8 @@ describe("Content Writer", () => {
         topic: "Test topic",
         pillar: "Pillar",
         hook: "Test hook",
-        plan,
-        facts: ["Fact 1", "Fact 2", "Fact 3"],
+        secondPillar: "Second Pillar",
+        thirdPillar: "Third Pillar",
       });
       expect(slides[slides.length - 1].kind).toBe("cta");
     });

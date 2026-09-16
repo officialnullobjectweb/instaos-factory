@@ -2,7 +2,7 @@
 /*  Providers                                                                 */
 /* -------------------------------------------------------------------------- */
 
-export type AiProviderId = "gemini" | "groq" | "openrouter" | "local";
+export type AiProviderId = "gemini" | "groq" | "nara" | "openrouter" | "local";
 
 /** Why an attempt failed — drives whether we retry, back off or switch provider. */
 export type AiErrorKind =

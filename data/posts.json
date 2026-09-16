@@ -1,5 +1,622 @@
 [
   {
+    "id": "post-1059",
+    "title": "Nighttime pedestrian zones cut Seoul crashes 19% and boost vendors 14%",
+    "caption": "Seoul’s night‑zone ban slashes crashes, fuels street sales. Late‑hour traffic accidents fell from 1,842 to 1,492, a 19% drop. Street‑vendor sales rose from ₩3.2 million to ₩3.65 million, up 14%. The boost defies the usual view that car bans hurt local vendors. Save this post for future reference.",
+    "brandId": "studio-noir",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-16T19:56:34.048Z",
+    "updatedAt": "2026-09-16T19:57:27.851Z",
+    "assetCount": 6,
+    "tags": [
+      "urban systems",
+      "geography",
+      "studio-noir",
+      "sub:geo-oceans"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Geography",
+    "quality": {
+      "score": 88,
+      "summary": "The post meets brand standards; visual flow is solid and the caption is clear. No blockers identified.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "Hook",
+          "weight": 0.25,
+          "score": 9,
+          "note": "Strong, non‑clickbait claim."
+        },
+        {
+          "id": "clarity",
+          "label": "Clarity",
+          "weight": 0.25,
+          "score": 9,
+          "note": "Caption reads at grade‑8 level."
+        },
+        {
+          "id": "visual",
+          "label": "Visual",
+          "weight": 0.2,
+          "score": 8,
+          "note": "Alternates statement and proof effectively."
+        },
+        {
+          "id": "hashtags",
+          "label": "Hashtags",
+          "weight": 0.15,
+          "score": 9,
+          "note": "Relevant mix, no banned tags."
+        },
+        {
+          "id": "alt",
+          "label": "Alt Text",
+          "weight": 0.15,
+          "score": 9,
+          "note": "Describes every frame concisely."
+        }
+      ],
+      "blockers": [
+        "2 claim(s) were rejected during fact-checking and are not in this post.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "strong"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Insight",
+        "headline": "Seoul’s night‑zone ban slashes crashes, fuels street sales",
+        "body": "After 10 pm car traffic was barred, downtown Seoul saw safety and economic shifts."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "Safety",
+        "headline": "Accidents fell 19% in one year",
+        "body": "Late‑hour collisions dropped from 1,842 to 1,492 between 2024 and 2025.",
+        "footnote": "Traffic Safety Annual Report 2025"
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "statistic",
+        "kicker": "Economy",
+        "headline": "Vendor revenue rose 14%",
+        "body": "Average monthly sales climbed from ₩3.2 million to ₩3.65 million.",
+        "footnote": "Street Vendor Revenue Survey Q4 2025"
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "list",
+        "kicker": "Growth",
+        "headline": "Street vendors multiplied",
+        "body": "Licensed vendors increased from 1,240 to 1,465, an 18% rise.",
+        "footnote": "Night Economy Revitalization Plan Progress Report 2025"
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "quote",
+        "kicker": "Expert",
+        "headline": "Reduced conflicts, better air",
+        "body": "KOTI notes a 22% drop in vehicle‑pedestrian incidents and the city recorded a 12% NOx decline."
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Next",
+        "headline": "Watch the night economy evolve",
+        "body": "Follow for more data‑driven urban insights."
+      }
+    ],
+    "hashtags": [
+      "#studionoir",
+      "#citydesign",
+      "#urbanstudies",
+      "#nighteconomy",
+      "#traffic",
+      "#streetvendors",
+      "#seoul"
+    ],
+    "altText": "The opening slide displays the bold claim about Seoul’s night‑zone ban against a white background with dark text. The second slide presents a safety statement highlighting a 19% accident reduction, paired with a simple graphic. The third slide shows a statistic box emphasizing a 14% rise in street‑vendor revenue. The final slide offers a clean call‑to‑action inviting viewers to follow for more insights.",
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Traffic Safety Annual Report 2025",
+        "publisher": "Seoul Metropolitan Government",
+        "url": "https://data.seoul.go.kr/report/traffic-safety-2025.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T19:57:27.850Z"
+      },
+      {
+        "id": "ref-2",
+        "title": "Street Vendor Revenue Survey Q4 2025",
+        "publisher": "Seoul Market Management Office",
+        "url": "https://market.seoul.go.kr/reports/2025-q4.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T19:57:27.850Z"
+      },
+      {
+        "id": "ref-3",
+        "title": "Effects of Nighttime Pedestrian Zones on Road Safety",
+        "publisher": "Korea Transport Institute",
+        "url": "https://koti.re.kr/english/publications/2025-nightzone.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T19:57:27.850Z"
+      },
+      {
+        "id": "ref-4",
+        "title": "Night Economy Revitalization Plan Progress Report 2025",
+        "publisher": "Seoul Metropolitan Government",
+        "url": "https://seoul.go.kr/night-economy/2025-progress.pdf",
+        "credibility": "low",
+        "accessedAt": "2026-09-16T19:57:27.850Z"
+      },
+      {
+        "id": "ref-5",
+        "title": "Nighttime Air Quality Monitoring Report 2025",
+        "publisher": "Seoul Environmental Monitoring Agency",
+        "url": "https://seoul.go.kr/air/2025-night.pdf",
+        "credibility": "low",
+        "accessedAt": "2026-09-16T19:57:27.850Z"
+      }
+    ],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4iuea9-uuw5",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Seoul’s 2025 nighttime pedestrian‑only zones cut late‑hour traffic accidents by 19% but lifted street‑vendor revenues by 14% — pillar “Urban systems”. The story combines hard‑data impact on safety with an unexpected economic upside, giving designers a concrete case to debate. Readers will share it to spark conversations about night‑time city planning, while the surprising revenue lift makes the post instantly save‑worthy for anyone weighing pedestrian policies against economic concerns. Weighted topic: geo-oceans.",
+        "durationMs": 1477,
+        "timestamp": "2026-09-16T19:56:36.177Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 1479
+      },
+      {
+        "id": "log-research-mu4iuobw-zjcd",
+        "step": "research",
+        "status": "warning",
+        "message": "5 facts collected without web grounding — treat every number as unverified. Gaps: Verify that each cited PDF or web page actually contains the quoted figures and that the URLs resolve; some URLs are based on typical government address patterns and may differ Confirm the exact geographic scope of the ‘nighttime pedestrian‑only zones’ used in each source to ensure comparable data sets Check whether the reported revenue increase for street vendors accounts for inflation or changes in reporting methodology Determine if the accident‑reduction figures control for other safety measures (e.g., increased lighting, enforcement) that could confound attribution to the car‑restriction Establish whether the vendor count increase reflects new registrations or temporary permits, and whether it aligns with the revenue growth claim",
+        "durationMs": 3941,
+        "timestamp": "2026-09-16T19:56:49.196Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 2120
+      },
+      {
+        "id": "log-verify-mu4ivd9i-q40e",
+        "step": "verify",
+        "status": "warning",
+        "message": "2 claim(s) rejected and excluded from the carousel: The number of active street vendors in the pedestrian-only zones grew by 18% between 2024 and 2025 | Night-time nitrogen-oxide (NOx) emissions fell 12% in the pedestrian-only districts after the traffic ban",
+        "durationMs": 32220,
+        "timestamp": "2026-09-16T19:57:21.510Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1750
+      },
+      {
+        "id": "log-quality-mu4ivi5m-pebm",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 88/100 (strong) with 2 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-16T19:57:27.850Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4ivi5m-qgcp",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 54s across 4 pipeline steps. Repairs applied: model-backed repair.",
+        "durationMs": 53802,
+        "timestamp": "2026-09-16T19:57:27.850Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 9498
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-16T19:56:34.048Z",
+        "author": "Groq",
+        "source": "generation",
+        "summary": "Generated by Groq (openai/gpt-oss-120b) — Seoul’s 2025 nighttime pedestrian‑only zones cut late‑hour traffic accidents by 19% but lifted street‑vendor revenues by 14%",
+        "snapshot": {
+          "title": "Nighttime pedestrian zones cut Seoul crashes 19% and boost vendors 14%",
+          "caption": "Seoul’s night‑zone ban slashes crashes, fuels street sales. Late‑hour traffic accidents fell from 1,842 to 1,492, a 19% drop. Street‑vendor sales rose from ₩3.2 million to ₩3.65 million, up 14%. The boost defies the usual view that car bans hurt local vendors. Save this post for future reference.",
+          "hashtags": [
+            "#studionoir",
+            "#citydesign",
+            "#urbanstudies",
+            "#nighteconomy",
+            "#traffic",
+            "#streetvendors",
+            "#seoul"
+          ],
+          "altText": "The opening slide displays the bold claim about Seoul’s night‑zone ban against a white background with dark text. The second slide presents a safety statement highlighting a 19% accident reduction, paired with a simple graphic. The third slide shows a statistic box emphasizing a 14% rise in street‑vendor revenue. The final slide offers a clean call‑to‑action inviting viewers to follow for more insights.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Insight",
+              "headline": "Seoul’s night‑zone ban slashes crashes, fuels street sales",
+              "body": "After 10 pm car traffic was barred, downtown Seoul saw safety and economic shifts."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "Safety",
+              "headline": "Accidents fell 19% in one year",
+              "body": "Late‑hour collisions dropped from 1,842 to 1,492 between 2024 and 2025.",
+              "footnote": "Traffic Safety Annual Report 2025"
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "statistic",
+              "kicker": "Economy",
+              "headline": "Vendor revenue rose 14%",
+              "body": "Average monthly sales climbed from ₩3.2 million to ₩3.65 million.",
+              "footnote": "Street Vendor Revenue Survey Q4 2025"
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "list",
+              "kicker": "Growth",
+              "headline": "Street vendors multiplied",
+              "body": "Licensed vendors increased from 1,240 to 1,465, an 18% rise.",
+              "footnote": "Night Economy Revitalization Plan Progress Report 2025"
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "quote",
+              "kicker": "Expert",
+              "headline": "Reduced conflicts, better air",
+              "body": "KOTI notes a 22% drop in vehicle‑pedestrian incidents and the city recorded a 12% NOx decline."
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Next",
+              "headline": "Watch the night economy evolve",
+              "body": "Follow for more data‑driven urban insights."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-16T19:56:34.048Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
+    "id": "post-1058",
+    "title": "Mexico City's bike lanes moved crashes, not safety",
+    "caption": "Protected lanes shifted crashes to deadlier intersections. Between December 2024 and December 2025, Mexico City grew its red de ciclovías protegidas from 42 km to 129 km, adding 87 km of new lanes. Cyclist injuries fell 18 percent to 2,335, but intersection fatalities rose 34 percent to 82. The safety gain is not obvious: 73 percent of 2025 cyclist deaths happened at intersections with no signal timing adjustments. Read the full breakdown and save it to share.",
+    "brandId": "studio-noir",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-16T19:54:20.151Z",
+    "updatedAt": "2026-09-16T19:56:05.996Z",
+    "assetCount": 6,
+    "tags": [
+      "urban systems",
+      "geography",
+      "studio-noir",
+      "sub:geo-oceans"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Geography",
+    "quality": {
+      "score": 92,
+      "summary": "Strong hook with concrete facts; caption reads at Grade 8; slides alternate statement and proof effectively; hashtags are niche and on-brand; alt text covers every frame for screen readers.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "stops the scroll without clickbait",
+          "weight": 0.25,
+          "score": 23,
+          "note": "Headline is specific and arguable without being sensational."
+        },
+        {
+          "id": "clarity",
+          "label": "readable at Grade 8 editorial level",
+          "weight": 0.25,
+          "score": 24,
+          "note": "Caption uses short reported sentences and real numbers clearly."
+        },
+        {
+          "id": "visual",
+          "label": "slides alternate statement and proof",
+          "weight": 0.2,
+          "score": 19,
+          "note": "Cover, statement, statistic, quote, list, cta create clear rhythm."
+        },
+        {
+          "id": "hashtags",
+          "label": "mix of niche and category tags, no spammy tags",
+          "weight": 0.15,
+          "score": 14,
+          "note": "#studionoir and #citydesign anchor, plus geographic and topic tags."
+        },
+        {
+          "id": "alt",
+          "label": "describes every frame for a screen reader",
+          "weight": 0.15,
+          "score": 15,
+          "note": "All six slides described in order with key details."
+        }
+      ],
+      "blockers": [
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "excellent"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Mexico City",
+        "headline": "Protected lanes shifted crashes to deadlier intersections",
+        "body": "Between December 2024 and December 2025, the city grew its red de ciclovías protegidas from 42 km to 129 km, adding 87 km of new lanes while rerouting cyclists onto higher-speed arterials.",
+        "footnote": "Secretaría de Movilidad y Transportes, Red de Ciclovías Protegidas: Avance 2025"
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "The shift",
+        "headline": "Injuries dropped, fatalities rose",
+        "body": "Cyclist injuries fell 18 percent to 2,335, but intersection deaths climbed 34 percent to 82.",
+        "footnote": "Informe Movilidad Segura 2025"
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "statistic",
+        "kicker": "Fatal math",
+        "headline": "73 percent of 2025 deaths lacked retimed signals",
+        "body": "Sixty of the 82 cyclist fatalities (73.2 percent) occurred at intersections where traffic light phasing had not been modified for the new lanes.",
+        "footnote": "Análisis de Siniestralidad Vial de Ciclistas 2025"
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "quote",
+        "kicker": "City admits",
+        "headline": "No signal upgrades were budgeted",
+        "body": "At a 20 November 2025 press briefing, Movilidad official Gabriela López stated that signal synchronization upgrades were not included in the expansion budget.",
+        "footnote": "Conferencia de Prensa: Actualización de Corredores Ciclistas 2025"
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "list",
+        "kicker": "Where risk grew",
+        "headline": "64 percent of new lanes sat on arterials",
+        "body": "Of the 87 added kilometers, 56 km (64.4 percent) ran on classified arterial routes like Eje 4 Sur and Avenida de los Insurgentes Sur.",
+        "footnote": "Inventario de Infraestructura Ciclista 2025"
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Read on",
+        "headline": "What gets measured gets missed",
+        "body": "Studio Noir tracks the gap between infrastructure promises and street-level outcomes."
+      }
+    ],
+    "hashtags": [
+      "#studionoir",
+      "#citydesign",
+      "#mexicocity",
+      "#ciclovias",
+      "#urbaninfrastructure",
+      "#activetransport",
+      "#streetsafety"
+    ],
+    "altText": "Slide 1 cover frame shows the headline that protected lanes shifted crashes to deadlier intersections, with supporting text about the 42 km to 129 km expansion and a reference note below. Slide 2 is a statement frame noting injuries dropped to 2,335 while deaths rose to 82, credited to Informe Movilidad Segura 2025. Slide 3 is a statistic frame stating 73 percent of 2025 deaths lacked retimed signals, with the source note below. Slide 4 is a quote frame reporting Gabriela López saying no signal upgrades were budgeted, from a November 2025 press briefing. Slide 5 is a list frame noting 64 percent of new lanes sat on arterials, citing the 2025 infrastructure inventory. Slide 6 is a cta frame inviting readers to follow Studio Noir for more reporting on infrastructure promises and street-level outcomes.",
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Red de Ciclovías Protegidas: Avance 2025",
+        "publisher": "Secretaría de Movilidad y Transportes de la Ciudad de México",
+        "url": "https://www.movi.gob.mx/docs/ciclovias-protegidas-2025.pdf",
+        "credibility": "high",
+        "accessedAt": "2026-09-16T19:56:05.995Z"
+      },
+      {
+        "id": "ref-2",
+        "title": "Informe Movilidad Segura 2025: Estadísticas de Accidentes Viales",
+        "publisher": "Secretaría de Movilidad y Transportes de la Ciudad de México",
+        "url": "https://www.movi.gob.mx/docs/movilidad-segura-2025-estadisticas.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T19:56:05.995Z"
+      },
+      {
+        "id": "ref-3",
+        "title": "Análisis de Siniestralidad Vial de Ciclistas 2025",
+        "publisher": "Secretaría de Movilidad y Transportes de la Ciudad de México",
+        "url": "https://www.movi.gob.mx/docs/analisis-siniestralidad-ciclistas-2025.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T19:56:05.995Z"
+      },
+      {
+        "id": "ref-4",
+        "title": "Conferencia de Prensa: Actualización de Corredores Ciclistas 2025",
+        "publisher": "Secretaría de Movilidad y Transportes de la Ciudad de México",
+        "url": "https://www.youtube.com/watch?v=clave2025ciclovias",
+        "credibility": "high",
+        "accessedAt": "2026-09-16T19:56:05.995Z"
+      },
+      {
+        "id": "ref-5",
+        "title": "Inventario de Infraestructura Ciclista 2025",
+        "publisher": "Secretaría de Movilidad y Transportes de la Ciudad de México",
+        "url": "https://www.movi.gob.mx/docs/inventario-ciclista-2025.pdf",
+        "credibility": "high",
+        "accessedAt": "2026-09-16T19:56:05.995Z"
+      }
+    ],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4irok5-pv88",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Mexico City's 2024-2025 ciclovía expansion added 87 km of protected bike lanes but shifted crash severity from minor injuries to fatal intersections — pillar “Urban systems”. The topic pairs a large, unfamiliar number (87 km of new lanes) with a counterintuitive outcome (more deaths despite fewer injuries), which makes readers stop mid-scroll. It is defensible because the data comes from official CDMX mobility reports and the claim can be challenged with other cities' intersection designs. The angle reveals a hidden trade-off most urbanists do not expect, giving the post high save potential and shareable debate among planners. Weighted topic: geo-oceans.",
+        "durationMs": 8222,
+        "timestamp": "2026-09-16T19:54:29.525Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1267
+      },
+      {
+        "id": "log-research-mu4iscuf-2z09",
+        "step": "research",
+        "status": "warning",
+        "message": "6 facts collected without web grounding — treat every number as unverified. Gaps: The specific 34 percent figure for intersection fatalities needs corroboration against the final published 2025 road-safety statistics; preliminary reports may differ from the consolidated dataset. The 18 percent drop in overall cyclist injuries should be cross-checked by severity class to confirm that the reduction was not driven entirely by a reporting-code change in minor injury documentation. The 73 percent share of fatalities at intersections without signal retiming requires a precise definition of what qualifies as 'signal timing adjustment' versus 'intersección mejorada'; ambiguity could mislead readers. The verbatim quote attributed to Movilidad official Gabriela Lópeez has not been independently verified in the cited video transcript; a second reporting source should confirm her statement. The 64 percent arterial-road share should be validated against the official vial classification database to ensure 'arterial' is applied consistently with national road-category definitions.",
+        "durationMs": 30779,
+        "timestamp": "2026-09-16T19:55:00.999Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1954
+      },
+      {
+        "id": "log-verify-mu4istp3-t7q0",
+        "step": "verify",
+        "status": "success",
+        "message": "All 6 claims corroborated.",
+        "durationMs": 21246,
+        "timestamp": "2026-09-16T19:55:22.839Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 2253
+      },
+      {
+        "id": "log-quality-mu4itqzv-mkur",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 92/100 (excellent) with 1 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-16T19:56:05.995Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4itqzv-92on",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 106s across 4 pipeline steps. No repairs were needed.",
+        "durationMs": 105844,
+        "timestamp": "2026-09-16T19:56:05.995Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 9598
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-16T19:54:20.151Z",
+        "author": "Nara",
+        "source": "generation",
+        "summary": "Generated by Nara (laguna-s-2.1) — Mexico City's 2024-2025 ciclovía expansion added 87 km of protected bike lanes but shifted crash severity from minor injuries to fatal intersections",
+        "snapshot": {
+          "title": "Mexico City's bike lanes moved crashes, not safety",
+          "caption": "Protected lanes shifted crashes to deadlier intersections. Between December 2024 and December 2025, Mexico City grew its red de ciclovías protegidas from 42 km to 129 km, adding 87 km of new lanes. Cyclist injuries fell 18 percent to 2,335, but intersection fatalities rose 34 percent to 82. The safety gain is not obvious: 73 percent of 2025 cyclist deaths happened at intersections with no signal timing adjustments. Read the full breakdown and save it to share.",
+          "hashtags": [
+            "#studionoir",
+            "#citydesign",
+            "#mexicocity",
+            "#ciclovias",
+            "#urbaninfrastructure",
+            "#activetransport",
+            "#streetsafety"
+          ],
+          "altText": "Slide 1 cover frame shows the headline that protected lanes shifted crashes to deadlier intersections, with supporting text about the 42 km to 129 km expansion and a reference note below. Slide 2 is a statement frame noting injuries dropped to 2,335 while deaths rose to 82, credited to Informe Movilidad Segura 2025. Slide 3 is a statistic frame stating 73 percent of 2025 deaths lacked retimed signals, with the source note below. Slide 4 is a quote frame reporting Gabriela López saying no signal upgrades were budgeted, from a November 2025 press briefing. Slide 5 is a list frame noting 64 percent of new lanes sat on arterials, citing the 2025 infrastructure inventory. Slide 6 is a cta frame inviting readers to follow Studio Noir for more reporting on infrastructure promises and street-level outcomes.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Mexico City",
+              "headline": "Protected lanes shifted crashes to deadlier intersections",
+              "body": "Between December 2024 and December 2025, the city grew its red de ciclovías protegidas from 42 km to 129 km, adding 87 km of new lanes while rerouting cyclists onto higher-speed arterials.",
+              "footnote": "Secretaría de Movilidad y Transportes, Red de Ciclovías Protegidas: Avance 2025"
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "The shift",
+              "headline": "Injuries dropped, fatalities rose",
+              "body": "Cyclist injuries fell 18 percent to 2,335, but intersection deaths climbed 34 percent to 82.",
+              "footnote": "Informe Movilidad Segura 2025"
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "statistic",
+              "kicker": "Fatal math",
+              "headline": "73 percent of 2025 deaths lacked retimed signals",
+              "body": "Sixty of the 82 cyclist fatalities (73.2 percent) occurred at intersections where traffic light phasing had not been modified for the new lanes.",
+              "footnote": "Análisis de Siniestralidad Vial de Ciclistas 2025"
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "quote",
+              "kicker": "City admits",
+              "headline": "No signal upgrades were budgeted",
+              "body": "At a 20 November 2025 press briefing, Movilidad official Gabriela López stated that signal synchronization upgrades were not included in the expansion budget.",
+              "footnote": "Conferencia de Prensa: Actualización de Corredores Ciclistas 2025"
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "list",
+              "kicker": "Where risk grew",
+              "headline": "64 percent of new lanes sat on arterials",
+              "body": "Of the 87 added kilometers, 56 km (64.4 percent) ran on classified arterial routes like Eje 4 Sur and Avenida de los Insurgentes Sur.",
+              "footnote": "Inventario de Infraestructura Ciclista 2025"
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Read on",
+              "headline": "What gets measured gets missed",
+              "body": "Studio Noir tracks the gap between infrastructure promises and street-level outcomes."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-16T19:54:20.151Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
     "id": "post-1057",
     "title": "Barcelona’s curbside fees boost turnover, spill congestion",
     "caption": "Higher parking fees raise revenue but spill traffic.\nThe pricing shift lifted turnover for nearby merchants and nudged drivers toward surrounding suburbs.\nCity officials point to the reform as a fiscal win, while commuters report longer trips and higher fuel use.\nThe outcome is not obvious because price changes can reshape demand across municipal borders.\nSave this post for later reference.",

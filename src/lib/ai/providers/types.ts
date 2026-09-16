@@ -116,6 +116,18 @@ export const AI_ENV = {
       return serverEnv().OPENROUTER_TITLE;
     },
   },
+  nara: {
+    get apiKey() {
+      return serverEnv().NARA_API_KEY ?? "";
+    },
+    get model() {
+      return serverEnv().NARA_MODEL;
+    },
+    get baseUrl() {
+      return serverEnv().NARA_BASE_URL;
+    },
+    keys: ["NARA_API_KEY", "NARA_MODEL"],
+  },
   local: {
     get enabled() {
       return serverEnv().AI_ENABLE_LOCAL_PROVIDER;
@@ -151,10 +163,10 @@ export function providerOrder(): AiProviderId[] {
   const configured = serverEnv()
     .AI_PROVIDER_ORDER.map((entry) => entry.toLowerCase())
     .filter((entry): entry is AiProviderId =>
-      ["gemini", "groq", "openrouter", "local"].includes(entry),
+      ["gemini", "groq", "nara", "openrouter", "local"].includes(entry),
     );
 
-  const defaultOrder: AiProviderId[] = ["gemini", "groq", "openrouter", "local"];
+  const defaultOrder: AiProviderId[] = ["gemini", "groq", "nara", "openrouter", "local"];
 
   if (!configured || configured.length === 0) return defaultOrder;
 
