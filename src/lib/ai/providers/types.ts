@@ -20,6 +20,8 @@ export interface GenerateHint {
   facts?: string[];
   /** True when the flow is running each compose step as its own call. */
   granular?: boolean;
+  /** Titles already published — the offline engine filters these out. */
+  avoid?: string[];
 }
 
 /** One model call, provider-agnostic. */

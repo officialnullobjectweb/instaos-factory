@@ -30,7 +30,7 @@ import {
   type TopicGuidance,
 } from "@/lib/insights/weighting";
 import { appendAudit } from "@/lib/repositories/audit-repository";
-import { createPost } from "@/lib/repositories/posts-repository";
+import { createPost, listPosts } from "@/lib/repositories/posts-repository";
 import { getTopicWeights } from "@/lib/repositories/learning-repository";
 import { notifyPostPending } from "@/lib/telegram";
 import { qualityVerdict } from "@/lib/status";
@@ -278,6 +278,21 @@ export async function runGeneration(
     guidance = undefined;
   }
 
+  // Collect titles already in the queue so the topic step never picks a
+  // duplicate. Only the most recent 40 are sent — enough to cover a month of
+  // daily posts without bloating the prompt.
+  let avoidTitles: string[] = [];
+  try {
+    const existing = await listPosts();
+    avoidTitles = existing
+      .filter((post) => post.brandId === brand.id)
+      .slice(0, 40)
+      .map((post) => post.title);
+  } catch {
+    // If posts cannot be read, the topic step still runs — it just cannot
+    // guarantee uniqueness.
+  }
+
   const topicStep = await runTrackedStep(
     jobId,
     "topic",
@@ -290,10 +305,11 @@ export async function runGeneration(
           brandId: brand.id,
           category,
           steer: input.steer,
+          avoid: avoidTitles,
           guidance,
           nowIso,
         }),
-        hint: { ...hintBase, step: "topic" },
+        hint: { ...hintBase, step: "topic", avoid: avoidTitles },
         jobId,
         maxOutputTokens: 1024,
       }),

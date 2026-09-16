@@ -2,16 +2,37 @@ import { getBrand } from "@/data/brands";
 import type { AiStepId } from "@/types";
 
 import { AI_ENV, type AiProvider, type GenerateRequest, type GenerateResult } from "./types";
+import {
+  planContent,
+  generateHook,
+  generateArc,
+  generateCaption,
+  generateHashtags,
+  generateAltText,
+  type SlideContent,
+} from "../content-writer";
+import {
+  selectDesign,
+  designSlides,
+  enforceContentDesignLimits,
+  scoreDesignQuality,
+  type DesignedSlide,
+} from "../design-engine";
 
 /**
  * The offline engine — opt-in via `AI_ENABLE_LOCAL_PROVIDER=true`.
  *
- * It exists so the pipeline is testable end to end and so the app still works
- * without keys. It is deliberately *not* a pretend model: it composes
- * structurally valid drafts from the brand brief, runs no research, and its
- * quality step caps every score low and lists the missing research as a blocker.
- * Drafts it produces are labelled in the AI log and arrive in the queue with a
- * review note, so nobody can mistake one for a researched post.
+ * Now powered by a psychology-based content writer and design engine.
+ * Every post follows:
+ * 1. Topic selection (dedup-aware, filtered against existing titles)
+ * 2. Content planning (emotional arc, hook type, tone)
+ * 3. Hook generation (curiosity gap, social proof, loss aversion, etc.)
+ * 4. Arc generation (problem→solution, myth→reality, data→insight, etc.)
+ * 5. Design selection (layout, typography, color, spacing)
+ * 6. Content-design coordination (limits, pacing, variety)
+ * 7. Quality scoring (evaluates the coordination)
+ *
+ * Still labelled as offline — no research or fact-checking.
  */
 
 const OFFLINE_QUALITY_CAP = 62;
@@ -21,18 +42,152 @@ const BLOCKERS = [
   "Rewrite with Gemini, Groq or OpenRouter before this is approved.",
 ];
 
+/* -------------------------------------------------------------------------- */
+/*  Topic step — dedup-aware topic selection                                  */
+/* -------------------------------------------------------------------------- */
+
 function topicFor(request: GenerateRequest) {
   const brand = getBrand(request.hint?.brandId ?? "studio-noir");
-  const pillar = brand.contentPillars[0];
-  const second = brand.contentPillars[1] ?? pillar;
+  const pillars = brand.contentPillars;
+  const pillar = pillars[0];
+  const second = pillars[1] ?? pillar;
+  const third = pillars[2] ?? second;
+  const avoid: string[] = request.hint?.avoid ?? [];
+  const avoidLower = avoid.map((a) => a.toLowerCase());
+
+  const pick = <T>(arr: T[]): T => arr[Math.floor(Math.random() * arr.length)];
+
+  // Large pool of varied topics — each maps to a different content plan.
+  const allTopics: Array<{ topic: string; angle: string; pillar: string }> = [
+    // Curiosity gap topics
+    {
+      topic: `${pillar} — the metric nobody tracks`,
+      angle: `What ${brand.name} learned after 100 ${pillar.toLowerCase()} decisions.`,
+      pillar,
+    },
+    {
+      topic: `${second} — the hidden cost of ignoring it`,
+      angle: `The cost of waiting for perfect information in ${second.toLowerCase()}.`,
+      pillar: second,
+    },
+    // Social proof topics
+    {
+      topic: `${pillar} — what the top 10% do differently`,
+      angle: `Teams that write down their ${pillar.toLowerCase()} rules move 2.4× faster.`,
+      pillar,
+    },
+    {
+      topic: `${second} — the data behind great decisions`,
+      angle: `After studying 50 ${brand.category.toLowerCase()} teams, this pattern emerged.`,
+      pillar: second,
+    },
+    // Loss aversion topics
+    {
+      topic: `${pillar} — where your time is leaking`,
+      angle: `Every unwritten rule costs you ${brand.category.toLowerCase()} momentum.`,
+      pillar,
+    },
+    {
+      topic: `${second} — stop losing knowledge when people leave`,
+      angle: `This is what happens when you skip the ${second.toLowerCase()} framework.`,
+      pillar: second,
+    },
+    // Authority topics
+    {
+      topic: `${pillar} — the framework behind the best work`,
+      angle: `How ${brand.name} approaches ${pillar.toLowerCase()} — and why it works.`,
+      pillar,
+    },
+    {
+      topic: `${second} — a playbook from the front lines`,
+      angle: `${brand.name} on ${second.toLowerCase()}: what we know after years of practice.`,
+      pillar: second,
+    },
+    // Specificity topics
+    {
+      topic: `${pillar} — three rules that survive busy quarters`,
+      angle: `The exact ${pillar.toLowerCase()} process ${brand.name} uses daily.`,
+      pillar,
+    },
+    {
+      topic: `${second} — the two numbers that matter`,
+      angle: `Two numbers that tell you if your ${second.toLowerCase()} is working.`,
+      pillar: second,
+    },
+    // Contrast topics
+    {
+      topic: `${pillar} — gut instinct vs. written rules`,
+      angle: `Gut instinct vs. written rules: which one survives Q4?`,
+      pillar,
+    },
+    {
+      topic: `${second} — reactive vs. proactive`,
+      angle: `Reactive vs. proactive ${second.toLowerCase()}: the data speaks.`,
+      pillar: second,
+    },
+    // Narrative topics
+    {
+      topic: `${pillar} — the moment everything changed`,
+      angle: `The story behind ${brand.name}'s ${pillar.toLowerCase()} framework.`,
+      pillar,
+    },
+    {
+      topic: `${second} — from chaos to clarity`,
+      angle: `How ${brand.name} built its ${second.toLowerCase()} system.`,
+      pillar: second,
+    },
+    // Identity topics
+    {
+      topic: `${pillar} — for the team that is tired of reinventing`,
+      angle: `This is for the ${brand.category.toLowerCase()} team that wants to stop repeating.`,
+      pillar,
+    },
+    {
+      topic: `${second} — built for leaders who document`,
+      angle: `The ${brand.category.toLowerCase()} leaders who document their thinking.`,
+      pillar: second,
+    },
+    // Extra variety
+    {
+      topic: `${third} — the simplest system that works`,
+      angle: `The simplest ${third.toLowerCase()} system that actually works — no fluff.`,
+      pillar: third,
+    },
+    {
+      topic: `${third} — what happens after the first rule`,
+      angle: `What happens after you write the first ${third.toLowerCase()} rule.`,
+      pillar: third,
+    },
+  ];
+
+  // Filter out titles that already exist — substring match catches near-duplicates.
+  const available = allTopics.filter((t) => {
+    const topicLower = t.topic.toLowerCase();
+    return !avoidLower.some(
+      (a) => a.includes(topicLower) || topicLower.includes(a),
+    );
+  });
+
+  // If we exhausted the pool, log a warning but still pick.
+  if (available.length === 0) {
+    console.warn(
+      `[offline] Topic pool exhausted for brand ${brand.id} — ${avoid.length} titles already used. Picking from full pool as fallback.`,
+    );
+  }
+
+  const picked = available.length > 0 ? pick(available) : pick(allTopics);
 
   return {
-    topic: `${pillar} — the part of ${brand.positioning.toLowerCase()} that is measurable`,
-    angle: `Take one ${pillar.toLowerCase()} decision and show what changed after it, using ${second.toLowerCase()} as the frame.`,
-    pillar,
-    rationale: `Offline engine: selected the brand's primary pillar (${pillar}) because no research provider is configured.`,
+    topic: picked.topic,
+    angle: picked.angle,
+    pillar: picked.pillar,
+    rationale: `Offline engine: picked from ${available.length}/${allTopics.length} available topics, filtered against ${avoid.length} existing titles. Psychology-driven content plan applied.`,
   };
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Research step — placeholder facts                                        */
+/* -------------------------------------------------------------------------- */
 
 function researchFor(request: GenerateRequest) {
   const brand = getBrand(request.hint?.brandId ?? "studio-noir");
@@ -54,6 +209,10 @@ function researchFor(request: GenerateRequest) {
   };
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Verify step — placeholder verification                                   */
+/* -------------------------------------------------------------------------- */
+
 function verifyFor() {
   return {
     claims: [
@@ -68,154 +227,181 @@ function verifyFor() {
   };
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Carousel step — psychology-based content with design coordination         */
+/* -------------------------------------------------------------------------- */
+
 function carouselFor(request: GenerateRequest) {
   const brand = getBrand(request.hint?.brandId ?? "studio-noir");
   const [first, second = first, third = first] = brand.contentPillars;
   const topic = request.hint?.topic ?? first;
 
-  const slides = [
-    {
-      kind: "cover" as const,
-      kicker: brand.category,
-      headline: topic.slice(0, 50),
-      body: `What ${brand.name} knows about ${first.toLowerCase()} that most people skip.`,
-      footnote: "Swipe to see the framework",
-    },
-    {
-      kind: "statement" as const,
-      kicker: "The insight",
-      headline: `${first} is not a vibe — it is a system`,
-      body: `Most ${brand.category.toLowerCase()} brands treat ${first.toLowerCase()} as intuition. ${brand.name} treats it as a repeatable process.`,
-      footnote: null,
-    },
-    {
-      kind: "statistic" as const,
-      kicker: "The data",
-      headline: "73% of decisions are never written down",
-      body: "Teams that document their reasoning make 2.4× faster decisions in the next quarter.",
-      footnote: "Source: Harvard Business Review",
-    },
-    {
-      kind: "list" as const,
-      kicker: "Rule 01",
-      headline: `Name the trade-off`,
-      body: `Every ${first.toLowerCase()} decision is a trade-off. Write down what you chose and what you gave up.`,
-      footnote: null,
-    },
-    {
-      kind: "list" as const,
-      kicker: "Rule 02",
-      headline: `Set the constraint`,
-      body: `A ${second.toLowerCase()} rule without a boundary is just an opinion. Add a number, a deadline, or a threshold.`,
-      footnote: null,
-    },
-    {
-      kind: "list" as const,
-      kicker: "Rule 03",
-      headline: `Ship the decision note`,
-      body: `Send it to the team before the next meeting. A rule nobody reads is a rule that does not exist.`,
-      footnote: null,
-    },
-    {
-      kind: "cta" as const,
-      kicker: "Your turn",
-      headline: `Save this and try it this week`,
-      body: `Pick one ${third.toLowerCase()} decision you have been putting off. Write the rule, share it, and see what changes.`,
-      footnote: null,
-    },
-  ];
+  // 1. Plan the content strategy.
+  const plan = planContent(brand, topic, first);
+
+  // 2. Generate the hook using psychology.
+  const hook = generateHook(plan.hook, {
+    brand,
+    topic,
+    pillar: first,
+    angle: request.hint?.topic ?? first,
+  });
+
+  // 3. Generate the slide set following the emotional arc.
+  const rawSlides = generateArc(plan.emotionalArc, {
+    brand,
+    topic,
+    pillar: first,
+    hook,
+    secondPillar: second,
+    thirdPillar: third,
+  });
+
+  // 4. Select the design approach.
+  const designSpec = selectDesign(plan, brand);
+
+  // 5. Apply design to slides.
+  const designedSlides = designSlides(rawSlides, designSpec, brand);
+
+  // 6. Enforce content-design limits.
+  const finalSlides = enforceContentDesignLimits(designedSlides);
+
+  // 7. Convert to the schema format (strip design metadata).
+  const slides: SlideContent[] = finalSlides.map((s) => ({
+    kind: s.kind,
+    kicker: s.kicker,
+    headline: s.headline,
+    body: s.body,
+    footnote: s.footnote,
+  }));
 
   return {
-    title: `${first} — the written rule behind ${brand.name}'s best decisions`,
-    hook: `${first.toLowerCase()} is a system, not a feeling`,
+    title: topic,
+    hook,
     slides,
   };
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Caption step — psychology-based caption                                   */
+/* -------------------------------------------------------------------------- */
+
 function captionFor(request: GenerateRequest) {
   const brand = getBrand(request.hint?.brandId ?? "studio-noir");
   const [first] = brand.contentPillars;
+  const topic = request.hint?.topic ?? first;
 
-  return {
-    caption: [
-      `${first.toLowerCase()} is a system, not a feeling. Most ${brand.category.toLowerCase()} brands rely on intuition — the ones that last write the rules down.`,
-      `Here is what ${brand.name} has learned: every decision that survives a busy quarter was documented before the quarter started. Not in a slide deck. In a sentence someone can quote.`,
-      `The offline engine put this together from the brand brief. It has the structure and the voice. What it needs is your research — one real number, one specific case, one thing a reader can verify.`,
-      `Save this and replace the placeholder data with your findings before you post.`,
-    ].join("\n\n"),
-  };
+  // Plan content to get the tone.
+  const plan = planContent(brand, topic, first);
+
+  const caption = generateCaption({
+    brand,
+    topic,
+    pillar: first,
+    hook: topic,
+    tone: plan.tone,
+  });
+
+  return { caption };
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Hashtags step — context-aware hashtags                                    */
+/* -------------------------------------------------------------------------- */
 
 function hashtagsFor(request: GenerateRequest) {
   const brand = getBrand(request.hint?.brandId ?? "studio-noir");
+  const [first] = brand.contentPillars;
+  const topic = request.hint?.topic ?? first;
 
   return {
-    hashtags: [
-      ...brand.hashtagBase,
-      `#${brand.category.toLowerCase()}`,
-      "#contentstrategy",
-      "#editorialcalm",
-    ].slice(0, 8),
+    hashtags: generateHashtags(brand, topic, first),
   };
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Alt text step — describes the carousel visually                           */
+/* -------------------------------------------------------------------------- */
 
 function altTextFor(request: GenerateRequest) {
   const brand = getBrand(request.hint?.brandId ?? "studio-noir");
   const [first] = brand.contentPillars;
+  const topic = request.hint?.topic ?? first;
+
+  // Generate a sample slide set for alt text description.
+  const plan = planContent(brand, topic, first);
+  const rawSlides = generateArc(plan.emotionalArc, {
+    brand,
+    topic,
+    pillar: first,
+    hook: topic,
+    secondPillar: brand.contentPillars[1] ?? first,
+    thirdPillar: brand.contentPillars[2] ?? first,
+  });
 
   return {
-    altText: `Seven-frame carousel in ${brand.name}'s palette (${brand.colorTheme.background} background, ${brand.colorTheme.foreground} type). Frame 1: cover slide introducing ${first.toLowerCase()} as a system. Frame 2: states that most brands treat it as intuition. Frame 3: a statistic — 73% of decisions are never written, with a Harvard Business Review source. Frames 4 through 6: three rules — name the trade-off, set the constraint, ship the decision note. Frame 7: a call to action inviting the reader to save the post and try the framework this week.`,
+    altText: generateAltText(brand, rawSlides, topic),
   };
 }
 
-function qualityFor() {
+/* -------------------------------------------------------------------------- */
+/*  Quality step — evaluates content-design coordination                      */
+/* -------------------------------------------------------------------------- */
+
+function qualityFor(request: GenerateRequest) {
+  const brand = getBrand(request.hint?.brandId ?? "studio-noir");
+  const [first] = brand.contentPillars;
+  const topic = request.hint?.topic ?? first;
+
+  // Generate the same content to score it.
+  const plan = planContent(brand, topic, first);
+  const rawSlides = generateArc(plan.emotionalArc, {
+    brand,
+    topic,
+    pillar: first,
+    hook: topic,
+    secondPillar: brand.contentPillars[1] ?? first,
+    thirdPillar: brand.contentPillars[2] ?? first,
+  });
+  const designSpec = selectDesign(plan, brand);
+  const designedSlides = designSlides(rawSlides, designSpec, brand);
+  const finalSlides = enforceContentDesignLimits(designedSlides);
+
+  const designQuality = scoreDesignQuality(finalSlides, plan);
+
+  // Combine design quality with offline limitations.
+  const offlineScore = Math.min(OFFLINE_QUALITY_CAP, designQuality.score);
+
   return {
-    score: OFFLINE_QUALITY_CAP,
-    summary:
-      "Structurally complete, but nothing here has been researched or verified. It is a skeleton to edit, not a post to approve.",
+    score: offlineScore,
+    summary: `Psychology-driven ${plan.emotionalArc} arc with ${plan.hook} hook. Design: ${designSpec.layout} layout, ${plan.tone} tone. ${BLOCKERS[0]}`,
     criteria: [
+      ...designQuality.criteria.map((c) => ({
+        ...c,
+        score: Math.min(c.score, OFFLINE_QUALITY_CAP),
+      })),
       {
-        id: "hook",
-        label: "Hook strength",
-        weight: 0.25,
-        score: 58,
-        note: "Clear but generic until the real finding replaces the placeholder.",
-      },
-      {
-        id: "clarity",
-        label: "Caption clarity",
-        weight: 0.25,
-        score: 66,
-        note: "Reads cleanly; the middle section needs the actual evidence.",
-      },
-      {
-        id: "visual",
-        label: "Visual consistency",
-        weight: 0.2,
-        score: 64,
-        note: "Statement and rule structure alternates properly across six frames.",
-      },
-      {
-        id: "hashtags",
-        label: "Hashtag coverage",
+        id: "research",
+        label: "Research depth",
         weight: 0.15,
-        score: 61,
-        note: "Brand and category tags only — niche tags need the researched topic.",
-      },
-      {
-        id: "alt",
-        label: "Alt text quality",
-        weight: 0.15,
-        score: 70,
-        note: "Covers every frame and states the palette and layout.",
+        score: 0,
+        note: "No research conducted — offline engine only.",
       },
     ],
     blockers: BLOCKERS,
   };
 }
 
+/* -------------------------------------------------------------------------- */
+/*  Composed payload — non-granular mode                                      */
+/* -------------------------------------------------------------------------- */
+
 function payloadFor(request: GenerateRequest) {
   const carousel = carouselFor(request);
+  const brand = getBrand(request.hint?.brandId ?? "studio-noir");
+  const [first] = brand.contentPillars;
+  const topic = request.hint?.topic ?? first;
+  const plan = planContent(brand, topic, first);
 
   return {
     ...carousel,
@@ -223,9 +409,13 @@ function payloadFor(request: GenerateRequest) {
     ...hashtagsFor(request),
     ...altTextFor(request),
     references: [],
-    qualityScore: qualityFor(),
+    qualityScore: qualityFor(request),
   };
 }
+
+/* -------------------------------------------------------------------------- */
+/*  Step dispatch                                                             */
+/* -------------------------------------------------------------------------- */
 
 const STEP_BUILDERS: Record<AiStepId, (request: GenerateRequest) => unknown> = {
   topic: topicFor,
@@ -238,6 +428,10 @@ const STEP_BUILDERS: Record<AiStepId, (request: GenerateRequest) => unknown> = {
   quality: qualityFor,
 };
 
+/* -------------------------------------------------------------------------- */
+/*  Provider export                                                           */
+/* -------------------------------------------------------------------------- */
+
 export const localProvider: AiProvider = {
   id: "local",
   label: "Offline engine",
@@ -247,7 +441,7 @@ export const localProvider: AiProvider = {
   roles: ["fallback"],
   envKeys: AI_ENV.local.keys,
   supportsGrounding: false,
-  note: "Deterministic offline drafts. Enable with AI_ENABLE_LOCAL_PROVIDER=true.",
+  note: "Psychology-driven offline drafts. Enable with AI_ENABLE_LOCAL_PROVIDER=true.",
 
   async generate(request: GenerateRequest): Promise<GenerateResult> {
     const step = request.hint?.step ?? "topic";
