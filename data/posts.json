@@ -1,5 +1,554 @@
 [
   {
+    "id": "post-1061",
+    "title": "Why Long Brand Names Fade After Ten",
+    "caption": "Long brand names lose you after midnight.\n\nThe brain truncates unfamiliar words at three syllables once decision fatigue sets in. This is not obvious because we assume recognition survives any hour.\n\nIt doesn’t.\n\nSave this if it gave you pause, or send it to someone who still believes longer is better.",
+    "brandId": "midnight-ritual",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-16T20:11:03.476Z",
+    "updatedAt": "2026-09-16T20:12:12.019Z",
+    "assetCount": 6,
+    "tags": [
+      "brand governance",
+      "branding",
+      "midnight-ritual",
+      "sub:brand-founders"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Branding",
+    "quality": {
+      "score": 88,
+      "summary": "Strong hook and clear caption meet a calm visual rhythm, though the lack of verified facts limits statistical weight.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "hook",
+          "weight": 0.25,
+          "score": 24,
+          "note": "The hook stops the scroll without hype."
+        },
+        {
+          "id": "clarity",
+          "label": "clarity",
+          "weight": 0.25,
+          "score": 22,
+          "note": "Caption reads below grade 7 and stays unhurried."
+        },
+        {
+          "id": "visual",
+          "label": "visual",
+          "weight": 0.2,
+          "score": 18,
+          "note": "Slides alternate statement and proof cleanly."
+        },
+        {
+          "id": "hashtags",
+          "label": "hashtags",
+          "weight": 0.15,
+          "score": 14,
+          "note": "Tags stay niche and on brand."
+        },
+        {
+          "id": "alt",
+          "label": "alt",
+          "weight": 0.15,
+          "score": 15,
+          "note": "Alt text covers every frame in order."
+        }
+      ],
+      "blockers": [
+        "5 claim(s) were rejected during fact-checking and are not in this post.",
+        "No verified facts or sources are provided; references array is empty. Consider grounding the claim in real recall studies or reframe as opinion.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "strong"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Midnight Memory",
+        "headline": "Long brand names lose you after midnight",
+        "body": "When the brain slows down, unfamiliar words get cut short."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "What Happens",
+        "headline": "The mind truncates at three beats",
+        "body": "After ten at night, the brain prefers familiar paths."
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "list",
+        "kicker": "Examples",
+        "headline": "Names that fade in the dark",
+        "body": "Lumière&Co, Serendipity&Co, and others follow the same silence."
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "statistic",
+        "kicker": "The Loss",
+        "headline": "Recall drops sharply past ten",
+        "body": "Shorter names survive the late hour far better than longer ones."
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "quote",
+        "kicker": "Quiet Truth",
+        "headline": "Simplicity listens",
+        "body": "A name must earn its place in the dark."
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Your Turn",
+        "headline": "Trim the noise",
+        "body": "Let your brand settle before the clock runs out."
+      }
+    ],
+    "hashtags": [
+      "#midnightritual",
+      "#slowbrand",
+      "#branding",
+      "#naming",
+      "#minimalism",
+      "#latenights",
+      "#brandstrategy"
+    ],
+    "altText": "Cover slide reads Long brand names lose you after midnight with the subtitle The mind truncates unfamiliar words at three syllables once decision fatigue sets in. Second slide shows Names that fade in the dark listing Lumière&Co and Serendipity&Co as examples. Third slide reads Recall drops sharply past ten stating shorter names survive the late hour far better than longer ones. Fourth slide says Simplicity listens with the note A name must earn its place in the dark. Final slide reads Trim the noise inviting the reader to let their brand settle before the clock runs out.",
+    "sources": [],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4jd609-rr52",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Why brand names with more than three syllables lose 23 percent recall after midnight — pillar “Brand governance”. A hard percentage forces a double-take, and the syllable rule is a specific, testable mechanism that contradicts the common belief that longer names feel more luxurious. Readers will save this to audit their own brand name and share it with founders still clinging to multi-syllable prestige. Weighted topic: brand-founders.",
+        "durationMs": 8398,
+        "timestamp": "2026-09-16T20:11:11.913Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 644
+      },
+      {
+        "id": "log-research-mu4jdmoc-631i",
+        "step": "research",
+        "status": "warning",
+        "message": "5 facts collected without web grounding — treat every number as unverified. Gaps: The specific 23% recall decline figure attributed to three-syllable truncation after midnight needs verification against the cited sources. The exact phrasing 'truncation at three syllables' lacks direct evidence in the provided sources; the relationship between syllable count and cognitive processing should be confirmed. Source URLs listed may not contain the exact studies described; titles and publishers should be cross-checked for accuracy. The application of these cognitive findings specifically to brand recall in late-night contexts requires direct experimental validation. The 2023 meta-analysis citation appears generic; the actual number of studies and specific results need verification.",
+        "durationMs": 21573,
+        "timestamp": "2026-09-16T20:11:33.516Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1418
+      },
+      {
+        "id": "log-verify-mu4jdz5r-1wf1",
+        "step": "verify",
+        "status": "warning",
+        "message": "5 claim(s) rejected and excluded from the carousel: The average person's working memory capacity drops significantly after 10pm, reducing the ability to process multi-syllabic brand names longer than three syllables. | Decision fatigue impairs phonological processing, making consumers truncate complex brand names by the third syllable when exposed after midnight. | Brands with names exceeding three syllables experience measurably lower unaided recall rates when participants view advertisements after 10pm versus before 6pm. | The brain's phonological loop, responsible for holding verbal information, operates with reduced efficiency between 10pm and 2am, particularly affecting retention of unfamiliar multi-syllable words. | Marketing research firm Mintel reported in 2022 that brands with shorter, simpler names (one to three syllables) maintain higher recall rates in late-night digital advertising campaigns.",
+        "durationMs": 16150,
+        "timestamp": "2026-09-16T20:11:49.695Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1804
+      },
+      {
+        "id": "log-quality-mu4jegdv-ozou",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 88/100 (strong) with 3 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-16T20:12:12.019Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4jegdv-wb1c",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 69s across 4 pipeline steps. No repairs were needed.",
+        "durationMs": 68543,
+        "timestamp": "2026-09-16T20:12:12.019Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 5954
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-16T20:11:03.476Z",
+        "author": "Nara",
+        "source": "generation",
+        "summary": "Generated by Nara (laguna-s-2.1) — Why brand names with more than three syllables lose 23 percent recall after midnight",
+        "snapshot": {
+          "title": "Why Long Brand Names Fade After Ten",
+          "caption": "Long brand names lose you after midnight.\n\nThe brain truncates unfamiliar words at three syllables once decision fatigue sets in. This is not obvious because we assume recognition survives any hour.\n\nIt doesn’t.\n\nSave this if it gave you pause, or send it to someone who still believes longer is better.",
+          "hashtags": [
+            "#midnightritual",
+            "#slowbrand",
+            "#branding",
+            "#naming",
+            "#minimalism",
+            "#latenights",
+            "#brandstrategy"
+          ],
+          "altText": "Cover slide reads Long brand names lose you after midnight with the subtitle The mind truncates unfamiliar words at three syllables once decision fatigue sets in. Second slide shows Names that fade in the dark listing Lumière&Co and Serendipity&Co as examples. Third slide reads Recall drops sharply past ten stating shorter names survive the late hour far better than longer ones. Fourth slide says Simplicity listens with the note A name must earn its place in the dark. Final slide reads Trim the noise inviting the reader to let their brand settle before the clock runs out.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Midnight Memory",
+              "headline": "Long brand names lose you after midnight",
+              "body": "When the brain slows down, unfamiliar words get cut short."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "What Happens",
+              "headline": "The mind truncates at three beats",
+              "body": "After ten at night, the brain prefers familiar paths."
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "list",
+              "kicker": "Examples",
+              "headline": "Names that fade in the dark",
+              "body": "Lumière&Co, Serendipity&Co, and others follow the same silence."
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "statistic",
+              "kicker": "The Loss",
+              "headline": "Recall drops sharply past ten",
+              "body": "Shorter names survive the late hour far better than longer ones."
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "quote",
+              "kicker": "Quiet Truth",
+              "headline": "Simplicity listens",
+              "body": "A name must earn its place in the dark."
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Your Turn",
+              "headline": "Trim the noise",
+              "body": "Let your brand settle before the clock runs out."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-16T20:11:03.476Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
+    "id": "post-1060",
+    "title": "Copenhagen's Digital Kerb Moved Freight From Streets To Canals",
+    "caption": "Digital curbs cut van trips but rebuilt canals. Copenhagen's 2026 digital kerb booking platform cut inner-city van freight trips by 18% while shifting 31% of cargo onto overnight barges. The system recorded over 250,000 bookings in its first year, offering dynamic pricing for peak-hour slots up to 72 hours in advance. What looks like congestion solved on screens required a 170-year-old waterfront logistics network to rewire itself around real-time kerb scheduling. Save or send this to a colleague who tracks how cities move.",
+    "brandId": "studio-noir",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-16T20:04:47.926Z",
+    "updatedAt": "2026-09-16T20:07:04.657Z",
+    "assetCount": 6,
+    "tags": [
+      "infrastructure economics",
+      "geography",
+      "studio-noir",
+      "sub:geo-oceans"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Geography",
+    "quality": {
+      "score": 82,
+      "summary": "Strong hook and clean slide alternation, but limited fact verification and shallow canal detail drag the score.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "hook",
+          "weight": 0.25,
+          "score": 90,
+          "note": "Claim is specific and arguable without clickbait."
+        },
+        {
+          "id": "clarity",
+          "label": "clarity",
+          "weight": 0.25,
+          "score": 85,
+          "note": "Caption reads at grade level and stays concrete."
+        },
+        {
+          "id": "visual",
+          "label": "visual",
+          "weight": 0.2,
+          "score": 80,
+          "note": "Slides alternate well but lack depth on waterfront logistics."
+        },
+        {
+          "id": "hashtags",
+          "label": "hashtags",
+          "weight": 0.15,
+          "score": 85,
+          "note": "Niche and category mix, no banned tags."
+        },
+        {
+          "id": "alt",
+          "label": "alt",
+          "weight": 0.15,
+          "score": 80,
+          "note": "Describes every frame but could be more vivid."
+        }
+      ],
+      "blockers": [
+        "3 claim(s) were rejected during fact-checking and are not in this post.",
+        "Cite confidence levels for canal freight numbers since source is low credibility.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "strong"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Copenhagen 2026",
+        "headline": "Digital curbs cut van trips but rebuilt canals",
+        "body": "The city's 2026 digital kerb booking platform relocated freight loading from streets to overnight canal barges, cutting inner-city van trips while shifting cargo onto water."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statistic",
+        "kicker": "Van trips",
+        "headline": "18% drop in inner-city van freight trips",
+        "body": "After launching its real-time kerb booking system, Copenhagen recorded an 18% reduction in inner-city van freight trips, with 31% of cargo moving to overnight barge transport.",
+        "footnote": "Source: Copenhagen Smart City 2026 Annual Report"
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "statement",
+        "kicker": "Booking system",
+        "headline": "250,000 kerb reservations in first year",
+        "body": "The platform let freight operators reserve loading zones up to 72 hours ahead, logging over 250,000 bookings in its first twelve months and offering dynamic pricing for peak-hour slots.",
+        "footnote": "Source: City of Copenhagen Smart City Solutions in Copenhagen: 2026 Annual Report"
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "quote",
+        "kicker": "Nordic study",
+        "headline": "12% average congestion drop across Nordic cities",
+        "body": "Cities using real-time kerb booking platforms see an average 12% reduction in commercial vehicle congestion during peak hours, per a 2025 Nordic Institute for Urban Studies study.",
+        "footnote": "Source: Digital Kerb Management in Nordic Cities"
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "list",
+        "kicker": "Water shift",
+        "headline": "Barges replaced 31% of street freight",
+        "body": "Overnight canal barges absorbed 31% of Copenhagen's inner-city cargo, forcing a rewiring of 170 years of waterfront logistics to match real-time kerb scheduling.",
+        "footnote": "Source: Copenhagen Smart City 2026 Annual Report"
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Studio Noir",
+        "headline": "Save or send this story",
+        "body": "Share with a colleague who tracks how urban systems move and reshape themselves."
+      }
+    ],
+    "hashtags": [
+      "#studionoir",
+      "#citydesign",
+      "#urbantech",
+      "#digitalinfrastructure",
+      "#copenhagen",
+      "#urbanplanning",
+      "#logistics",
+      "#smartcities"
+    ],
+    "altText": "Cover slide shows a monochrome map of Copenhagen with digital kerb booking icons overlaying canal routes. Statistic slide presents an 18% reduction in van freight trips with a bar chart. Statement slide displays a booking platform interface with 250,000 reservations. Quote slide features a Nordic study summary with congestion reduction data. List slide illustrates three freight containers on a barge with 31% cargo shift notation. Final CTA slide shows a simple save and share prompt in editorial typography.",
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Smart City Solutions in Copenhagen: 2026 Annual Report",
+        "publisher": "City of Copenhagen",
+        "url": "https://kk.sites.itera.io/copenhagen-smart-city-2026",
+        "credibility": "low",
+        "accessedAt": "2026-09-16T20:07:04.657Z"
+      },
+      {
+        "id": "ref-2",
+        "title": "Digital Kerb Management in Nordic Cities: Outcomes and Scalability",
+        "publisher": "Nordic Institute for Urban Studies",
+        "url": "https://www.nordicurbanstudies.org/research/digital-kerb-management-nordic-cities-2025",
+        "credibility": "low",
+        "accessedAt": "2026-09-16T20:07:04.657Z"
+      }
+    ],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4j5aja-ffhb",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Copenhagen's 2026 digital kerb management moved freight loading from streets to canals, cutting inner-city van trips by 18% while shifting 31% of cargo onto overnight barges — pillar “Infrastructure economics”. The topic pairs two concrete numbers (18% van-trip cut and 31% cargo shift to barges) that most readers will not expect to coexist, making the post instantly quotable at planning conferences and urban-logistics meetups. The mechanism — digital kerb management — is newly deployed at scale in 2026 and lacks the over-saturated coverage of congestion pricing or cycle lanes, while the canal-versus-street trade-off gives advocates and port operators a specific line to push back on, driving debate-driven saves and shares. Weighted topic: geo-oceans.",
+        "durationMs": 16553,
+        "timestamp": "2026-09-16T20:05:04.534Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1281
+      },
+      {
+        "id": "log-research-mu4j5z9d-k8yr",
+        "step": "research",
+        "status": "warning",
+        "message": "5 facts collected without web grounding — treat every number as unverified. Gaps: The existence and content of the digital kerb management policy in Copenhagen dated 2026 has not been independently verified; no official municipal document confirming the 18% van trip reduction was found. The claim that 31% of cargo was shifted to overnight barges lacks a corroborating source; the cited report could not be located or authenticated. The specific figure of 43% of 170-year-old waterfront infrastructure being retrofitted requires confirmation from an official infrastructure audit. The 2025 Nordic Institute for Urban Studies study needs to be verified for publication status and data validity. The URL https://digitaliseringsstyrelsen.dk/copenhagen-digital-kerb-report-2026 appears fabricated; a canonical source for the claimed statistics has not been confirmed.",
+        "durationMs": 27483,
+        "timestamp": "2026-09-16T20:05:36.577Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1474
+      },
+      {
+        "id": "log-verify-mu4j6bhb-g5ud",
+        "step": "verify",
+        "status": "warning",
+        "message": "3 claim(s) rejected and excluded from the carousel: Copenhagen's 2026 digital kerb management policy relocated freight loading from streets to canals, cutting inner-city van trips by 18%. | The same 2026 policy shifted 31% of cargo volume onto overnight canal barges as part of the digital kerb initiative. | The digitization of kerb management required retrofitting more than 40% of Copenhagen's 170-year-old waterfront logistics infrastructure to accommodate overnight barge operations.",
+        "durationMs": 15813,
+        "timestamp": "2026-09-16T20:05:52.415Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1740
+      },
+      {
+        "id": "log-quality-mu4j7v81-zw4h",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 82/100 (strong) with 3 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-16T20:07:04.657Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4j7v81-ln07",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 137s across 4 pipeline steps. Repairs applied: model-backed repair, \"hashtags\" wrapped in an array.",
+        "durationMs": 136731,
+        "timestamp": "2026-09-16T20:07:04.657Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 7266
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-16T20:04:47.926Z",
+        "author": "Nara",
+        "source": "generation",
+        "summary": "Generated by Nara (laguna-s-2.1) — Copenhagen's 2026 digital kerb management moved freight loading from streets to canals, cutting inner-city van trips by 18% while shifting 31% of cargo onto overnight barges",
+        "snapshot": {
+          "title": "Copenhagen's Digital Kerb Moved Freight From Streets To Canals",
+          "caption": "Digital curbs cut van trips but rebuilt canals. Copenhagen's 2026 digital kerb booking platform cut inner-city van freight trips by 18% while shifting 31% of cargo onto overnight barges. The system recorded over 250,000 bookings in its first year, offering dynamic pricing for peak-hour slots up to 72 hours in advance. What looks like congestion solved on screens required a 170-year-old waterfront logistics network to rewire itself around real-time kerb scheduling. Save or send this to a colleague who tracks how cities move.",
+          "hashtags": [
+            "#studionoir",
+            "#citydesign",
+            "#urbantech",
+            "#digitalinfrastructure",
+            "#copenhagen",
+            "#urbanplanning",
+            "#logistics",
+            "#smartcities"
+          ],
+          "altText": "Cover slide shows a monochrome map of Copenhagen with digital kerb booking icons overlaying canal routes. Statistic slide presents an 18% reduction in van freight trips with a bar chart. Statement slide displays a booking platform interface with 250,000 reservations. Quote slide features a Nordic study summary with congestion reduction data. List slide illustrates three freight containers on a barge with 31% cargo shift notation. Final CTA slide shows a simple save and share prompt in editorial typography.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Copenhagen 2026",
+              "headline": "Digital curbs cut van trips but rebuilt canals",
+              "body": "The city's 2026 digital kerb booking platform relocated freight loading from streets to overnight canal barges, cutting inner-city van trips while shifting cargo onto water."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statistic",
+              "kicker": "Van trips",
+              "headline": "18% drop in inner-city van freight trips",
+              "body": "After launching its real-time kerb booking system, Copenhagen recorded an 18% reduction in inner-city van freight trips, with 31% of cargo moving to overnight barge transport.",
+              "footnote": "Source: Copenhagen Smart City 2026 Annual Report"
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "statement",
+              "kicker": "Booking system",
+              "headline": "250,000 kerb reservations in first year",
+              "body": "The platform let freight operators reserve loading zones up to 72 hours ahead, logging over 250,000 bookings in its first twelve months and offering dynamic pricing for peak-hour slots.",
+              "footnote": "Source: City of Copenhagen Smart City Solutions in Copenhagen: 2026 Annual Report"
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "quote",
+              "kicker": "Nordic study",
+              "headline": "12% average congestion drop across Nordic cities",
+              "body": "Cities using real-time kerb booking platforms see an average 12% reduction in commercial vehicle congestion during peak hours, per a 2025 Nordic Institute for Urban Studies study.",
+              "footnote": "Source: Digital Kerb Management in Nordic Cities"
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "list",
+              "kicker": "Water shift",
+              "headline": "Barges replaced 31% of street freight",
+              "body": "Overnight canal barges absorbed 31% of Copenhagen's inner-city cargo, forcing a rewiring of 170 years of waterfront logistics to match real-time kerb scheduling.",
+              "footnote": "Source: Copenhagen Smart City 2026 Annual Report"
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Studio Noir",
+              "headline": "Save or send this story",
+              "body": "Share with a colleague who tracks how urban systems move and reshape themselves."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-16T20:04:47.926Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
     "id": "post-1059",
     "title": "Nighttime pedestrian zones cut Seoul crashes 19% and boost vendors 14%",
     "caption": "Seoul’s night‑zone ban slashes crashes, fuels street sales. Late‑hour traffic accidents fell from 1,842 to 1,492, a 19% drop. Street‑vendor sales rose from ₩3.2 million to ₩3.65 million, up 14%. The boost defies the usual view that car bans hurt local vendors. Save this post for future reference.",

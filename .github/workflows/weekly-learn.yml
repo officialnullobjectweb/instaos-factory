@@ -1,0 +1,39 @@
+name: Weekly Learning Run
+
+on:
+  schedule:
+    # Run weekly on Monday at 8 AM UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+jobs:
+  learn:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run learning engine
+        env:
+          SCHEDULER_SECRET: ${{ secrets.SCHEDULER_SECRET }}
+          STORAGE_DRIVER: file
+        run: |
+          # Start the server
+          npm run start:local &
+          SERVER_PID=$!
+          sleep 5
+
+          # Run learning
+          curl -s -X POST http://localhost:3780/api/learning/run \
+            -H "Authorization: Bearer $SCHEDULER_SECRET"
+
+          kill $SERVER_PID

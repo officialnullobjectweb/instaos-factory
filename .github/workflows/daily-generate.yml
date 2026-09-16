@@ -1,0 +1,44 @@
+name: Daily Content Generation
+
+on:
+  schedule:
+    # Run daily at 6 AM UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate content for all brands
+        env:
+          NARA_API_KEY: ${{ secrets.NARA_API_KEY }}
+          NARA_BASE_URL: https://router.bynara.id/v1
+          NARA_MODEL: laguna-s-2.1
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          STORAGE_DRIVER: file
+          SCHEDULER_SECRET: ${{ secrets.SCHEDULER_SECRET }}
+        run: |
+          # Generate for each brand
+          for brand in studio-noir midnight-ritual daily-grind; do
+            echo "Generating for $brand..."
+            curl -s -X POST http://localhost:3780/api/ai/generate \
+              -H "Content-Type: application/json" \
+              -H "Authorization: Bearer $SCHEDULER_SECRET" \
+              -d "{\"brandId\":\"$brand\",\"granular\":false}" || true
+            sleep 45
+          done

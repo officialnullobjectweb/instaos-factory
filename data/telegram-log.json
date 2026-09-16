@@ -1,5 +1,19 @@
 [
   {
+    "at": "2026-09-16T20:12:12.031Z",
+    "kind": "notification",
+    "postId": "post-1061",
+    "detail": "Skipped — bot not configured",
+    "ok": false
+  },
+  {
+    "at": "2026-09-16T20:07:04.670Z",
+    "kind": "notification",
+    "postId": "post-1060",
+    "detail": "Skipped — bot not configured",
+    "ok": false
+  },
+  {
     "at": "2026-09-16T19:57:27.863Z",
     "kind": "notification",
     "postId": "post-1059",
