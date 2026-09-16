@@ -7,6 +7,8 @@
     "start:local": "next start -p 3780",
     "build": "next build --turbopack",
     "start": "next start",
+    "test": "vitest run",
+    "test:watch": "vitest",
     "lint": "eslint",
     "prebuild": "node scripts/build-fonts.mjs",
     "predev": "node scripts/build-fonts.mjs",
@@ -62,6 +64,8 @@
     "eslint-config-next": "15.5.25",
     "tailwindcss": "^4",
     "typescript": "^5",
+    "vite": "^8.3.0",
+    "vitest": "^5.0.1",
     "wawoff2": "^2.0.1"
   }
 }
