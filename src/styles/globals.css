@@ -1,0 +1,327 @@
+@import "tailwindcss";
+
+/* Theme is driven by a data attribute on <html> so no class juggling is needed
+   on the client and the server can render either theme without mismatch. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* -------------------------------------------------------------------------- */
+/*  Design tokens — premium monochrome                                        */
+/* -------------------------------------------------------------------------- */
+
+@theme {
+  /* Typography */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system,
+    "Segoe UI", Roboto, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo,
+    monospace;
+
+  /* Surfaces */
+  --color-canvas: #fafaf8;
+  --color-surface: #ffffff;
+  --color-surface-2: #f4f4f2;
+  --color-surface-3: #ecece9;
+  --color-line: #e8e8e5;
+  --color-line-strong: #d8d8d3;
+
+  /* Ink */
+  --color-ink: #111111;
+  --color-ink-2: #6b6b68;
+  --color-ink-3: #9c9c97;
+
+  /* Accent is ink only */
+  --color-accent: #111111;
+  --color-accent-contrast: #ffffff;
+
+  /* Semantic */
+  --color-success: #1f7a4d;
+  --color-success-soft: #eef6f1;
+  --color-warning: #b7791f;
+  --color-warning-soft: #fbf4e7;
+  --color-danger: #b42318;
+  --color-danger-soft: #fbefed;
+
+  /* Radius — 18–24 for surfaces, tighter for controls */
+  --radius-xs: 6px;
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+  --radius-2xl: 28px;
+
+  /* Soft shadows */
+  --shadow-card: 0 1px 1px rgba(17, 17, 17, 0.02),
+    0 2px 8px -4px rgba(17, 17, 17, 0.06);
+  --shadow-soft: 0 1px 2px rgba(17, 17, 17, 0.04),
+    0 14px 34px -18px rgba(17, 17, 17, 0.16);
+  --shadow-pop: 0 2px 6px rgba(17, 17, 17, 0.05),
+    0 24px 54px -22px rgba(17, 17, 17, 0.24);
+
+  /* Motion — 150–250ms, no bounce */
+  --ease-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out-quiet: cubic-bezier(0.16, 1, 0.3, 1);
+
+  --animate-fade-in: fade-in 180ms var(--ease-soft) both;
+  --animate-fade-out: fade-out 150ms var(--ease-soft) both;
+  --animate-scale-in: scale-in 200ms var(--ease-soft) both;
+  --animate-scale-out: scale-out 150ms var(--ease-soft) both;
+  --animate-slide-in-right: slide-in-right 220ms var(--ease-soft) both;
+  --animate-slide-out-right: slide-out-right 180ms var(--ease-soft) both;
+  --animate-slide-in-left: slide-in-left 220ms var(--ease-soft) both;
+  --animate-slide-out-left: slide-out-left 180ms var(--ease-soft) both;
+  --animate-sheen: sheen 1.6s var(--ease-soft) infinite;
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  @keyframes fade-out {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+  /* Uses the individual `scale` property so it composes with the translate
+     utilities that centre dialogs instead of clobbering them. */
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      scale: 0.97;
+    }
+    to {
+      opacity: 1;
+      scale: 1;
+    }
+  }
+  @keyframes scale-out {
+    from {
+      opacity: 1;
+      scale: 1;
+    }
+    to {
+      opacity: 0;
+      scale: 0.97;
+    }
+  }
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slide-out-right {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+  }
+  @keyframes slide-in-left {
+    from {
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes slide-out-left {
+    from {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    to {
+      opacity: 0;
+      transform: translateX(-12px);
+    }
+  }
+  @keyframes sheen {
+    0%,
+    100% {
+      opacity: 0.45;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Dark theme                                                                */
+/* -------------------------------------------------------------------------- */
+
+/*
+ * Every utility reads its colour through a CSS variable, so flipping these
+ * declarations re-themes the entire product — including the pieces written
+ * before dark mode existed. Same for the shadows: soft light-mode shadows read
+ * as haze on a dark canvas, so they get deeper and tighter instead.
+ */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-canvas: #0b0b0c;
+  --color-surface: #131316;
+  --color-surface-2: #191920;
+  --color-surface-3: #22222a;
+  --color-line: #26262d;
+  --color-line-strong: #37373f;
+
+  --color-ink: #f5f5f3;
+  --color-ink-2: #a3a39d;
+  --color-ink-3: #6f6f69;
+
+  --color-accent: #f5f5f3;
+  --color-accent-contrast: #0b0b0c;
+
+  --color-success: #4ade9b;
+  --color-success-soft: #102219;
+  --color-warning: #e0b05f;
+  --color-warning-soft: #241d10;
+  --color-danger: #f2837a;
+  --color-danger-soft: #251311;
+
+  --shadow-card: 0 1px 1px rgba(0, 0, 0, 0.4), 0 2px 8px -4px rgba(0, 0, 0, 0.5);
+  --shadow-soft: 0 1px 2px rgba(0, 0, 0, 0.5), 0 14px 34px -18px rgba(0, 0, 0, 0.7);
+  --shadow-pop: 0 2px 6px rgba(0, 0, 0, 0.5), 0 24px 54px -22px rgba(0, 0, 0, 0.8);
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Base                                                                      */
+/* -------------------------------------------------------------------------- */
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv11", "ss01";
+    font-variation-settings: "opsz" 32;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background-color: var(--color-ink);
+    color: var(--color-canvas);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ink);
+    outline-offset: 2px;
+    border-radius: var(--radius-xs);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/*  Utilities                                                                 */
+/* -------------------------------------------------------------------------- */
+
+@utility scrollbar-slim {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--color-line-strong);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+}
+
+@utility tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Density preference (Settings → Workspace). Unlayered rules intentionally win
+   over the layered utilities so a single attribute tightens the whole shell. */
+[data-density="compact"] [data-slot="card-header"] {
+  padding-block: 0.875rem 0.625rem;
+}
+
+/* Dark-theme selection/hover accents. Surfaces selected with `bg-ink` and
+   accents with `ink/15–25` read well on the light canvas but disappear against
+   the dark one (ink is near-white there). Overlays get slightly darker and
+   focused rings slightly brighter so both themes keep the same hierarchy. */
+[data-theme="dark"] {
+  --scrim: rgb(0 0 0 / 0.6);
+  --focus-ring: rgb(245 245 243 / 0.4);
+  /* Sidebar hover-shadow needs more lift on a dark canvas to read at all. */
+  --hover-panel-shadow: 0 8px 40px -12px rgb(0 0 0 / 0.9), 0 0 0 1px rgb(255 255 255 / 0.06);
+}
+
+[data-theme="light"],
+:root {
+  --scrim: rgb(17 17 17 / 0.25);
+  --focus-ring: rgb(17 17 17 / 0.2);
+  --hover-panel-shadow: 0 8px 40px -12px rgb(17 17 17 / 0.35), 0 0 0 1px rgb(17 17 17 / 0.05);
+}
+
+.ring-selection {
+  box-shadow: 0 0 0 1px var(--focus-ring);
+}
+
+[data-density="compact"] [data-slot="card-content"] {
+  padding-bottom: 0.875rem;
+}
+
+[data-density="compact"] [data-slot="card-footer"] {
+  padding-block: 0.625rem;
+}
+
+@utility shell-container {
+  width: 100%;
+  max-width: 1440px;
+  margin-inline: auto;
+  padding-inline: 1rem;
+
+  @media (min-width: 768px) {
+    padding-inline: 2rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 2.5rem;
+  }
+}

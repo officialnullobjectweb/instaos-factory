@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  Instagram Factory OS — autopilot agent.
+
+  Installs with:
+    launchctl load ~/Library/LaunchAgents/com.kamal.factory.plist
+
+  Removes with:
+    launchctl unload ~/Library/LaunchAgents/com.kamal.factory.plist
+
+  KeepAlive restarts the loop if it crashes; RunAtLoad starts it at login.
+  The loop itself supervises the Next server and runs on a one-minute cadence.
+-->
+<dict>
+  <key>Label</key>
+  <string>com.kamal.factory</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/karandhiver/.hermes/node/bin/node</string>
+    <string>/Users/karandhiver/Developer/Instaos-factory/scripts/autopilot.mjs</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/karandhiver/Developer/Instaos-factory</string>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>30</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/karandhiver/Developer/Instaos-factory/logs/autopilot.out.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/karandhiver/Developer/Instaos-factory/logs/autopilot.err.log</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/karandhiver/.hermes/node/bin:/usr/local/bin:/usr/bin:/bin</string>
+  </dict>
+</dict>
+</plist>

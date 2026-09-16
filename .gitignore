@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# fonts converted from woff2 by scripts/build-fonts.mjs (npm prebuild/predev)
+/src/design/fonts/ttf/
+
 # production
 /build
 
@@ -32,6 +35,8 @@ yarn-error.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+# …but the template that documents them is meant to be shared.
+!.env.example
 
 # vercel
 .vercel
@@ -39,3 +44,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# autopilot runtime logs
+/logs/
