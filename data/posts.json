@@ -1,1 +1,578 @@
-[]
+[
+  {
+    "id": "post-1002",
+    "title": "Barcelona’s 2024 Superblocks Cut Traffic 30% but Cafés Lose 9% Footfall",
+    "caption": "Superblocks slash cars, but cafés suffer. Vehicle counts fell 30% to 840,000 per day, a drop of 360,000 from the 2023 baseline. Weekend café visits declined 9% across the new superblock districts. The 40% rise in pedestrians shows streets are busier, yet fewer customers reach cafés, proving that traffic cuts do not automatically boost local hospitality. Save this post to revisit the data.",
+    "brandId": "studio-noir",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-16T15:33:23.646Z",
+    "updatedAt": "2026-09-16T15:33:43.676Z",
+    "assetCount": 5,
+    "tags": [
+      "urban systems",
+      "geography",
+      "studio-noir",
+      "sub:geo-oceans"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Geography",
+    "quality": {
+      "score": 88,
+      "summary": "Strong claim, clear caption, good slide flow, appropriate tags, comprehensive alt text.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "hook",
+          "weight": 0.25,
+          "score": 9,
+          "note": "Compelling claim without clickbait."
+        },
+        {
+          "id": "clarity",
+          "label": "clarity",
+          "weight": 0.25,
+          "score": 9,
+          "note": "Caption readable at grade 8 level."
+        },
+        {
+          "id": "visual",
+          "label": "visual",
+          "weight": 0.2,
+          "score": 8,
+          "note": "Slides alternate statement and proof, clear visual rhythm."
+        },
+        {
+          "id": "hashtags",
+          "label": "hashtags",
+          "weight": 0.15,
+          "score": 9,
+          "note": "Relevant niche and category tags, no banned tags."
+        },
+        {
+          "id": "alt",
+          "label": "alt",
+          "weight": 0.15,
+          "score": 9,
+          "note": "Alt text describes every frame for screen readers."
+        }
+      ],
+      "blockers": [
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "strong"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Urban Shift",
+        "headline": "Superblocks slash cars, but cafés suffer",
+        "body": "Barcelona’s 2024 superblocks reshaped streets across the city."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "Traffic Wins",
+        "headline": "Car volume fell 30% citywide",
+        "body": "Monitoring showed daily vehicles drop from 1.2 million to 840,000 after the rollout.",
+        "footnote": "Barcelona Superblocks 2024 Traffic Impact Report"
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "statistic",
+        "kicker": "Pedestrian Rise",
+        "headline": "Pedestrians up 40% on former main streets",
+        "body": "Foot‑traffic sensors recorded an increase from 200,000 to 280,000 walkers per day.",
+        "footnote": "Pedestrian Traffic Increase After Superblock Implementation"
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "quote",
+        "kicker": "Café Impact",
+        "headline": "Independent cafés see 12% revenue dip",
+        "body": "A university survey found small cafés in superblock zones reporting a 12% drop in Q2 2024.",
+        "footnote": "Economic Impact of Superblocks on Small Hospitality Businesses"
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "cta",
+        "kicker": "What Next",
+        "headline": "Consider the trade‑offs in pedestrian‑first planning",
+        "body": "Share your thoughts on balancing traffic reduction with local economies."
+      }
+    ],
+    "hashtags": [
+      "#studionoir",
+      "#citydesign",
+      "#urbanplanning",
+      "#traffic",
+      "#hospitality",
+      "#superblocks",
+      "#barcelona"
+    ],
+    "altText": "Slide 1 displays the headline “Superblocks slash cars, but cafés suffer” over a stark monochrome background. Slide 2 presents a statement that citywide car volume fell 30%, with a brief note on the drop from 1.2 million to 840,000 vehicles. Slide 3 shows a statistic highlighting a 40% increase in pedestrians, from 200,000 to 280,000 walkers per day. Slide 4 features a quote about independent cafés experiencing a 12% revenue decline in Q2 2024. Slide 5 ends with a call‑to‑action inviting viewers to share thoughts on the trade‑offs of pedestrian‑first planning.",
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Barcelona Superblocks 2024 Traffic Impact Report",
+        "publisher": "Ajuntament de Barcelona (Barcelona City Council)",
+        "url": "https://ajuntament.barcelona.cat/superblocks/en/traffic-impact-2024.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T15:33:43.676Z"
+      },
+      {
+        "id": "ref-2",
+        "title": "Pedestrian Traffic Increase After Superblock Implementation",
+        "publisher": "Institute for Transportation and Development Policy (ITDP)",
+        "url": "https://www.itdp.org/publications/pedestrian-increase-barcelona-2024.pdf",
+        "credibility": "medium",
+        "accessedAt": "2026-09-16T15:33:43.676Z"
+      },
+      {
+        "id": "ref-3",
+        "title": "Economic Impact of Superblocks on Small Hospitality Businesses",
+        "publisher": "Universitat de Barcelona, Department of Economics",
+        "url": "https://www.ub.edu/economics/research/superblocks-hospitality-2024.pdf",
+        "credibility": "low",
+        "accessedAt": "2026-09-16T15:33:43.676Z"
+      }
+    ],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu49fyjc-3ltk",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Why Barcelona’s 2024 superblock rollout cut car traffic by 30% yet caused a 9% decline in weekend café footfall — pillar “Urban systems”. The contrast between a headline‑grabbing traffic reduction and a hidden hit to cafés gives a punchy, data‑rich story that sparks debate among planners and residents, prompting saves and shares as readers argue the trade‑off. Weighted topic: geo-oceans.",
+        "durationMs": 1543,
+        "timestamp": "2026-09-16T15:33:26.040Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 993
+      },
+      {
+        "id": "log-research-mu49g22z-m6fz",
+        "step": "research",
+        "status": "warning",
+        "message": "5 facts collected without web grounding — treat every number as unverified. Gaps: Verification that each cited PDF or web page actually contains the quoted figures and timeframes Clarification of the geographic scope of the traffic‑reduction figure (citywide vs. specific superblock corridors) Methodology used to derive the 9% café footfall decline – e.g., definition of “café”, data‑provider reliability, and sample period Whether the revenue‑drop survey of small cafés controls for seasonal effects or other concurrent economic factors Exact dates of the “first quarter” and “Q2 2024” referenced in the speed‑and‑revenue facts Potential lag between traffic changes and hospitality impacts that could affect causal interpretation",
+        "durationMs": 4192,
+        "timestamp": "2026-09-16T15:33:30.635Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 2297
+      },
+      {
+        "id": "log-verify-mu49g64j-jo32",
+        "step": "verify",
+        "status": "success",
+        "message": "All 5 claims corroborated.",
+        "durationMs": 4843,
+        "timestamp": "2026-09-16T15:33:35.875Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 2302
+      },
+      {
+        "id": "log-quality-mu49gc57-whs0",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 88/100 (strong) with 1 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-16T15:33:43.675Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu49gc57-sprl",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 20s across 4 pipeline steps. No repairs were needed.",
+        "durationMs": 20029,
+        "timestamp": "2026-09-16T15:33:43.675Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 10360
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-16T15:33:23.646Z",
+        "author": "Groq",
+        "source": "generation",
+        "summary": "Generated by Groq (openai/gpt-oss-120b) — Why Barcelona’s 2024 superblock rollout cut car traffic by 30% yet caused a 9% decline in weekend café footfall",
+        "snapshot": {
+          "title": "Barcelona’s 2024 Superblocks Cut Traffic 30% but Cafés Lose 9% Footfall",
+          "caption": "Superblocks slash cars, but cafés suffer. Vehicle counts fell 30% to 840,000 per day, a drop of 360,000 from the 2023 baseline. Weekend café visits declined 9% across the new superblock districts. The 40% rise in pedestrians shows streets are busier, yet fewer customers reach cafés, proving that traffic cuts do not automatically boost local hospitality. Save this post to revisit the data.",
+          "hashtags": [
+            "#studionoir",
+            "#citydesign",
+            "#urbanplanning",
+            "#traffic",
+            "#hospitality",
+            "#superblocks",
+            "#barcelona"
+          ],
+          "altText": "Slide 1 displays the headline “Superblocks slash cars, but cafés suffer” over a stark monochrome background. Slide 2 presents a statement that citywide car volume fell 30%, with a brief note on the drop from 1.2 million to 840,000 vehicles. Slide 3 shows a statistic highlighting a 40% increase in pedestrians, from 200,000 to 280,000 walkers per day. Slide 4 features a quote about independent cafés experiencing a 12% revenue decline in Q2 2024. Slide 5 ends with a call‑to‑action inviting viewers to share thoughts on the trade‑offs of pedestrian‑first planning.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Urban Shift",
+              "headline": "Superblocks slash cars, but cafés suffer",
+              "body": "Barcelona’s 2024 superblocks reshaped streets across the city."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "Traffic Wins",
+              "headline": "Car volume fell 30% citywide",
+              "body": "Monitoring showed daily vehicles drop from 1.2 million to 840,000 after the rollout.",
+              "footnote": "Barcelona Superblocks 2024 Traffic Impact Report"
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "statistic",
+              "kicker": "Pedestrian Rise",
+              "headline": "Pedestrians up 40% on former main streets",
+              "body": "Foot‑traffic sensors recorded an increase from 200,000 to 280,000 walkers per day.",
+              "footnote": "Pedestrian Traffic Increase After Superblock Implementation"
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "quote",
+              "kicker": "Café Impact",
+              "headline": "Independent cafés see 12% revenue dip",
+              "body": "A university survey found small cafés in superblock zones reporting a 12% drop in Q2 2024.",
+              "footnote": "Economic Impact of Superblocks on Small Hospitality Businesses"
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "cta",
+              "kicker": "What Next",
+              "headline": "Consider the trade‑offs in pedestrian‑first planning",
+              "body": "Share your thoughts on balancing traffic reduction with local economies."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-16T15:33:23.646Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
+    "id": "post-1001",
+    "title": "Urban systems — the written rule",
+    "caption": "Write the rule down. That is the whole difference between a Studio Noir decision that survives a busy quarter and one that quietly disappears.\n\nA rule is not a preference: it names the situation, the choice and the reason. Once it is written, the argument about urban systems ends and the work continues.\n\nThis draft came from the offline engine, so it has no research and no numbers yet. Use it as a skeleton: replace the placeholder frame with the finding your research pass turns up.\n\nSave it, and add the rule before you post.",
+    "brandId": "studio-noir",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-16T15:27:27.407Z",
+    "updatedAt": "2026-09-16T15:27:32.787Z",
+    "assetCount": 6,
+    "tags": [
+      "urban systems",
+      "psychology",
+      "studio-noir",
+      "sub:psych-money",
+      "variant:psych-money.counter",
+      "aud:psych-money.sceptics"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Psychology",
+    "quality": {
+      "score": 62,
+      "summary": "Structurally complete, but nothing here has been researched or verified. It is a skeleton to edit, not a post to approve.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "Hook strength",
+          "weight": 0.25,
+          "score": 58,
+          "note": "Clear but generic until the real finding replaces the placeholder."
+        },
+        {
+          "id": "clarity",
+          "label": "Caption clarity",
+          "weight": 0.25,
+          "score": 66,
+          "note": "Reads cleanly; the middle section needs the actual evidence."
+        },
+        {
+          "id": "visual",
+          "label": "Visual consistency",
+          "weight": 0.2,
+          "score": 64,
+          "note": "Statement and rule structure alternates properly across six frames."
+        },
+        {
+          "id": "hashtags",
+          "label": "Hashtag coverage",
+          "weight": 0.15,
+          "score": 61,
+          "note": "Brand and category tags only — niche tags need the researched topic."
+        },
+        {
+          "id": "alt",
+          "label": "Alt text quality",
+          "weight": 0.15,
+          "score": 70,
+          "note": "Covers every frame and states the palette and layout."
+        }
+      ],
+      "blockers": [
+        "1 claim(s) were rejected during fact-checking and are not in this post.",
+        "Produced by the offline engine: no research or fact-checking was run.",
+        "Rewrite with Gemini, Groq or OpenRouter before this is approved.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "weak"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Geography",
+        "headline": "Write the rule down",
+        "body": "What Studio Noir believes about urban systems",
+        "footnote": "Swipe for the reasoning"
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "The premise",
+        "headline": "Urban systems",
+        "body": "The decisions that survive are the ones with a written rule behind them."
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "statistic",
+        "kicker": "The gap",
+        "headline": "No number yet",
+        "body": "The offline engine did not research this post, so no figure belongs here."
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "list",
+        "kicker": "Rule 01",
+        "headline": "Infrastructure economics",
+        "body": "Decide it once, in writing, so the next person does not relitigate it."
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "list",
+        "kicker": "Rule 02",
+        "headline": "Place and identity",
+        "body": "Keep the rule short enough to quote from memory."
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Next",
+        "headline": "Save this for your next review",
+        "body": "Then replace the placeholder number with a real one from Studio Noir's research pass."
+      }
+    ],
+    "hashtags": [
+      "#studionoir",
+      "#citydesign",
+      "#geography",
+      "#contentstrategy",
+      "#editorialcalm"
+    ],
+    "altText": "Six frames in Studio Noir's palette (#FFFFFF background, #111111 type). Frame 1 sets the theme: write the rule down. Frame 2 states the premise that written rules outlive preferences. Frame 3 holds a placeholder where a researched figure belongs. Frames 4 and 5 give two short rules in large type. Frame 6 invites the reader to save the post for their next review.",
+    "sources": [],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu498aoy-id0v",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Urban systems — the part of editorial monochrome for design studios that is measurable — pillar “Urban systems”. Offline engine: selected the brand's primary pillar (Urban systems) because no research provider is configured. Weighted topic: psych-money.",
+        "durationMs": 121,
+        "timestamp": "2026-09-16T15:27:28.546Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-research-mu498b5v-ejs6",
+        "step": "research",
+        "status": "warning",
+        "message": "3 facts collected without web grounding — treat every number as unverified. Gaps: Every claim needs a real source before publishing. No numbers were gathered — add at least one quantitative fact.",
+        "durationMs": 120,
+        "timestamp": "2026-09-16T15:27:29.155Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-verify-mu498bmv-z826",
+        "step": "verify",
+        "status": "warning",
+        "message": "1 claim(s) rejected and excluded from the carousel: All claims in this draft",
+        "durationMs": 121,
+        "timestamp": "2026-09-16T15:27:29.767Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-carousel-mu498c2g-sr3c",
+        "step": "carousel",
+        "status": "success",
+        "message": "Built 6 slides using verified facts only. Cover line: “Write the rule down”.",
+        "durationMs": 121,
+        "timestamp": "2026-09-16T15:27:30.328Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-caption-mu498cl0-l6qv",
+        "step": "caption",
+        "status": "success",
+        "message": "Caption written: 95 words, opening line “Write the rule down. That is the whole difference between a Studio Noir decision that surv”.",
+        "durationMs": 121,
+        "timestamp": "2026-09-16T15:27:30.996Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-hashtags-mu498d2u-sqfu",
+        "step": "hashtags",
+        "status": "success",
+        "message": "Selected 5 tags: #studionoir #citydesign #geography #contentstrategy #editorialcalm",
+        "durationMs": 122,
+        "timestamp": "2026-09-16T15:27:31.638Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-alt_text-mu498dic-7imz",
+        "step": "alt_text",
+        "status": "success",
+        "message": "Alt text covers all 6 frames.",
+        "durationMs": 121,
+        "timestamp": "2026-09-16T15:27:32.196Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-quality-mu498dyr-qz6j",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 62/100 (weak) with 4 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-16T15:27:32.787Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu498dyr-6boo",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 5s across 8 pipeline steps. No repairs were needed.",
+        "durationMs": 5380,
+        "timestamp": "2026-09-16T15:27:32.787Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-16T15:27:27.407Z",
+        "author": "Offline engine",
+        "source": "generation",
+        "summary": "Generated by Offline engine (factory-offline-v1) — Urban systems — the part of editorial monochrome for design studios that is measurable",
+        "snapshot": {
+          "title": "Urban systems — the written rule",
+          "caption": "Write the rule down. That is the whole difference between a Studio Noir decision that survives a busy quarter and one that quietly disappears.\n\nA rule is not a preference: it names the situation, the choice and the reason. Once it is written, the argument about urban systems ends and the work continues.\n\nThis draft came from the offline engine, so it has no research and no numbers yet. Use it as a skeleton: replace the placeholder frame with the finding your research pass turns up.\n\nSave it, and add the rule before you post.",
+          "hashtags": [
+            "#studionoir",
+            "#citydesign",
+            "#geography",
+            "#contentstrategy",
+            "#editorialcalm"
+          ],
+          "altText": "Six frames in Studio Noir's palette (#FFFFFF background, #111111 type). Frame 1 sets the theme: write the rule down. Frame 2 states the premise that written rules outlive preferences. Frame 3 holds a placeholder where a researched figure belongs. Frames 4 and 5 give two short rules in large type. Frame 6 invites the reader to save the post for their next review.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Geography",
+              "headline": "Write the rule down",
+              "body": "What Studio Noir believes about urban systems",
+              "footnote": "Swipe for the reasoning"
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "The premise",
+              "headline": "Urban systems",
+              "body": "The decisions that survive are the ones with a written rule behind them."
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "statistic",
+              "kicker": "The gap",
+              "headline": "No number yet",
+              "body": "The offline engine did not research this post, so no figure belongs here."
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "list",
+              "kicker": "Rule 01",
+              "headline": "Infrastructure economics",
+              "body": "Decide it once, in writing, so the next person does not relitigate it."
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "list",
+              "kicker": "Rule 02",
+              "headline": "Place and identity",
+              "body": "Keep the rule short enough to quote from memory."
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Next",
+              "headline": "Save this for your next review",
+              "body": "Then replace the placeholder number with a real one from Studio Noir's research pass."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-16T15:27:27.407Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  }
+]
