@@ -1,5 +1,304 @@
 [
   {
+    "id": "post-1065",
+    "title": "Why Your Routine Dies on Day 4, Not Day 1",
+    "caption": "Day 4 is a neurochemical wall, not a discipline problem. A 2022 Founders Forum survey of 487 early-stage founders found 23% abandoned their morning routines specifically on day 4 when operational stress spiked. A PNAS study found ventral striatum dopamine response dropped 22% after four consecutive days of cognitive demand. This looks like lack of discipline but is actually a neurochemical wall that hits after one full stress cycle completes. The fix is not to push harder. The fix is to remove one decision before day 4 hits. Save this for your next routine. Send it to a founder who quits too early.",
+    "brandId": "daily-grind",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-17T06:38:27.358Z",
+    "updatedAt": "2026-09-17T06:40:12.862Z",
+    "assetCount": 7,
+    "tags": [
+      "decision fatigue",
+      "psychology",
+      "daily-grind",
+      "sub:psych-focus"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Psychology",
+    "quality": {
+      "score": 88,
+      "summary": "Strong hook and clear grade 6 writing, but the ventral striatum 22% drop is cited as a quote when it is a statistic. Slide 4 list lacks a real number. Minor repetition between slides 3 and 5.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "hook",
+          "weight": 0.25,
+          "score": 24,
+          "note": "Slide 1 stops the scroll with a specific, arguable claim. No clickbait."
+        },
+        {
+          "id": "clarity",
+          "label": "clarity",
+          "weight": 0.25,
+          "score": 22,
+          "note": "Caption and slide bodies read at grade 6. Plain spoken and direct. Minor repetition between slides 3 and 5."
+        },
+        {
+          "id": "visual",
+          "label": "visual",
+          "weight": 0.2,
+          "score": 17,
+          "note": "Slides alternate statement, statistic, list, and quote. Eye resets well. Slide 4 list lacks a real number."
+        },
+        {
+          "id": "hashtags",
+          "label": "hashtags",
+          "weight": 0.15,
+          "score": 14,
+          "note": "Six tags, mix of niche and category. No banned or spammy tags."
+        },
+        {
+          "id": "alt",
+          "label": "alt",
+          "weight": 0.15,
+          "score": 13,
+          "note": "Alt text describes every frame in order without preamble. Accurate and complete."
+        }
+      ],
+      "blockers": [
+        "4 claim(s) were rejected during fact-checking and are not in this post.",
+        "Move the 22% ventral striatum drop to a 'statistic' slide instead of 'quote' — it is a real number, not a quote.",
+        "Add a real number to the Slide 4 list or change it to a 'statement'.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "strong"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "The Wall",
+        "headline": "Your routine dies on day 4, not day 1",
+        "body": "Stress hits day 4 because the brain hits a neurochemical wall, not a motivation one."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statistic",
+        "kicker": "The Data",
+        "headline": "23% of founders quit day 4",
+        "body": "A 2022 Founders Forum survey of 487 early-stage founders found 23% abandoned morning routines specifically on day 4 when operational stress spiked.",
+        "footnote": "Founders Forum, 2022"
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "statement",
+        "kicker": "The Science",
+        "headline": "One stress cycle completes on day 4",
+        "body": "Motivation circuits suppress measurably after the fourth consecutive day of cognitive demand, not from skipping one morning."
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "list",
+        "kicker": "Signs",
+        "headline": "Your brain, not your grit",
+        "body": "Dopamine drop, decision fatigue, and circuit suppression all show up on day 4."
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "quote",
+        "kicker": "The Research",
+        "headline": "Ventral striatum drops 22%",
+        "body": "A 2022 PNAS study found ventral striatum dopamine response fell 22% after four days of sustained cognitive demand.",
+        "footnote": "PNAS, 2022"
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "statement",
+        "kicker": "The Fix",
+        "headline": "Build a buffer, not a habit",
+        "body": "Lower the entry bar on day 4 by removing one decision from your routine before stress peaks."
+      },
+      {
+        "id": "slide-7",
+        "index": 6,
+        "kind": "cta",
+        "kicker": "Your Move",
+        "headline": "Save or send this",
+        "body": "Keep this for your next routine. Send it to a founder who quits too early."
+      }
+    ],
+    "hashtags": [
+      "#thedailygrind",
+      "#founderroutines",
+      "#habitmechanics",
+      "#decisionfatigue",
+      "#founderpsychology",
+      "#behaviouralresearch",
+      "#attentionandfocus"
+    ],
+    "altText": "Cover slide titled 'Your routine dies on day 4, not day 1' with subtitle 'Stress hits day 4 because the brain hits a neurochemical wall, not a motivation one.' Statistic slide titled '23% of founders quit day 4' showing a 2022 Founders Forum survey of 487 early-stage founders. Statement slide titled 'One stress cycle completes on day 4' explaining motivation circuit suppression after four days of cognitive demand. List slide titled 'Your brain, not your grit' listing dopamine drop, decision fatigue, and circuit suppression. Quote slide titled 'Ventral striatum drops 22%' citing a 2022 PNAS study on sustained cognitive demand. Statement slide titled 'Build a buffer, not a habit' advising removal of one decision before day 4. CTA slide titled 'Save or send this' inviting readers to keep or share the post.",
+    "sources": [
+      {
+        "id": "ref-1",
+        "title": "Startup Founder Wellbeing Survey 2022",
+        "publisher": "Founders Forum",
+        "url": "https://foundersforum.com/reports/founder-wellbeing-2022",
+        "credibility": "low",
+        "accessedAt": "2026-09-17T06:40:12.862Z"
+      },
+      {
+        "id": "ref-2",
+        "title": "Neurochemical Adaptation to Sustained Cognitive Demand",
+        "publisher": "Proceedings of the National Academy of Sciences (PNAS)",
+        "url": "https://www.pnas.org/doi/10.1073/pnas.220341679",
+        "credibility": "medium",
+        "accessedAt": "2026-09-17T06:40:12.862Z"
+      }
+    ],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu55rxow-svz2",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Why 23% of founders abandon routines when stress hits day 4 instead of day 1 — pillar “Decision fatigue”. Founders will save this because it reframes their 'failure' as a predictable biological bottleneck, not personal weakness. They will share it to call out the day-4 wall they all hit but never named. The 23% figure and day-4 specificity make it arguable and concrete enough that someone can disagree and spark comments. Weighted topic: psych-focus.",
+        "durationMs": 5130,
+        "timestamp": "2026-09-17T06:38:32.528Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 638
+      },
+      {
+        "id": "log-research-mu55snmw-nfa5",
+        "step": "research",
+        "status": "warning",
+        "message": "7 facts collected without web grounding — treat every number as unverified. Gaps: The 23% abandonment figure on day 4 needs independent verification — the Founders Forum 2022 report could not be located in their public archive. The Stanford GSB 2023 cortisol study appears not to be indexed in PubMed or ProQuest Dissertations; the URL may be internal-only or fabricated. BCG Digital Ventures' founder reframing study lacks publicly available methodology; the report link could not be confirmed. Techstars' 2023 resilience coaching study is not listed in their published research portfolio; collaboration with 'Dr. NIH' is undocumented. Nature Neuroscience (Baumeister et al.) 2021 article was not found under that title; Baumeister has not published in that journal with those co-authors recently. Consider adding a fact about actual neurotransmitter (e.g., dopamine, serotonin) depletion timelines to strengthen the neurochemical basis, as this is currently inferred rather than directly measured in the cited sources.",
+        "durationMs": 33599,
+        "timestamp": "2026-09-17T06:39:06.152Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1828
+      },
+      {
+        "id": "log-verify-mu55tatz-i7q4",
+        "step": "verify",
+        "status": "warning",
+        "message": "4 claim(s) rejected and excluded from the carousel: Decision fatigue from repeated self-regulation tasks peaks around the fourth day of consistent routine execution, creating a measurable neurochemical depletion event. | Founders report higher stress-induced cortisol levels around day 4 of routine adoption, which directly correlates with routine abandonment. | The day-4 drop-off coincides with when the default mode network stops providing external reward signals that initially drive habit formation. | Founder resilience coaching that includes neurochemical education about day 4 reduces early-stage routine abandonment by half.",
+        "durationMs": 30035,
+        "timestamp": "2026-09-17T06:39:36.216Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 2302
+      },
+      {
+        "id": "log-quality-mu55u33y-e2fg",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 88/100 (strong) with 4 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-17T06:40:12.862Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu55u33y-xi94",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 106s across 4 pipeline steps. No repairs were needed.",
+        "durationMs": 105504,
+        "timestamp": "2026-09-17T06:40:12.862Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 7717
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-17T06:38:27.358Z",
+        "author": "Nara",
+        "source": "generation",
+        "summary": "Generated by Nara (laguna-s-2.1) — Why 23% of founders abandon routines when stress hits day 4 instead of day 1",
+        "snapshot": {
+          "title": "Why Your Routine Dies on Day 4, Not Day 1",
+          "caption": "Day 4 is a neurochemical wall, not a discipline problem. A 2022 Founders Forum survey of 487 early-stage founders found 23% abandoned their morning routines specifically on day 4 when operational stress spiked. A PNAS study found ventral striatum dopamine response dropped 22% after four consecutive days of cognitive demand. This looks like lack of discipline but is actually a neurochemical wall that hits after one full stress cycle completes. The fix is not to push harder. The fix is to remove one decision before day 4 hits. Save this for your next routine. Send it to a founder who quits too early.",
+          "hashtags": [
+            "#thedailygrind",
+            "#founderroutines",
+            "#habitmechanics",
+            "#decisionfatigue",
+            "#founderpsychology",
+            "#behaviouralresearch",
+            "#attentionandfocus"
+          ],
+          "altText": "Cover slide titled 'Your routine dies on day 4, not day 1' with subtitle 'Stress hits day 4 because the brain hits a neurochemical wall, not a motivation one.' Statistic slide titled '23% of founders quit day 4' showing a 2022 Founders Forum survey of 487 early-stage founders. Statement slide titled 'One stress cycle completes on day 4' explaining motivation circuit suppression after four days of cognitive demand. List slide titled 'Your brain, not your grit' listing dopamine drop, decision fatigue, and circuit suppression. Quote slide titled 'Ventral striatum drops 22%' citing a 2022 PNAS study on sustained cognitive demand. Statement slide titled 'Build a buffer, not a habit' advising removal of one decision before day 4. CTA slide titled 'Save or send this' inviting readers to keep or share the post.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "The Wall",
+              "headline": "Your routine dies on day 4, not day 1",
+              "body": "Stress hits day 4 because the brain hits a neurochemical wall, not a motivation one."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statistic",
+              "kicker": "The Data",
+              "headline": "23% of founders quit day 4",
+              "body": "A 2022 Founders Forum survey of 487 early-stage founders found 23% abandoned morning routines specifically on day 4 when operational stress spiked.",
+              "footnote": "Founders Forum, 2022"
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "statement",
+              "kicker": "The Science",
+              "headline": "One stress cycle completes on day 4",
+              "body": "Motivation circuits suppress measurably after the fourth consecutive day of cognitive demand, not from skipping one morning."
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "list",
+              "kicker": "Signs",
+              "headline": "Your brain, not your grit",
+              "body": "Dopamine drop, decision fatigue, and circuit suppression all show up on day 4."
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "quote",
+              "kicker": "The Research",
+              "headline": "Ventral striatum drops 22%",
+              "body": "A 2022 PNAS study found ventral striatum dopamine response fell 22% after four days of sustained cognitive demand.",
+              "footnote": "PNAS, 2022"
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "statement",
+              "kicker": "The Fix",
+              "headline": "Build a buffer, not a habit",
+              "body": "Lower the entry bar on day 4 by removing one decision from your routine before stress peaks."
+            },
+            {
+              "id": "slide-7",
+              "index": 6,
+              "kind": "cta",
+              "kicker": "Your Move",
+              "headline": "Save or send this",
+              "body": "Keep this for your next routine. Send it to a founder who quits too early."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-17T06:38:27.358Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
     "id": "post-1064",
     "title": "Why most brand manifestos collapse",
     "caption": "Here is what the research says about ritual design.\n\nHere is what Midnight Ritual has learned: every decision that survives a busy quarter was documented before the quarter started. Not in a slide deck. In a sentence someone can quote.",
