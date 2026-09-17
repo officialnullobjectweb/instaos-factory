@@ -9,8 +9,10 @@
  *   • generation batch  daily at 07:00 local, one post per brand
  *   • learning analysis Sundays 06:30 UTC (skipped when this week already ran)
  *
- * State lives in Upstash Redis (see .env), so this process and any future
- * Vercel deployment share the same queue — nothing here is local-only.
+ * State lives wherever the configured storage driver points: Upstash Redis when
+ * `STORAGE_DRIVER=redis` (which is what makes this machine and a Vercel
+ * deployment share one queue), local `data/*.json` otherwise. Nothing here is
+ * specific to either.
  *
  * Logs: logs/autopilot.log (the launchd agent also captures stdout/stderr).
  * The HTTP server is `next start`, which is what `npm run build` produced;
@@ -20,9 +22,9 @@
 import { spawn } from "node:child_process";
 import { promises as fs } from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 
-const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
+import { ROOT, loadEnv, secretHeaders } from "./load-env.mjs";
+
 const PORT = 3780;
 const BASE = `http://127.0.0.1:${PORT}`;
 const GENERATION_HOUR_LOCAL = 7; // daily batch
@@ -30,37 +32,8 @@ const LEARNING_DAY_UTC = 0; // Sunday
 const LEARNING_HOUR_UTC = 6;
 const TICK_INTERVAL_MS = 15 * 60 * 1000;
 
-/**
- * Read at call time, not module load: the .env loader runs inside main(), so a
- * constant captured at import would always be empty and every tick would 401.
- */
-const schedulerSecret = () => process.env.SCHEDULER_SECRET ?? "";
-
 const log = (...parts) =>
   console.log(`[autopilot ${new Date().toISOString()}]`, ...parts);
-
-/* -------------------------------------------------------------------------- */
-/*  Minimal .env loader (no dotenv dependency at this layer)                   */
-/* -------------------------------------------------------------------------- */
-
-async function loadEnv() {
-  for (const name of [".env", ".env.local"]) {
-    try {
-      const raw = await fs.readFile(path.join(ROOT, name), "utf8");
-      for (const line of raw.split("\n")) {
-        const match = line.match(/^([A-Z_][A-Z0-9_]*)=(.*)$/);
-        if (!match) continue;
-        const [, key, rawValue] = match;
-        const value = rawValue.trim().replace(/^["']|["']$/g, "");
-        if (process.env[key] === undefined && value !== "") {
-          process.env[key] = value;
-        }
-      }
-    } catch {
-      // absent file is fine
-    }
-  }
-}
 
 /* -------------------------------------------------------------------------- */
 /*  Server supervision                                                        */
@@ -115,7 +88,9 @@ async function callApi(pathname, init = {}) {
     ...init,
     headers: {
       "content-type": "application/json",
-      ...(schedulerSecret() ? { "x-scheduler-secret": schedulerSecret() } : {}),
+      // Read at call time: the .env loader runs inside main(), so a value
+      // captured at module load would be empty and every tick would 401.
+      ...secretHeaders(),
       ...init.headers,
     },
     signal: AbortSignal.timeout(120_000),

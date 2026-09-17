@@ -4,7 +4,6 @@ import {
   designSlides,
   enforceContentDesignLimits,
   scoreDesignQuality,
-  type DesignSpec,
 } from "@/lib/ai/design-engine";
 import { planContent, type SlideContent } from "@/lib/ai/content-writer";
 import type { Brand } from "@/types";
@@ -89,7 +88,13 @@ describe("Design Engine", () => {
   });
 
   describe("enforceContentDesignLimits", () => {
-    it("truncates slides exceeding body limit", () => {
+    /** The limits are per kind, so exercises run through the real design pass. */
+    const design = (slides: SlideContent[]) => {
+      const plan = planContent(mockBrand, "Test topic", "Pillar");
+      return designSlides(slides, selectDesign(plan, mockBrand), mockBrand);
+    };
+
+    it("truncates slides exceeding the per-kind body limit", () => {
       const slides: SlideContent[] = [
         { kind: "cover", kicker: "", headline: "Title", body: "", footnote: null },
         {
@@ -101,19 +106,14 @@ describe("Design Engine", () => {
         },
         { kind: "cta", kicker: "", headline: "Action", body: "", footnote: null },
       ];
-      const design: DesignSpec = {
-        layout: "editorial",
-        typography: ["headline", "body"],
-        colorRole: "primary",
-        spacing: "normal",
-        emphasis: "text",
-        visualWeight: "balanced",
-      };
 
-      const result = enforceContentDesignLimits(slides, design);
+      const result = enforceContentDesignLimits(design(slides));
+
+      // 160 is the loosest body limit in the table (statement/quote).
       result.forEach((slide) => {
-        expect(slide.body.length).toBeLessThanOrEqual(280);
+        expect(slide.body.length).toBeLessThanOrEqual(160);
       });
+      expect(result[1].body).toHaveLength(160);
     });
 
     it("preserves slide order", () => {
@@ -122,19 +122,16 @@ describe("Design Engine", () => {
         { kind: "statement", kicker: "B", headline: "Second", body: "", footnote: null },
         { kind: "cta", kicker: "C", headline: "Third", body: "", footnote: null },
       ];
-      const design: DesignSpec = {
-        layout: "editorial",
-        typography: ["headline"],
-        colorRole: "primary",
-        spacing: "normal",
-        emphasis: "text",
-        visualWeight: "balanced",
-      };
 
-      const result = enforceContentDesignLimits(slides, design);
-      expect(result[0].headline).toBe("First");
-      expect(result[1].headline).toBe("Second");
-      expect(result[2].headline).toBe("Third");
+      const designed = design(slides);
+      const result = enforceContentDesignLimits(designed);
+
+      expect(result.map((slide) => slide.kind)).toEqual(
+        designed.map((slide) => slide.kind),
+      );
+      expect(result.map((slide) => slide.headline)).toEqual(
+        designed.map((slide) => slide.headline),
+      );
     });
   });
 

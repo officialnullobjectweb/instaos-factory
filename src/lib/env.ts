@@ -404,7 +404,8 @@ export function appBaseUrl(): string {
   if (env.VERCEL_URL) {
     return `https://${env.VERCEL_URL.replace(/\/$/, "")}`;
   }
-  return "http://localhost:3000";
+  // Matches the dev/start port in package.json (3780); PORT wins if set.
+  return `http://localhost:${process.env.PORT ?? "3780"}`;
 }
 
 /* -------------------------------------------------------------------------- */

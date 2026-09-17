@@ -3,22 +3,29 @@
  * Scheduler tick runner — the GitHub Actions / cron entry point.
  *
  * Usage:
- *   node scripts/scheduler-tick.mjs                       # localhost:3000
+ *   node scripts/scheduler-tick.mjs                       # .env, else localhost:3780
  *   SCHEDULER_URL=https://… node scripts/scheduler-tick.mjs
  *   SCHEDULER_SECRET=… node scripts/scheduler-tick.mjs    # sends the header
+ *
+ * `.env` supplies both values when the environment does not (the app refuses an
+ * unauthenticated tick once it runs in production mode), and CI-provided values
+ * always win. The local default port matches what the app actually runs on.
  *
  * The endpoint is the same `POST /api/schedule/process` the dashboard's
  * "Run scheduler now" button calls, so a CI tick and a manual tick can never
  * diverge.
  */
 
-const url = `${(process.env.SCHEDULER_URL ?? "http://localhost:3000").replace(/\/$/, "")}/api/schedule/process`;
-const secret = process.env.SCHEDULER_SECRET;
+import { appUrl, loadEnv, secretHeaders } from "./load-env.mjs";
+
+await loadEnv();
+
+const url = `${appUrl()}/api/schedule/process`;
 
 try {
   const response = await fetch(url, {
     method: "POST",
-    headers: secret ? { "x-scheduler-secret": secret } : {},
+    headers: secretHeaders(),
     signal: AbortSignal.timeout(25_000),
   });
 

@@ -50,19 +50,26 @@ that plainly instead of faking success.
 
 ## AI generation engine
 
-The engine is real, not a simulation: it calls Gemini (primary), falls back to Groq,
-then OpenRouter, each with exponential backoff, `Retry-After` handling and JSON repair
-(deterministic first, then one model-backed repair pass). Every request and response is
-stored in `data/ai-logs.json` and readable on the dashboard and in Settings → AI engine.
+The engine is real, not a simulation: it works down the chain configured in
+`AI_PROVIDER_ORDER` (this workspace: Nara → Gemini → Groq → OpenRouter), each attempt with
+exponential backoff, `Retry-After` handling and JSON repair (deterministic first, then one
+model-backed repair pass). Every request and response is stored in `data/ai-logs.json` and
+readable on the dashboard and in Settings → AI engine.
 
-With **no API keys configured**, an offline provider (`AI_ENABLE_LOCAL_PROVIDER=true`,
-already set in `.env.local`) sits last in the chain and satisfies the same schemas, so
-the entire pipeline — topic → research → verify → carousel → caption → hashtags → alt
-text → quality → queue insert — runs end to end and is testable without credentials.
-A hosted key always wins over it.
+With **no API keys configured**, an offline provider (`AI_ENABLE_LOCAL_PROVIDER=true`)
+sits last in the chain and satisfies the same schemas, so the entire pipeline — topic →
+research → verify → carousel → caption → hashtags → alt text → quality → queue insert —
+runs end to end and is testable without credentials. A hosted key always wins over it.
+
+It is a development crutch, not a feature: the copy it produces is template-shaped, and
+in a real queue it is indistinguishable from model output until you read it. This
+workspace has hosted keys, so it is **off** (`AI_ENABLE_LOCAL_PROVIDER=false` in
+`.env.local`, and a hard requirement to opt in when `NODE_ENV=production`). When every
+hosted provider is rate-limited or unreachable, generation now fails with an error
+describing why instead of quietly filing filler into the review queue.
 
 ```bash
-cp .env.example .env.local   # then paste GEMINI_API_KEY (or rely on the offline engine)
+cp .env.example .env.local   # then paste your provider keys
 ```
 
 Generation is triggered from **Generate post** in the command bar (⌘⏎), the sidebar
@@ -91,11 +98,14 @@ the queue as `pending_review` immediately.
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
+npm run dev      # http://localhost:3780
 npm run build    # production build (all routes prerender as static)
 npm run lint     # eslint
 npx tsc --noEmit # typecheck
 ```
+
+New here? **[SIMPLE.md](SIMPLE.md)** explains the whole system in plain language — how to
+run it, what happens automatically, and what still needs your own accounts.
 
 ## Routes
 
@@ -148,7 +158,7 @@ src/
   middleware.ts      CSRF protection + security headers on every request
   styles/            globals.css — design tokens, base layer, utilities
 data/
-  posts.json            30 generated posts with slides, sources, logs, versions
+  posts.json            posts with slides, sources, logs, versions (empty until generated)
   schedule.json          publishing slots, attempts and retry state
   audit.json            every approval, rejection, edit and publish event
   instagram-accounts.json  pages + access tokens (server-side only)
@@ -160,9 +170,12 @@ data/
   ai-logs.json             every provider request and response
 scripts/
   autopilot.mjs        local autonomy: server supervisor + tick/batch/learning scheduler
+  com.kamal.factory.plist  the launchd agent that installs the autopilot
   build-fonts.mjs      woff2 → TTF for the server renderer (npm prebuild/predev)
   scheduler-tick.mjs   stands in for the GitHub Actions cron locally
   learning-run.mjs     cron entry point for the weekly learning run
+  migrate-storage.mjs  copies local data/*.json documents into the Redis driver
+  load-env.mjs         shared .env loader for the scripts above
 ```
 
 Rules of thumb: routes stay thin and delegate to `features/`; anything reused by two
@@ -460,11 +473,16 @@ What it does, on a loop:
   as `pending_review`
 - **Weekly learning run** once per ISO week on/after Sunday 06:30 UTC
 
-Logs live in `logs/autopilot.out.log` and `logs/autopilot.err.log` (git-ignored); the
-dedupe state for "did today's batch / this week's analysis run" is `logs/autopilot-state.json`.
-Because state is in Upstash Redis, this server and a Vercel deployment share the same
-queue — if you run both, keep only **one** 15-minute ticker (the autopilot or GitHub
-Actions), or the two will race the same due entries.
+Logs live in `logs/autopilot.out.log` and `logs/autopilot.err.log` (git-ignored);the dedupe state for "did today's batch / this week's analysis run" is `logs/autopilot-state.json`.
+
+This workspace runs `STORAGE_DRIVER=redis`, so the autopilot on this Mac and any future
+Vercel deployment share **one** queue — the local `data/*.json` files are the committed
+fixtures the store seeds itself from, not the live data. `scripts/migrate-storage.mjs`
+copies those local documents into Redis (dry run by default, skips empty ones, backs up
+anything it replaces), which is how this workspace was moved onto Redis; switching back
+to `STORAGE_DRIVER=file` works entirely offline. Whichever
+driver is active, keep only **one** 15-minute ticker running — the autopilot or GitHub
+Actions, never both — or the two will race the same due entries.
 
 ## Deploying to Vercel (free tier)
 
@@ -482,7 +500,7 @@ are git-ignored and regenerated per build.
 
 | Concern | Locally | On Vercel |
 | --- | --- | --- |
-| Persistent state (`data/*.json` semantics) | File driver, same files | **Upstash Redis** (free tier is enough) via the Redis driver |
+| Persistent state (`data/*.json` semantics) | **Upstash Redis** (same database, same queue) — or the file driver for a fully offline run | **Upstash Redis** (free tier is enough) via the Redis driver |
 | Publish tick (every 15 min) | `npm run scheduler:tick` | **GitHub Actions** (`scheduler.yml`) — Vercel cron on Hobby runs at most once per day, too coarse for a 15-minute queue |
 | Weekly learning run (Sunday 06:00 UTC) | `POST /api/learning/run` | **Vercel Cron** (`vercel.json`) — once a week fits the Hobby limit |
 | Slide PNGs | Rendered and cached | Rendered on demand by `/api/instagram/media/[postId]/[slide]` — no writable media dir |
@@ -520,7 +538,8 @@ which store is live.
 
 4. **Verify** — open `https://your-app.vercel.app/api/health`. It returns status,
    which storage driver is active and which integrations are configured (never secret
-   values). Then run the 15-minute publisher: `npm run scheduler:tick --` against your
+   values). Then run the 15-minute publisher: `npm run scheduler:tick` (with `SCHEDULER_URL`
+   and `SCHEDULER_SECRET` exported) against your
    URL should return `200` from `/api/schedule/process`.
 
 5. **Wire the scheduler tick** — the repo already contains

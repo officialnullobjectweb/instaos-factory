@@ -3,9 +3,12 @@
  * Weekly learning run — the GitHub Actions / cron entry point.
  *
  * Usage:
- *   node scripts/learning-run.mjs                        # localhost:3000
+ *   node scripts/learning-run.mjs                        # .env, else localhost:3780
  *   SCHEDULER_URL=https://… node scripts/learning-run.mjs
  *   SCHEDULER_SECRET=… node scripts/learning-run.mjs      # sends the header
+ *
+ * `.env` supplies both values when the environment does not, and anything set
+ * in the real environment wins — so the GitHub Actions cron behaves identically.
  *
  * Hits the same `POST /api/learning/run` the dashboard's "Run analysis now"
  * button calls, so a scheduled analysis and a manual one produce identical
@@ -15,16 +18,18 @@
  * in the workflow log rather than silently succeeding.
  */
 
-const base = (process.env.SCHEDULER_URL ?? "http://localhost:3000").replace(/\/$/, "");
-const url = `${base}/api/learning/run`;
-const secret = process.env.SCHEDULER_SECRET;
+import { appUrl, loadEnv, secretHeaders } from "./load-env.mjs";
+
+await loadEnv();
+
+const url = `${appUrl()}/api/learning/run`;
 
 try {
   const response = await fetch(url, {
     method: "POST",
     headers: {
       "content-type": "application/json",
-      ...(secret ? { "x-scheduler-secret": secret } : {}),
+      ...secretHeaders(),
     },
     // The analysis reads the whole warehouse; it is CPU-bound, not network-bound,
     // so the timeout is generous compared with the scheduler tick.
