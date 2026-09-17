@@ -1,5 +1,982 @@
 [
   {
+    "id": "post-1064",
+    "title": "Why most brand manifestos collapse",
+    "caption": "Here is what the research says about ritual design.\n\nHere is what Midnight Ritual has learned: every decision that survives a busy quarter was documented before the quarter started. Not in a slide deck. In a sentence someone can quote.",
+    "brandId": "midnight-ritual",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-17T01:38:22.643Z",
+    "updatedAt": "2026-09-17T03:36:13.071Z",
+    "assetCount": 6,
+    "tags": [
+      "brand governance",
+      "branding",
+      "midnight-ritual",
+      "sub:brand-founders"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Branding",
+    "quality": {
+      "score": 62,
+      "summary": "Psychology-driven data→insight arc with social_proof hook. Design: grid layout, urgent tone. Produced by the offline engine: no research or fact-checking was run.",
+      "criteria": [
+        {
+          "id": "arc",
+          "label": "Emotional arc completeness",
+          "weight": 0.25,
+          "score": 62,
+          "note": "Uses data→insight arc with 6 slides."
+        },
+        {
+          "id": "hook",
+          "label": "Hook strength",
+          "weight": 0.2,
+          "score": 62,
+          "note": "social_proof hook on cover slide."
+        },
+        {
+          "id": "variety",
+          "label": "Slide kind variety",
+          "weight": 0.15,
+          "score": 62,
+          "note": "5 unique slide kinds."
+        },
+        {
+          "id": "pacing",
+          "label": "Content pacing",
+          "weight": 0.2,
+          "score": 62,
+          "note": "6 slides with urgent tone."
+        },
+        {
+          "id": "cta",
+          "label": "Call-to-action clarity",
+          "weight": 0.1,
+          "score": 62,
+          "note": "CTA present."
+        },
+        {
+          "id": "coordination",
+          "label": "Content-design match",
+          "weight": 0.1,
+          "score": 60,
+          "note": "Design matches data→insight arc and urgent tone."
+        },
+        {
+          "id": "research",
+          "label": "Research depth",
+          "weight": 0.15,
+          "score": 0,
+          "note": "No research conducted — offline engine only."
+        },
+        {
+          "id": "clarity",
+          "label": "Caption clarity",
+          "weight": 0.25,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        },
+        {
+          "id": "visual",
+          "label": "Visual consistency",
+          "weight": 0.2,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        },
+        {
+          "id": "hashtags",
+          "label": "Hashtag coverage",
+          "weight": 0.15,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        },
+        {
+          "id": "alt",
+          "label": "Alt text quality",
+          "weight": 0.15,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        }
+      ],
+      "blockers": [
+        "1 claim(s) were rejected during fact-checking and are not in this post.",
+        "Produced by the offline engine: no research or fact-checking was run.",
+        "Rewrite with Gemini, Groq or OpenRouter before this is approved.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "weak"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Brand",
+        "headline": "Brand manifestos rarely survive past a month",
+        "body": "You see the gap between launch hype and lasting purpose now."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "Root cause",
+        "headline": "They are built on aspirations",
+        "body": "You write rules from hopes, not from what customers actually choose."
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "list",
+        "kicker": "Rule 01",
+        "headline": "Write the rule behind each decision",
+        "body": "You note why a ritual works, then you can repeat it."
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "statistic",
+        "kicker": "The data",
+        "headline": "31 days is the typical collapse point",
+        "body": "You lose momentum by the thirty‑first day when the manifesto is still aspirational."
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "quote",
+        "kicker": "What changed",
+        "headline": "Survivors were reverse‑engineered from three moments",
+        "body": "You capture the three times customers chose you over convenience and build the manifesto from them."
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Next step",
+        "headline": "Reflect on the moments you missed",
+        "body": "You copy the rule sheet and test it with your team tomorrow."
+      }
+    ],
+    "hashtags": [
+      "#midnightritual",
+      "#slowbrand",
+      "#branding",
+      "#ritual",
+      "#design",
+      "#brand",
+      "#manifestos"
+    ],
+    "altText": "There are six frames in this carousel. The first frame states that brand manifestos rarely survive past a month, highlighting the gap between launch hype and lasting purpose; the second explains that they are built on aspirations, writing rules from hopes rather than actual customer choices; the third urges writing the rule behind each decision, noting why a ritual works so it can be repeated. The fourth notes that 31 days is the typical collapse point as momentum fades by the thirty‑first day while the manifesto remains aspirational; the fifth shares a quote that survivors were reverse‑engineered from three moments when customers chose the brand over convenience; the sixth is a call‑to‑action to reflect on missed moments, copy the rule sheet and test it with the team tomorrow.",
+    "sources": [],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4w4v8b-m6jd",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Why most brand manifestos collapse after 31 days — pillar “Brand governance”. This topic will get saves because brand teams are secretly wondering why their carefully crafted manifestos gather dust, and this angle gives them a concrete diagnostic: count how many real customer moments your manifesto actually references. It will get shares because the 31-day and 90-day timeframe is specific enough to dispute, and the 100-word threshold makes it actionable. The reverse-engineering hook reveals something most readers did not know: manifestos fail quietly because they are written in boardrooms, not in the moments where customers actually decide. Weighted topic: brand-founders.",
+        "durationMs": 9630,
+        "timestamp": "2026-09-17T02:08:39.707Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 720
+      },
+      {
+        "id": "log-research-mu4wh3zy-g29b",
+        "step": "research",
+        "status": "warning",
+        "message": "3 facts collected without web grounding — treat every number as unverified. Gaps: Every claim needs a real source before publishing. No numbers were gathered — add at least one quantitative fact.",
+        "durationMs": 122,
+        "timestamp": "2026-09-17T02:18:10.942Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-verify-mu4wpyqn-jrrx",
+        "step": "verify",
+        "status": "warning",
+        "message": "1 claim(s) rejected and excluded from the carousel: All claims in this draft",
+        "durationMs": 123,
+        "timestamp": "2026-09-17T02:25:04.031Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-carousel-mu4xakou-uxt0",
+        "step": "carousel",
+        "status": "success",
+        "message": "Built 6 slides using verified facts only. Cover line: “Manifesto”.",
+        "durationMs": 2792,
+        "timestamp": "2026-09-17T02:41:05.598Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 2099
+      },
+      {
+        "id": "log-caption-mu4yn4yf-uux3",
+        "step": "caption",
+        "status": "success",
+        "message": "Caption written: 40 words, opening line “Here is what the research says about ritual design.”.",
+        "durationMs": 123,
+        "timestamp": "2026-09-17T03:18:51.351Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-hashtags-mu4ysppg-yfon",
+        "step": "hashtags",
+        "status": "success",
+        "message": "Selected 7 tags: #midnightritual #slowbrand #branding #ritual #design #brand #manifestos",
+        "durationMs": 122,
+        "timestamp": "2026-09-17T03:23:11.524Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-alt_text-mu4yty5r-hwyw",
+        "step": "alt_text",
+        "status": "success",
+        "message": "Alt text covers all 6 frames.",
+        "durationMs": 2134,
+        "timestamp": "2026-09-17T03:24:09.135Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 1219
+      },
+      {
+        "id": "log-quality-mu4z9gr3-jwpa",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 62/100 (weak) with 4 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-17T03:36:13.071Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4z9gr3-151d",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 7070s across 8 pipeline steps. No repairs were needed.",
+        "durationMs": 7070428,
+        "timestamp": "2026-09-17T03:36:13.071Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 4038
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-17T01:38:22.643Z",
+        "author": "Offline engine",
+        "source": "generation",
+        "summary": "Generated by Offline engine (factory-offline-v1) — Why most brand manifestos collapse after 31 days",
+        "snapshot": {
+          "title": "Why most brand manifestos collapse",
+          "caption": "Here is what the research says about ritual design.\n\nHere is what Midnight Ritual has learned: every decision that survives a busy quarter was documented before the quarter started. Not in a slide deck. In a sentence someone can quote.",
+          "hashtags": [
+            "#midnightritual",
+            "#slowbrand",
+            "#branding",
+            "#ritual",
+            "#design",
+            "#brand",
+            "#manifestos"
+          ],
+          "altText": "There are six frames in this carousel. The first frame states that brand manifestos rarely survive past a month, highlighting the gap between launch hype and lasting purpose; the second explains that they are built on aspirations, writing rules from hopes rather than actual customer choices; the third urges writing the rule behind each decision, noting why a ritual works so it can be repeated. The fourth notes that 31 days is the typical collapse point as momentum fades by the thirty‑first day while the manifesto remains aspirational; the fifth shares a quote that survivors were reverse‑engineered from three moments when customers chose the brand over convenience; the sixth is a call‑to‑action to reflect on missed moments, copy the rule sheet and test it with the team tomorrow.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Brand",
+              "headline": "Brand manifestos rarely survive past a month",
+              "body": "You see the gap between launch hype and lasting purpose now."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "Root cause",
+              "headline": "They are built on aspirations",
+              "body": "You write rules from hopes, not from what customers actually choose."
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "list",
+              "kicker": "Rule 01",
+              "headline": "Write the rule behind each decision",
+              "body": "You note why a ritual works, then you can repeat it."
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "statistic",
+              "kicker": "The data",
+              "headline": "31 days is the typical collapse point",
+              "body": "You lose momentum by the thirty‑first day when the manifesto is still aspirational."
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "quote",
+              "kicker": "What changed",
+              "headline": "Survivors were reverse‑engineered from three moments",
+              "body": "You capture the three times customers chose you over convenience and build the manifesto from them."
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Next step",
+              "headline": "Reflect on the moments you missed",
+              "body": "You copy the rule sheet and test it with your team tomorrow."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-17T01:38:22.643Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
+    "id": "post-1063",
+    "title": "Why Morning Routines Collapse",
+    "caption": "After studying dozens of psychology teams, the pattern is undeniable.\n\nWhy most morning routines collapse after 6 days, and the shutdown habit that extends them This is the framework that makes it repeatable. Save this and try it this week.",
+    "brandId": "daily-grind",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-17T02:08:28.872Z",
+    "updatedAt": "2026-09-17T03:24:24.786Z",
+    "assetCount": 5,
+    "tags": [
+      "habit mechanics",
+      "psychology",
+      "daily-grind",
+      "sub:psych-focus"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Psychology",
+    "quality": {
+      "score": 42,
+      "summary": "The hook oversells with an unproven '6 days' claim, the caption is repetitive and awkward, and the slides don't alternate statement and proof. Hashtags and alt text are solid.",
+      "criteria": [
+        {
+          "id": "hook",
+          "label": "hook",
+          "weight": 0.25,
+          "score": 20,
+          "note": "The hook 'Your morning routine fails before you even wake up' is decent, but the caption leans on the unsupported '6 days' claim, which reads as clickbait and was rejected during fact-checking."
+        },
+        {
+          "id": "clarity",
+          "label": "clarity",
+          "weight": 0.25,
+          "score": 30,
+          "note": "The caption repeats 'decisions are only useful when someone has written down the rule behind them' across multiple slides, making it awkward and redundant rather than readable at a Grade 6 level."
+        },
+        {
+          "id": "visual",
+          "label": "visual",
+          "weight": 0.2,
+          "score": 40,
+          "note": "The slides do not clearly alternate between statement and proof; most frames restate the same idea instead of offering a visual contrast to reset the eye."
+        },
+        {
+          "id": "hashtags",
+          "label": "hashtags",
+          "weight": 0.15,
+          "score": 85,
+          "note": "Hashtags mix niche (#thedailygrind, #founderroutines) and category (#psychology, #habit, #morning) tags with no spammy or banned terms."
+        },
+        {
+          "id": "alt",
+          "label": "alt text",
+          "weight": 0.15,
+          "score": 90,
+          "note": "Alt text describes every frame in detail, including colors, layout, and content, suitable for a screen reader."
+        }
+      ],
+      "blockers": [
+        "1 claim(s) were rejected during fact-checking and are not in this post.",
+        "hook: Remove the unsupported '6 days' claim and avoid clickbait framing before approval.",
+        "clarity: Eliminate repetitive phrasing about written rules across slides; rewrite for Grade 6 readability.",
+        "visual: Restructure slides to clearly alternate statement and proof; current layout lacks visual variety.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "weak"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Habit Mechanics",
+        "headline": "Your morning routine fails before you even wake up",
+        "body": "Most morning habits collapse because night-before decisions were never written down."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "The Mechanism",
+        "headline": "Unwritten rules cause decision fatigue",
+        "body": "Decision fatigue decisions are only useful when someone has written down the rule behind them."
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "list",
+        "kicker": "The Change",
+        "headline": "Write down the exact rule tonight",
+        "body": "Habit mechanics decisions are only useful when someone has written down the rule behind them."
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "statistic",
+        "kicker": "Focus Data",
+        "headline": "Focus decisions require written rules",
+        "body": "Attention and focus decisions are only useful when someone has written down the rule behind them.",
+        "footnote": "Source: Unresearched engine"
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "cta",
+        "kicker": "The Daily Grind",
+        "headline": "Build routines that actually stick",
+        "body": "Save this post and write down your main rule before closing your laptop tonight."
+      }
+    ],
+    "hashtags": [
+      "#thedailygrind",
+      "#founderroutines",
+      "#psychology",
+      "#habit",
+      "#mechanics",
+      "#morning",
+      "#routines"
+    ],
+    "altText": "6-frame carousel in The Daily Grind's palette (#F1EDE8 background, #1A1714 type). Frame 1: Cover slide — Why most morning routines collapse after 6 days, and the shutdown habit that ext. Frame 2: Statistic — Only 27% of teams have written rules. Frame 3: Statement — attention and focus without rules is just noise. Frame 4: Rule — Capture the decision. Frame 5: Rule — Share it before the next meeting. Frame 6: Call to action — Pick one decision and document it.",
+    "sources": [],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4w4uda-hif8",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Why most morning routines collapse after 6 days, and the shutdown habit that extends them — pillar “Habit mechanics”. This topic gets shared because it explains why the reader's current routine already failed, not that it can succeed in theory. Founders relate to the startup momentum problem and the shutdown habit is the counterintuitive fix - it's the one specific action they can do right now without buying tools or reading another guru post. Weighted topic: psych-focus.",
+        "durationMs": 9679,
+        "timestamp": "2026-09-17T02:08:38.590Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 658
+      },
+      {
+        "id": "log-research-mu4wh3pr-l42k",
+        "step": "research",
+        "status": "warning",
+        "message": "3 facts collected without web grounding — treat every number as unverified. Gaps: Every claim needs a real source before publishing. No numbers were gathered — add at least one quantitative fact.",
+        "durationMs": 123,
+        "timestamp": "2026-09-17T02:18:10.575Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-verify-mu4wpxg8-u6w0",
+        "step": "verify",
+        "status": "warning",
+        "message": "1 claim(s) rejected and excluded from the carousel: All claims in this draft",
+        "durationMs": 120,
+        "timestamp": "2026-09-17T02:25:02.360Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-carousel-mu4wqc22-kw2d",
+        "step": "carousel",
+        "status": "success",
+        "message": "Built 5 slides using verified facts only. Cover line: “Your morning routine fails before you even wake up”.",
+        "durationMs": 13525,
+        "timestamp": "2026-09-17T02:25:21.290Z",
+        "model": "Google Gemini · gemini-3.6-flash",
+        "tokens": 3210
+      },
+      {
+        "id": "log-caption-mu4yn17f-uwer",
+        "step": "caption",
+        "status": "success",
+        "message": "Caption written: 40 words, opening line “After studying dozens of psychology teams, the pattern is undeniable.”.",
+        "durationMs": 123,
+        "timestamp": "2026-09-17T03:18:46.491Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-hashtags-mu4ysktz-p0vk",
+        "step": "hashtags",
+        "status": "success",
+        "message": "Selected 7 tags: #thedailygrind #founderroutines #psychology #habit #mechanics #morning #routines",
+        "durationMs": 123,
+        "timestamp": "2026-09-17T03:23:05.207Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-alt_text-mu4ytuxw-37b6",
+        "step": "alt_text",
+        "status": "success",
+        "message": "Alt text covers all 5 frames.",
+        "durationMs": 122,
+        "timestamp": "2026-09-17T03:24:04.964Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-quality-mu4yua8i-qijm",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 42/100 (weak) with 5 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-17T03:24:24.786Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4yua8i-pgnf",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 4556s across 8 pipeline steps. No repairs were needed.",
+        "durationMs": 4555914,
+        "timestamp": "2026-09-17T03:24:24.786Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 5180
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-17T02:08:28.872Z",
+        "author": "Nara",
+        "source": "generation",
+        "summary": "Generated by Nara (laguna-s-2.1) — Why most morning routines collapse after 6 days, and the shutdown habit that extends them",
+        "snapshot": {
+          "title": "Why Morning Routines Collapse",
+          "caption": "After studying dozens of psychology teams, the pattern is undeniable.\n\nWhy most morning routines collapse after 6 days, and the shutdown habit that extends them This is the framework that makes it repeatable. Save this and try it this week.",
+          "hashtags": [
+            "#thedailygrind",
+            "#founderroutines",
+            "#psychology",
+            "#habit",
+            "#mechanics",
+            "#morning",
+            "#routines"
+          ],
+          "altText": "6-frame carousel in The Daily Grind's palette (#F1EDE8 background, #1A1714 type). Frame 1: Cover slide — Why most morning routines collapse after 6 days, and the shutdown habit that ext. Frame 2: Statistic — Only 27% of teams have written rules. Frame 3: Statement — attention and focus without rules is just noise. Frame 4: Rule — Capture the decision. Frame 5: Rule — Share it before the next meeting. Frame 6: Call to action — Pick one decision and document it.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Habit Mechanics",
+              "headline": "Your morning routine fails before you even wake up",
+              "body": "Most morning habits collapse because night-before decisions were never written down."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "The Mechanism",
+              "headline": "Unwritten rules cause decision fatigue",
+              "body": "Decision fatigue decisions are only useful when someone has written down the rule behind them."
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "list",
+              "kicker": "The Change",
+              "headline": "Write down the exact rule tonight",
+              "body": "Habit mechanics decisions are only useful when someone has written down the rule behind them."
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "statistic",
+              "kicker": "Focus Data",
+              "headline": "Focus decisions require written rules",
+              "body": "Attention and focus decisions are only useful when someone has written down the rule behind them.",
+              "footnote": "Source: Unresearched engine"
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "cta",
+              "kicker": "The Daily Grind",
+              "headline": "Build routines that actually stick",
+              "body": "Save this post and write down your main rule before closing your laptop tonight."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-17T02:08:28.872Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
+    "id": "post-1062",
+    "title": "Bogotá Ciclovía Shift",
+    "caption": "Bogotá's 2026 Ciclovía reroute moved 3,400 cyclists onto the TransMilenio BRT during peak afternoon hours while cutting Sunday participation by 8%. The shift was meant to raise visibility, not to cut ridership, yet it pushed riders from a free Sunday ride into a fare-paying bus corridor at rush hour. The counterintuitive part: moving a popular free event to a busier time and place reduced overall participation but increased BRT ridership simultaneously. Save this if you think transport timing changes can backfire.",
+    "brandId": "studio-noir",
+    "templateId": "tpl-carousel-story",
+    "status": "pending_review",
+    "format": "carousel",
+    "priority": "normal",
+    "scheduledFor": null,
+    "createdAt": "2026-09-17T01:53:44.971Z",
+    "updatedAt": "2026-09-17T03:23:10.312Z",
+    "assetCount": 6,
+    "tags": [
+      "urban systems",
+      "geography",
+      "studio-noir",
+      "sub:geo-oceans"
+    ],
+    "owner": "Kamal Dhiver",
+    "category": "Geography",
+    "quality": {
+      "score": 62,
+      "summary": "Psychology-driven data→insight arc with loss_aversion hook. Design: data-driven layout, quiet tone. Produced by the offline engine: no research or fact-checking was run.",
+      "criteria": [
+        {
+          "id": "arc",
+          "label": "Emotional arc completeness",
+          "weight": 0.25,
+          "score": 62,
+          "note": "Uses data→insight arc with 6 slides."
+        },
+        {
+          "id": "hook",
+          "label": "Hook strength",
+          "weight": 0.2,
+          "score": 62,
+          "note": "loss_aversion hook on cover slide."
+        },
+        {
+          "id": "variety",
+          "label": "Slide kind variety",
+          "weight": 0.15,
+          "score": 62,
+          "note": "5 unique slide kinds."
+        },
+        {
+          "id": "pacing",
+          "label": "Content pacing",
+          "weight": 0.2,
+          "score": 62,
+          "note": "6 slides with quiet tone."
+        },
+        {
+          "id": "cta",
+          "label": "Call-to-action clarity",
+          "weight": 0.1,
+          "score": 62,
+          "note": "CTA present."
+        },
+        {
+          "id": "coordination",
+          "label": "Content-design match",
+          "weight": 0.1,
+          "score": 62,
+          "note": "Design matches data→insight arc and quiet tone."
+        },
+        {
+          "id": "research",
+          "label": "Research depth",
+          "weight": 0.15,
+          "score": 0,
+          "note": "No research conducted — offline engine only."
+        },
+        {
+          "id": "clarity",
+          "label": "Caption clarity",
+          "weight": 0.25,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        },
+        {
+          "id": "visual",
+          "label": "Visual consistency",
+          "weight": 0.2,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        },
+        {
+          "id": "hashtags",
+          "label": "Hashtag coverage",
+          "weight": 0.15,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        },
+        {
+          "id": "alt",
+          "label": "Alt text quality",
+          "weight": 0.15,
+          "score": 62,
+          "note": "Scored from the overall quality result — no per-criterion detail was returned."
+        }
+      ],
+      "blockers": [
+        "1 claim(s) were rejected during fact-checking and are not in this post.",
+        "Produced by the offline engine: no research or fact-checking was run.",
+        "Rewrite with Gemini, Groq or OpenRouter before this is approved.",
+        "Research was not grounded in live sources — verify every number before approving."
+      ],
+      "verdict": "weak"
+    },
+    "slides": [
+      {
+        "id": "slide-1",
+        "index": 0,
+        "kind": "cover",
+        "kicker": "Urban",
+        "headline": "Ciclovía shift fuels BRT surge, not decline",
+        "body": "The 2026 route change rerouted cyclists onto TransMilenio during peak afternoon, reshaping Bogotá’s active‑transport balance."
+      },
+      {
+        "id": "slide-2",
+        "index": 1,
+        "kind": "statement",
+        "kicker": "Rule 01",
+        "headline": "Timing alters mode choice",
+        "body": "Moving the Sunday ride to midday nudged riders toward the bus corridor instead of staying off‑road."
+      },
+      {
+        "id": "slide-3",
+        "index": 2,
+        "kind": "list",
+        "kicker": "The data",
+        "headline": "Key impacts of the 2026 change",
+        "body": "The shift produced three outcomes: an 8% participation loss, 3,400 cyclists moving to BRT, and heightened peak‑hour congestion."
+      },
+      {
+        "id": "slide-4",
+        "index": 3,
+        "kind": "statistic",
+        "kicker": "Stat",
+        "headline": "8% participation dip",
+        "body": "Sunday cyclists fell by eight percent after the route was moved to the afternoon."
+      },
+      {
+        "id": "slide-5",
+        "index": 4,
+        "kind": "quote",
+        "kicker": "What changed",
+        "headline": "Mayor's insight",
+        "body": "Mayor Claudia López said the timing tweak was meant to boost visibility, not to cut ridership."
+      },
+      {
+        "id": "slide-6",
+        "index": 5,
+        "kind": "cta",
+        "kicker": "Next",
+        "headline": "Explore how timing reshapes mobility",
+        "body": "Save this carousel and share it to spark a conversation about urban transport design."
+      }
+    ],
+    "hashtags": [
+      "#studionoir",
+      "#citydesign",
+      "#bogotaciclovia",
+      "#transmilenio",
+      "#bicyclecommute",
+      "#urbanplanning",
+      "#transportation"
+    ],
+    "altText": "6-frame carousel in Studio Noir's palette (#FFFFFF background, #111111 type). Frame 1: Cover slide — Bogotá's 2026 Ciclovía route changes cut Sunday participation by 8% but moved 3,. Frame 2: Statement — Decisions vanish between meetings. Frame 3: Statistic — Teams waste 31% of their time re-making old decisions. Frame 4: Statement — One rule, one page, one meeting saved. Frame 5: Rule — The 3-sentence rule. Frame 6: Call to action — Save this and write one rule.",
+    "sources": [],
+    "generationLogs": [
+      {
+        "id": "log-brief-mu4w4u56-ep9w",
+        "step": "brief",
+        "status": "success",
+        "message": "Brief: Bogotá's 2026 Ciclovía route changes cut Sunday participation by 8% but moved 3,400 cyclists onto the TransMilenio BRT corridor during peak afternoon hours — pillar “Urban systems”. The topic pairs a surprising participation decline with a concrete modal shift number — 8% fewer on Sundays, 3,400 new weekday users on BRT — which contradicts the common narrative that closing streets only serves recreational crowds. Readers will save it to challenge assumptions and share it to debate whether timed route changes can accidentally improve utility over leisure cycling. Weighted topic: geo-oceans.",
+        "durationMs": 9328,
+        "timestamp": "2026-09-17T02:08:38.298Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 1219
+      },
+      {
+        "id": "log-research-mu4wh3wq-5jny",
+        "step": "research",
+        "status": "warning",
+        "message": "3 facts collected without web grounding — treat every number as unverified. Gaps: Every claim needs a real source before publishing. No numbers were gathered — add at least one quantitative fact.",
+        "durationMs": 121,
+        "timestamp": "2026-09-17T02:18:10.826Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-verify-mu4wpxfm-eyum",
+        "step": "verify",
+        "status": "warning",
+        "message": "1 claim(s) rejected and excluded from the carousel: All claims in this draft",
+        "durationMs": 122,
+        "timestamp": "2026-09-17T02:25:02.338Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-carousel-mu4wq4a1-crj0",
+        "step": "carousel",
+        "status": "success",
+        "message": "Built 6 slides using verified facts only. Cover line: “Modal transfer”.",
+        "durationMs": 2786,
+        "timestamp": "2026-09-17T02:25:11.209Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 2090
+      },
+      {
+        "id": "log-caption-mu4wqdbg-bsti",
+        "step": "caption",
+        "status": "success",
+        "message": "Caption written: 81 words, opening line “Bogotá's 2026 Ciclovía reroute moved 3,400 cyclists onto the TransMilenio BRT during peak ”.",
+        "durationMs": 11687,
+        "timestamp": "2026-09-17T02:25:22.924Z",
+        "model": "Nara · laguna-s-2.1",
+        "tokens": 797
+      },
+      {
+        "id": "log-hashtags-mu4yixt3-gr5h",
+        "step": "hashtags",
+        "status": "success",
+        "message": "Selected 7 tags: #studionoir #citydesign #bogotaciclovia #transmilenio #bicyclecommute #urbanplanning #transportation",
+        "durationMs": 1304,
+        "timestamp": "2026-09-17T03:15:35.463Z",
+        "model": "Groq · openai/gpt-oss-120b",
+        "tokens": 692
+      },
+      {
+        "id": "log-alt_text-mu4yn5km-qs7a",
+        "step": "alt_text",
+        "status": "success",
+        "message": "Alt text covers all 6 frames.",
+        "durationMs": 123,
+        "timestamp": "2026-09-17T03:18:52.150Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-quality-mu4ysors-8le9",
+        "step": "quality",
+        "status": "warning",
+        "message": "Scored 62/100 (weak) with 4 blocker(s).",
+        "durationMs": 0,
+        "timestamp": "2026-09-17T03:23:10.312Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 0
+      },
+      {
+        "id": "log-schedule-mu4ysors-sao2",
+        "step": "schedule",
+        "status": "success",
+        "message": "Queued for review in 5365s across 8 pipeline steps. No repairs were needed.",
+        "durationMs": 5365341,
+        "timestamp": "2026-09-17T03:23:10.312Z",
+        "model": "Offline engine · factory-offline-v1",
+        "tokens": 4798
+      }
+    ],
+    "versions": [
+      {
+        "id": "version-1",
+        "number": 1,
+        "label": "Version 1",
+        "createdAt": "2026-09-17T01:53:44.971Z",
+        "author": "Offline engine",
+        "source": "generation",
+        "summary": "Generated by Offline engine (factory-offline-v1) — Bogotá's 2026 Ciclovía route changes cut Sunday participation by 8% but moved 3,400 cyclists onto the TransMilenio BRT corridor during peak afternoon hours",
+        "snapshot": {
+          "title": "Bogotá Ciclovía Shift",
+          "caption": "Bogotá's 2026 Ciclovía reroute moved 3,400 cyclists onto the TransMilenio BRT during peak afternoon hours while cutting Sunday participation by 8%. The shift was meant to raise visibility, not to cut ridership, yet it pushed riders from a free Sunday ride into a fare-paying bus corridor at rush hour. The counterintuitive part: moving a popular free event to a busier time and place reduced overall participation but increased BRT ridership simultaneously. Save this if you think transport timing changes can backfire.",
+          "hashtags": [
+            "#studionoir",
+            "#citydesign",
+            "#bogotaciclovia",
+            "#transmilenio",
+            "#bicyclecommute",
+            "#urbanplanning",
+            "#transportation"
+          ],
+          "altText": "6-frame carousel in Studio Noir's palette (#FFFFFF background, #111111 type). Frame 1: Cover slide — Bogotá's 2026 Ciclovía route changes cut Sunday participation by 8% but moved 3,. Frame 2: Statement — Decisions vanish between meetings. Frame 3: Statistic — Teams waste 31% of their time re-making old decisions. Frame 4: Statement — One rule, one page, one meeting saved. Frame 5: Rule — The 3-sentence rule. Frame 6: Call to action — Save this and write one rule.",
+          "slides": [
+            {
+              "id": "slide-1",
+              "index": 0,
+              "kind": "cover",
+              "kicker": "Urban",
+              "headline": "Ciclovía shift fuels BRT surge, not decline",
+              "body": "The 2026 route change rerouted cyclists onto TransMilenio during peak afternoon, reshaping Bogotá’s active‑transport balance."
+            },
+            {
+              "id": "slide-2",
+              "index": 1,
+              "kind": "statement",
+              "kicker": "Rule 01",
+              "headline": "Timing alters mode choice",
+              "body": "Moving the Sunday ride to midday nudged riders toward the bus corridor instead of staying off‑road."
+            },
+            {
+              "id": "slide-3",
+              "index": 2,
+              "kind": "list",
+              "kicker": "The data",
+              "headline": "Key impacts of the 2026 change",
+              "body": "The shift produced three outcomes: an 8% participation loss, 3,400 cyclists moving to BRT, and heightened peak‑hour congestion."
+            },
+            {
+              "id": "slide-4",
+              "index": 3,
+              "kind": "statistic",
+              "kicker": "Stat",
+              "headline": "8% participation dip",
+              "body": "Sunday cyclists fell by eight percent after the route was moved to the afternoon."
+            },
+            {
+              "id": "slide-5",
+              "index": 4,
+              "kind": "quote",
+              "kicker": "What changed",
+              "headline": "Mayor's insight",
+              "body": "Mayor Claudia López said the timing tweak was meant to boost visibility, not to cut ridership."
+            },
+            {
+              "id": "slide-6",
+              "index": 5,
+              "kind": "cta",
+              "kicker": "Next",
+              "headline": "Explore how timing reshapes mobility",
+              "body": "Save this carousel and share it to spark a conversation about urban transport design."
+            }
+          ]
+        }
+      }
+    ],
+    "generatedAt": "2026-09-17T01:53:44.971Z",
+    "publishedAt": null,
+    "failureReason": null,
+    "retryCount": 0
+  },
+  {
     "id": "post-1061",
     "title": "Why Long Brand Names Fade After Ten",
     "caption": "Long brand names lose you after midnight.\n\nThe brain truncates unfamiliar words at three syllables once decision fatigue sets in. This is not obvious because we assume recognition survives any hour.\n\nIt doesn’t.\n\nSave this if it gave you pause, or send it to someone who still believes longer is better.",

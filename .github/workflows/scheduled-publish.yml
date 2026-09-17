@@ -2,7 +2,6 @@ name: Scheduled Publishing
 
 on:
   schedule:
-    # Run every 4 hours
     - cron: '0 */4 * * *'
   workflow_dispatch:
 
@@ -10,33 +9,31 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm ci
+      - run: npm ci
 
-      - name: Process scheduled posts
+      - name: Start server and process scheduled posts
         env:
           SCHEDULER_SECRET: ${{ secrets.SCHEDULER_SECRET }}
           INSTAGRAM_APP_ID: ${{ secrets.INSTAGRAM_APP_ID }}
           INSTAGRAM_APP_SECRET: ${{ secrets.INSTAGRAM_APP_SECRET }}
           TOKEN_ENCRYPTION_KEY: ${{ secrets.TOKEN_ENCRYPTION_KEY }}
           STORAGE_DRIVER: file
+          NARA_API_KEY: ${{ secrets.NARA_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
-          # Start the server
-          npm run start:local &
-          SERVER_PID=$!
-          sleep 5
+          npx next build
+          npx next start -p 3780 &
+          sleep 8
 
-          # Process due entries
+          echo "Processing scheduled posts..."
           curl -s -X POST http://localhost:3780/api/schedule/process \
             -H "Authorization: Bearer $SCHEDULER_SECRET"
-
-          kill $SERVER_PID
+          echo ""
+          echo "Done."
