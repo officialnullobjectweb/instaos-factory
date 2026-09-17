@@ -23,6 +23,7 @@ export const AI_STEP_LABELS: Record<AiLogStep, string> = {
 export const AI_PROVIDER_LABELS: Record<AiProviderId, string> = {
   gemini: "Gemini",
   groq: "Groq",
+  nara: "Nara",
   openrouter: "OpenRouter",
   local: "Local fallback",
 };
