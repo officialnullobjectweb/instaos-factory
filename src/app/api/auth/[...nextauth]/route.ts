@@ -26,22 +26,42 @@ declare module "next-auth/jwt" {
   }
 }
 
-const DEMO_USERS = [
-  {
-    id: "1",
-    name: "Admin",
-    email: "admin@factory.os",
-    password: "admin123",
-    role: "admin",
-  },
-  {
-    id: "2",
-    name: "Editor",
-    email: "editor@factory.os",
-    password: "editor123",
-    role: "editor",
-  },
-];
+/**
+ * Parse AUTH_USERS from env.
+ * Format: "email:password,email:password"
+ * Names are derived from email (part before @).
+ */
+function parseAuthUsers(): Array<{
+  id: string;
+  name: string;
+  email: string;
+  password: string;
+  role: string;
+}> {
+  const raw = process.env.AUTH_USERS ?? "";
+  if (!raw.trim()) {
+    return [];
+  }
+
+  return raw
+    .split(",")
+    .map((entry) => entry.trim())
+    .filter(Boolean)
+    .map((entry, index) => {
+      const [email, password] = entry.split(":");
+      if (!email || !password) return null;
+      return {
+        id: String(index + 1),
+        name: email.split("@")[0],
+        email,
+        password,
+        role: index === 0 ? "admin" : "editor",
+      };
+    })
+    .filter((user): user is NonNullable<typeof user> => user !== null);
+}
+
+const USERS = parseAuthUsers();
 
 export const authOptions: NextAuthOptions = {
   providers: [
@@ -56,7 +76,7 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
 
-        const user = DEMO_USERS.find(
+        const user = USERS.find(
           (u) =>
             u.email === credentials.email && u.password === credentials.password,
         );
@@ -97,7 +117,7 @@ export const authOptions: NextAuthOptions = {
       return session;
     },
   },
-  secret: process.env.NEXTAUTH_SECRET ?? "factory-os-dev-secret-change-in-production",
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
 const handler = NextAuth(authOptions);
