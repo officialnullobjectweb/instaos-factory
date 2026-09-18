@@ -1,5 +1,6 @@
 "use client";
 
+import { SessionProvider } from "next-auth/react";
 import type { ReactNode } from "react";
 
 import { ToastStack } from "@/components/ui/toast";
@@ -13,11 +14,13 @@ import { WorkspaceHydration } from "@/providers/workspace-hydration";
  */
 export function AppProviders({ children }: { children: ReactNode }) {
   return (
-    <ThemeProvider>
-      <TooltipProvider>
-        <WorkspaceHydration>{children}</WorkspaceHydration>
-        <ToastStack />
-      </TooltipProvider>
-    </ThemeProvider>
+    <SessionProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <WorkspaceHydration>{children}</WorkspaceHydration>
+          <ToastStack />
+        </TooltipProvider>
+      </ThemeProvider>
+    </SessionProvider>
   );
 }
