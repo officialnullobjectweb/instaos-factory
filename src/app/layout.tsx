@@ -27,6 +27,28 @@ export const metadata: Metadata = {
   description: APP_DESCRIPTION,
   applicationName: APP_NAME,
   formatDetection: { telephone: false },
+  openGraph: {
+    title: APP_NAME,
+    description: APP_DESCRIPTION,
+    images: [
+      {
+        url: `/api/og?title=${encodeURIComponent(APP_NAME)}&subtitle=${encodeURIComponent(APP_DESCRIPTION)}`,
+        width: 1200,
+        height: 630,
+        alt: APP_NAME,
+      },
+    ],
+    type: "website",
+    siteName: APP_NAME,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: APP_NAME,
+    description: APP_DESCRIPTION,
+    images: [
+      `/api/og?title=${encodeURIComponent(APP_NAME)}&subtitle=${encodeURIComponent(APP_DESCRIPTION)}`,
+    ],
+  },
 };
 
 export const viewport: Viewport = {

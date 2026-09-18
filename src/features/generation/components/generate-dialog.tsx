@@ -49,10 +49,22 @@ export function GenerateDialog() {
   const [variantId, setVariantId] = useState<string>("");
   const [audienceId, setAudienceId] = useState<string>("");
 
-  const { phase, job, error, requiredEnvVars, post, run, reset } = useGeneration();
+  const {
+    phase,
+    job,
+    error,
+    detail,
+    requiredEnvVars,
+    post,
+    resumable,
+    run,
+    resume,
+    reset,
+  } = useGeneration();
 
   const brand = getBrand(brandId);
-  const running = phase === "running";
+  /** `queued` is a live state, not a stalled one: the run is waiting for a slot. */
+  const running = phase === "running" || phase === "queued";
 
   // A fresh open always starts from a clean slate — except the brand handed in
   // by whoever opened it (the topbar scope, a brand card, the queue).
@@ -93,9 +105,11 @@ export function GenerateDialog() {
       size="lg"
       title="Generate a new post"
       description={
-        running
-          ? "The engine is running. You can close this — the post will land in the queue either way."
-          : `Topic, research, fact-check, carousel, caption, hashtags, alt text and a quality score, in one pass for ${brand.name}.`
+        phase === "queued"
+          ? "Waiting for a free generation slot. You can close this — the run continues on the server."
+          : phase === "running"
+            ? "The engine is running. A full pass takes five to ten minutes — you can close this and the post will still land in the queue."
+            : `Topic, research, fact-check, carousel, caption, hashtags, alt text and a quality score, in one pass for ${brand.name}.`
       }
       footer={
         <>
@@ -125,10 +139,17 @@ export function GenerateDialog() {
               <Button variant="ghost" size="sm" onClick={reset}>
                 Start over
               </Button>
-              <Button variant="primary" size="sm" onClick={start}>
-                <RefreshCw />
-                Try again
-              </Button>
+              {resumable ? (
+                <Button variant="primary" size="sm" onClick={() => void resume()}>
+                  <RefreshCw />
+                  Resume from step
+                </Button>
+              ) : (
+                <Button variant="primary" size="sm" onClick={start}>
+                  <RefreshCw />
+                  Try again
+                </Button>
+              )}
             </>
           ) : running ? (
             <Button variant="ghost" size="sm" onClick={() => setGenerateOpen(false)}>
@@ -204,8 +225,26 @@ export function GenerateDialog() {
                 The generation engine could not finish
               </span>
               <span className="text-[12.5px] leading-relaxed text-ink-2">{error}</span>
+              {detail ? (
+                <span className="text-[12px] leading-relaxed text-ink-3">{detail}</span>
+              ) : null}
             </span>
           </div>
+
+          {resumable ? (
+            <div className="flex flex-col gap-1.5 rounded-lg border border-line bg-surface-2 p-3.5">
+              <span className="text-[12px] font-medium text-ink">
+                Resume instead of repeating
+              </span>
+              <span className="text-[12.5px] leading-relaxed text-ink-2">
+                {resumable.summary}
+              </span>
+              <span className="text-[11.5px] text-ink-3 tnum">
+                {resumable.tokensAlreadySpent.toLocaleString()} tokens already spent on
+                this run are kept.
+              </span>
+            </div>
+          ) : null}
 
           {requiredEnvVars ? (
             <div className="flex flex-col gap-1.5 rounded-lg border border-line bg-surface-2 p-3.5">

@@ -63,6 +63,10 @@ export const STEP_CONTRACTS: Record<AiStepId, string> = {
     { "kind": "cover" | "statement" | "list" | "statistic" | "quote" | "cta", "kicker": string, "headline": string, "body": string, "footnote": string | null }
   ]
 }`,
+  design: `{
+  "template": "editorial" | "data-viz" | "minimal" | "bold" | "illustrated",
+  "rationale": string
+}`,
   caption: `{ "caption": string }`,
   hashtags: `{ "hashtags": string[] }`,
   alt_text: `{ "altText": string }`,

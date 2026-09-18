@@ -40,6 +40,39 @@ export interface RunStepOptions<T> {
   /** The JSON contract text handed to the repair call. */
   contract: string;
   signal?: AbortSignal;
+  /**
+   * Absolute wall-clock ceiling for the run this step belongs to.
+   *
+   * Nine sequential model calls at one or two minutes each can outlive any
+   * sensible ceiling, so the run carries one deadline and each step spends only
+   * what is left of it. Without this a run has no upper bound at all: it will
+   * keep retrying through the provider chain until something else kills it, and
+   * that "something else" used to be the browser giving up on a run that was
+   * still working.
+   */
+  deadlineAt?: number;
+}
+
+/** Never hand a provider a timeout so short that a healthy request cannot land. */
+const MIN_STEP_TIMEOUT_MS = 20_000;
+
+/**
+ * How long one attempt may take, given the run's remaining budget.
+ *
+ * Exported because the rule is worth testing on its own: it decides whether a
+ * step gets a full timeout, a shortened one, or is refused for lack of budget.
+ */
+export function attemptTimeoutMs(input: {
+  deadlineAt?: number;
+  now: number;
+  defaultTimeoutMs: number;
+}): number | null {
+  if (input.deadlineAt === undefined) return input.defaultTimeoutMs;
+
+  const remaining = input.deadlineAt - input.now;
+  if (remaining <= MIN_STEP_TIMEOUT_MS) return null;
+
+  return Math.min(input.defaultTimeoutMs, remaining);
 }
 
 export interface RunStepResult<T> {
@@ -251,6 +284,15 @@ export async function runStep<T>(options: RunStepOptions<T>): Promise<RunStepRes
   const grounding = options.grounding === true;
   const maxOutputTokens = options.maxOutputTokens ?? 8192;
 
+  // Out of budget before the first attempt: fail now, with the reason, rather
+  // than start a request there is no time to finish.
+  if (attemptTimeoutMs({ deadlineAt: options.deadlineAt, now: Date.now(), defaultTimeoutMs: AI_ENV.timeoutMs }) === null) {
+    throw new AiError(
+      "timeout",
+      `Ran out of the run's time budget before the "${step}" step could start.`,
+    );
+  }
+
   let lastError: AiError | null = null;
   let totalAttempts = 0;
   let totalLatency = 0;
@@ -263,12 +305,29 @@ export async function runStep<T>(options: RunStepOptions<T>): Promise<RunStepRes
       totalAttempts += 1;
       const started = Date.now();
 
+      // Recomputed per attempt: a retry after a long backoff gets what is left,
+      // not another full timeout window.
+      const timeoutMs = attemptTimeoutMs({
+        deadlineAt: options.deadlineAt,
+        now: Date.now(),
+        defaultTimeoutMs: AI_ENV.timeoutMs,
+      });
+
+      // The budget is shared by every provider, so once it is gone there is
+      // nothing to gain by moving down the chain. Fail the step with the reason.
+      if (timeoutMs === null) {
+        throw new AiError(
+          "timeout",
+          `Ran out of the run's time budget during the "${step}" step.`,
+        );
+      }
+
       try {
         const result = await provider.generate({
           system: prompt.system,
           user: prompt.user,
           jsonMode,
-          timeoutMs: AI_ENV.timeoutMs,
+          timeoutMs,
           maxOutputTokens,
           grounding,
           hint,

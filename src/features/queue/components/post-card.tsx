@@ -1,23 +1,25 @@
 "use client";
 
-import { CalendarClock, Clock, Gauge, LoaderCircle } from "lucide-react";
+import { CalendarClock, Clock, Gauge, ListTree, LoaderCircle } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 import { FormatTag, StatusBadge } from "@/components/content/status-badge";
 import { QualityMeter } from "@/components/content/quality-meter";
 import { InitialsAvatar } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Disclosure, DisclosureButton } from "@/components/ui/disclosure";
 import { getBrand } from "@/data/brands";
 import { MOCK_NOW } from "@/data/time";
+import { GenerationSteps } from "@/features/queue/components/generation-steps";
 import { InlineField } from "@/features/queue/components/inline-field";
 import { PostActions, QuickDecision } from "@/features/queue/components/post-actions";
 import type { ReviewTab } from "@/features/queue/components/review-drawer";
 import { formatDateTime, formatRelativeTime } from "@/lib/format";
 import { FORMAT_LABELS, isReviewable } from "@/lib/status";
 import { cn } from "@/lib/utils";
-import type { Post, PostEditableField } from "@/types";
+import type { GenerationRun, Post, PostEditableField } from "@/types";
 
 interface PostCardProps {
   post: Post;
@@ -36,6 +38,8 @@ interface PostCardProps {
     id: string,
     fields: Partial<Pick<Post, PostEditableField>>,
   ) => Promise<unknown>;
+  /** The run that produced this post, when one is on record. */
+  run?: GenerationRun | null;
 }
 
 export function PostCard({
@@ -52,9 +56,12 @@ export function PostCard({
   onDuplicate,
   onDelete,
   onSaveField,
+  run = null,
 }: PostCardProps) {
   const brand = getBrand(post.brandId);
   const [coverIndex, setCoverIndex] = useState(0);
+  const [stepsOpen, setStepsOpen] = useState(false);
+  const stepsId = `${useId()}-${post.id}-steps`;
   const reviewable = isReviewable(post.status);
   const cover = post.slides[Math.min(coverIndex, post.slides.length - 1)];
 
@@ -184,7 +191,37 @@ export function PostCard({
         </span>
       </div>
 
-      <div className="mt-3 flex items-center justify-between gap-3 border-t border-line px-4 py-3">
+      {/* The pipeline that produced this card, one click away. */}
+      <div className="mt-3 flex items-center justify-between gap-2 border-t border-line px-4 py-2.5">
+        <button
+          type="button"
+          onClick={() => setStepsOpen(!stepsOpen)}
+          aria-expanded={stepsOpen}
+          aria-controls={stepsId}
+          className="flex items-center gap-1.5 rounded-full px-2 py-1 text-[12px] text-ink-3 outline-none transition-colors duration-150 ease-soft hover:bg-surface-2 hover:text-ink"
+        >
+          <ListTree className="size-3.5" aria-hidden="true" />
+          {stepsOpen ? "Hide" : "Show"} generation steps
+          <span className="tnum">
+            ({run?.steps.length ?? post.generationLogs.length})
+          </span>
+        </button>
+
+        <DisclosureButton
+          open={stepsOpen}
+          onToggle={() => setStepsOpen(!stepsOpen)}
+          label={`${stepsOpen ? "Hide" : "Show"} generation steps for ${post.title}`}
+          controls={stepsId}
+        />
+      </div>
+
+      <Disclosure open={stepsOpen} id={stepsId} className="border-t border-line bg-surface-2/40">
+        <div className="px-4 py-4">
+          <GenerationSteps run={run} logs={post.generationLogs} density="compact" />
+        </div>
+      </Disclosure>
+
+      <div className="flex items-center justify-between gap-3 border-t border-line px-4 py-3">
         <span className="flex min-w-0 items-center gap-2 text-[12px] text-ink-3">
           <InitialsAvatar
             initials={post.owner

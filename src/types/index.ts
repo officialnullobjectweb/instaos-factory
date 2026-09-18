@@ -182,17 +182,25 @@ export interface SourceRef {
 }
 
 export type GenerationStep =
+  | "topic"
   | "brief"
   | "research"
   | "verify"
   | "caption"
   | "carousel"
+  | "design"
   | "hashtags"
   | "alt_text"
   | "quality"
   | "schedule";
 
-export type GenerationLogStatus = "success" | "warning" | "error" | "running";
+/** `skipped` is a real outcome: the pipeline folds some stages into others. */
+export type GenerationLogStatus =
+  | "success"
+  | "warning"
+  | "error"
+  | "running"
+  | "skipped";
 
 export interface GenerationLogEntry {
   id: string;

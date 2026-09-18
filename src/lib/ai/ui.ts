@@ -12,6 +12,7 @@ export const AI_STEP_LABELS: Record<AiLogStep, string> = {
   research: "Research",
   verify: "Verify facts",
   carousel: "Carousel",
+  design: "Select design",
   caption: "Caption",
   hashtags: "Hashtags",
   alt_text: "Alt text",
@@ -25,6 +26,7 @@ export const AI_PROVIDER_LABELS: Record<AiProviderId, string> = {
   groq: "Groq",
   nara: "Nara",
   openrouter: "OpenRouter",
+  omni: "OmniRoute",
   local: "Local fallback",
 };
 

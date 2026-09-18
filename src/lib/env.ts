@@ -137,6 +137,29 @@ const serverSchema = z.object({
   AI_BACKOFF_MAX_MS: number(12_000),
   AI_GRANULAR_STEPS: boolean(true),
 
+  /**
+   * Wall-clock budget for one whole run, across every step and retry.
+   *
+   * Nine model calls at 15–40 s each is a seven-minute run before anything goes
+   * wrong, so this has to be generous — but it has to exist. Without a ceiling a
+   * run that keeps losing the provider lottery can hold a concurrency slot for
+   * an hour, and nothing in the UI can distinguish "slow" from "wedged".
+   */
+  AI_JOB_BUDGET_MS: number(20 * 60_000),
+  /**
+   * How long a run may go with no step settling before it is treated as wedged.
+   * Progress, not total elapsed time, is what this measures: a run can legitimately
+   * take twenty minutes, but no single step should ever take five.
+   */
+  AI_STEP_STALL_MS: number(5 * 60_000),
+  /**
+   * How many runs may hold a provider at once. Further requests queue instead of
+   * competing for the same rate limits — three simultaneous runs do not finish
+   * three times sooner, they finish later and worse, because each one spends its
+   * attempt budget on 429s.
+   */
+  AI_MAX_CONCURRENT_JOBS: number(2),
+
   GEMINI_API_KEY: optionalString(),
   /**
    * Verified working default. Newer point releases (3.7/3.8) have returned
@@ -176,6 +199,10 @@ const serverSchema = z.object({
     .trim()
     .url()
     .default("https://router.bynara.id/v1"),
+
+  OMNIROUTE_BASE_URL: optionalUrl().default("http://localhost:20128/v1"),
+  OMNIROUTE_API_KEY: optionalString(),
+  OMNIROUTE_MODEL: z.string().trim().default("auto"),
 
   /**
    * The offline engine, last in the chain and deterministic. It is what makes

@@ -1,9 +1,8 @@
 import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { runGenerationV2 } from "@/lib/ai/flow-v2";
-import { createJob, listJobs } from "@/lib/ai/jobs";
-import { configuredProviders } from "@/lib/ai/providers";
+import { AI_ENV, configuredProviders } from "@/lib/ai/providers";
+import { schedulerSnapshot, submitGeneration } from "@/lib/ai/scheduler";
 import { limitOr429 } from "@/lib/security/rate-limit";
 
 export const dynamic = "force-dynamic";
@@ -15,15 +14,19 @@ const bodySchema = z.object({
 });
 
 /**
- * POST /api/ai/generate — starts a generation job using the v2 pipeline.
+ * POST /api/ai/generate — accepts a generation request and returns immediately.
  *
- * v2 pipeline:
- * 1. Topic Scoring (70% effort) — generate 8 candidates, score, pick best
- * 2. Deep Research — trusted sources, multiple viewpoints, critiques
- * 3. Content Writing — visual-first, simple, engaging
- * 4. Design Selection — match content to best visual approach
- * 5. Quality Review — score and approve/reject
- * 6. Final Polish — hashtags, caption, alt text
+ * The request is *admitted*, not started: the scheduler decides whether it runs
+ * now or waits its turn behind the runs already holding a provider. That
+ * distinction is the whole point of this route. A nine-step pipeline takes five to
+ * ten minutes, providers rate-limit per key, and starting every request the moment
+ * it arrives means each one spends its retry budget collecting 429s — so all of
+ * them fail slower instead of any of them succeeding.
+ *
+ * The response carries the budget the client should wait for, so the browser never
+ * has to invent a deadline of its own. The server is the only party that knows how
+ * long a run is allowed to take, and a client-side guess was previously the reason
+ * runs that were working perfectly were reported as failures.
  */
 export async function POST(request: Request) {
   const limited = await limitOr429(request, {
@@ -66,17 +69,25 @@ export async function POST(request: Request) {
     );
   }
 
-  const job = createJob(parsed.data.brandId);
+  const result = await submitGeneration(parsed.data);
 
-  // Deliberately not awaited: the job tracks its own progress.
-  void runGenerationV2(job.id, parsed.data).catch(() => undefined);
-
-  return NextResponse.json({ job }, { status: 202 });
+  return NextResponse.json(
+    {
+      job: result.job,
+      queued: result.queued,
+      position: result.position,
+      deduplicated: result.deduplicated,
+      /** How long a run may take, so the client waits for the server's verdict. */
+      budgetMs: AI_ENV.jobBudgetMs,
+      scheduler: schedulerSnapshot(),
+    },
+    { status: 202 },
+  );
 }
 
 export async function GET() {
   return NextResponse.json({
-    jobs: listJobs(10),
+    scheduler: schedulerSnapshot(),
     providers: configuredProviders().map((provider) => ({
       id: provider.id,
       label: provider.label,

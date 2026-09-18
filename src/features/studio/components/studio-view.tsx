@@ -160,7 +160,7 @@ export function StudioView() {
             Design Studio
           </h1>
           <p className="text-[13px] text-ink-2">
-            1080×1350 carousels rendered in-house — SVG in, PNG/PDF/ZIP out.
+            Edit slides, adjust layout, export as PNG/PDF.
           </p>
         </div>
 

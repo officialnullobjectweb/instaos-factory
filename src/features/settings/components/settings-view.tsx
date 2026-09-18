@@ -44,8 +44,8 @@ export function SettingsView() {
     <>
       <PageHeader
         eyebrow="Settings"
-        title="Workspace configuration"
-        description="Brands, review policy, automation cadence and team access — everything that shapes how content moves through the factory."
+        title="Workspace settings"
+        description="Brands, review rules, automation, and team access."
       />
 
       <div className="shell-container pb-10">

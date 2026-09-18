@@ -40,6 +40,14 @@ Four AI providers are tried in turn (Nara → Gemini → Groq → OpenRouter). I
 them is down or rate-limited, the post **fails loudly** and nothing is queued — there is no
 "make something up" fallback, so nothing reaches your queue that a model did not write.
 
+**You can always see the steps.** At the top of **Content Queue** there is a
+*Generation runs* panel: every attempt, newest first, with failed ones first. Expand any
+row to see all nine steps — which finished, which were folded into another, how long each
+took, which model ran it, and for a failure, exactly which step stopped it and what the
+provider said. Any post in the queue expands the same way (the chevron on the left of the
+row, or "Show generation steps" on a card), and the review drawer's **Logs** tab shows the
+same list.
+
 **Step 2 — Review.** Open **Content Queue**. You see everything waiting for you. Click a post
 to see the slides, caption, hashtags, sources, and quality score. Then:
 - **Approve** (or press `A` on the keyboard)
@@ -224,7 +232,7 @@ After adding env vars: `launchctl unload` then `launchctl load` again.
 |---|---|
 | Dashboard won't load | `launchctl list \| grep kamal` — if it shows `-`, run `launchctl load ~/Library/LaunchAgents/com.kamal.factory.plist` |
 | Queue is empty | Normal on a fresh start. Press **Generate post**, or wait for the 7:00 AM batch. |
-| Generation fails | Check `logs/autopilot.err.log`. Usually a dead model name or an exhausted API quota — the app automatically tries the next provider. |
+| Generation fails | Open **Content Queue** → *Generation runs* → expand the failed run. It names the step that stopped (`stopped at Pick topic`) and quotes the provider's own message. Usually a dead model name or an exhausted quota — the app has already tried every configured provider. Raw requests/responses are in Settings → AI engine and `logs/autopilot.err.log`. |
 | A post won't publish | Read the failure reason in Schedule → publishing queue. Most common: missing/expired Instagram credentials. |
 | Analytics is empty | Expected. It fills only from real Instagram Insights once an account is connected. Before that, it shows an honest empty state instead of fake numbers. |
 | Want a blank slate | Delete the Redis keys with prefix `kammo_factory:` and restart. |

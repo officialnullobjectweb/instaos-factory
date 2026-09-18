@@ -77,8 +77,8 @@ export function ExperimentsView() {
     <>
       <PageHeader
         eyebrow="Experiments"
-        title="Find what the audience actually wants"
-        description="Nine sub-niches, two design variants each. Post both, compare real numbers, promote the winner — then serve only the formats demand has proven."
+        title="Find what works"
+        description="Two design variants for each niche. Post both, compare numbers, keep the winner."
         actions={
           <Button variant="secondary" size="sm" onClick={() => setConfirmReset(true)}>
             <RotateCcw />

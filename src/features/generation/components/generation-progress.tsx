@@ -29,19 +29,28 @@ export function GenerationProgress({ job }: { job: AiJob }) {
 
   const percent = Math.round((settled / job.steps.length) * 100);
   const active = job.steps.find((step) => step.status === "running");
+  const waiting = job.status === "queued";
 
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between gap-3 text-[12.5px]">
           <span className="font-medium text-ink">
-            {job.status === "queued" ? "Queued…" : (active?.label ?? "Finishing up")}
+            {waiting
+              ? `Waiting for a free slot${job.queuePosition ? ` — position ${job.queuePosition}` : ""}`
+              : (active?.label ?? "Finishing up")}
           </span>
           <span className="text-ink-3 tnum">
             {settled}/{job.steps.length} steps
           </span>
         </div>
         <Progress value={percent} aria-label={`Generation ${percent}% complete`} />
+        {waiting ? (
+          <span className="text-[11.5px] leading-relaxed text-ink-3">
+            Runs queue instead of starting together, so every provider keeps a
+            healthy request rate. This one starts on its own as soon as a slot frees up.
+          </span>
+        ) : null}
       </div>
 
       <ol className="flex flex-col divide-y divide-line">

@@ -43,6 +43,7 @@ import { ROOT, loadEnv } from "./load-env.mjs";
 /** Every document the app stores — kept in step with `DOCUMENT_KEYS`. */
 const DOCUMENT_KEYS = [
   "posts",
+  "generation-runs",
   "schedule",
   "audit",
   "ai-logs",

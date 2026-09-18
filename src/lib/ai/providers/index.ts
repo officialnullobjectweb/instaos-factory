@@ -4,12 +4,13 @@ import { geminiProvider } from "./gemini";
 import { groqProvider } from "./groq";
 import { localProvider } from "./local";
 import { naraProvider } from "./nara";
+import { omniProvider } from "./omni";
 import { openRouterProvider } from "./openrouter";
 import { AI_ENV, providerOrder, type AiProvider } from "./types";
 
 /**
  * The provider registry. Order comes from `AI_PROVIDER_ORDER` (default:
- * gemini → groq → nara → openrouter → offline), and only configured providers are
+ * gemini → groq → nara → openrouter → omni → offline), and only configured providers are
  * eligible for the chain.
  */
 export const PROVIDERS: Record<AiProviderId, AiProvider> = {
@@ -17,6 +18,7 @@ export const PROVIDERS: Record<AiProviderId, AiProvider> = {
   groq: groqProvider,
   nara: naraProvider,
   openrouter: openRouterProvider,
+  omni: omniProvider,
   local: localProvider,
 };
 

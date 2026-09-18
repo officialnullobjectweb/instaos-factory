@@ -76,6 +76,29 @@ Generation is triggered from **Generate post** in the command bar (⌘⏎), the 
 button, the dashboard quick action, or the command palette. The finished post lands in
 the queue as `pending_review` immediately.
 
+### Every run is reported, successes and failures alike
+
+One `RunTracker` (`src/lib/ai/track.ts`) fans each step out to three places at once, which
+is why the progress dialog, the queue and the post cannot disagree about what happened:
+
+- **the persisted run** (`data/generation-runs.json`, `generation-runs` in Redis) — the
+  durable record, written when the run starts and updated as each step settles;
+- **the in-memory job** — the step currently in flight, so the dialog's progress bar is real
+  rather than decorative;
+- **the post's own generation log** — the sentence a reviewer reads next to the content.
+
+A run is stored even when it produces nothing, because that is the case a queue cannot
+otherwise show: a generation that died at the research step leaves no post, so before this
+it was indistinguishable from never pressing the button. Each run carries the full pipeline
+plan, every step's outcome (`success` / `warning` / `skipped` / `failed`), the provider
+attempts behind it, and on failure the step that stopped it with the provider's own message.
+
+Surfaced in three places: the **Generation runs** panel at the top of `/queue` (failures
+first, each expandable into the same step timeline a post shows), the expandable row in the
+queue table and card, and the review drawer's **Logs** tab. The queue never renders a step
+as a bare tick — a caveat is a `warning`, and a stage the pipeline folded into another says
+so instead of pretending it ran.
+
 ---
 
 ## Stack
@@ -133,6 +156,7 @@ src/
     command/         command palette (⌘K)
     notifications/   notification bell
     feedback/        empty state, shortcut reference
+    disclosure.tsx   the one expand/collapse primitive (queue rows, cards, runs)
     icons.tsx        brand glyphs lucide no longer ships
   features/          one folder per product surface (dashboard, queue, …)
   design/            the carousel design engine (shared by client and server)
@@ -140,8 +164,8 @@ src/
     fit.ts           greedy line wrap + shrink-to-fit against that geometry
     templates.ts     the three template systems (geography/psychology/branding)
     quality.ts       word limits, safe-area and WCAG contrast rules
-    server/          renderer (SVG → raster), exports (PNG/PDF/ZIP), assets
-  lib/               pure helpers: format, metrics, calendar, motion, status
+    server/          renderer (SVG → raster), exports (PNG/PDF/ZIP), assets    lib/               pure helpers: format, metrics, calendar, motion, status
+    queue/           generation-run → step-timeline mapping (no React, unit tested)
     storage/         the persistence layer (see below)
     security/        token encryption, guards, rate limiting
     repositories/    the only modules that persist or read domain state
@@ -159,6 +183,7 @@ src/
   styles/            globals.css — design tokens, base layer, utilities
 data/
   posts.json            posts with slides, sources, logs, versions (empty until generated)
+  generation-runs.json  every generation attempt with its per-step outcomes and failure
   schedule.json          publishing slots, attempts and retry state
   audit.json            every approval, rejection, edit and publish event
   instagram-accounts.json  pages + access tokens (server-side only)

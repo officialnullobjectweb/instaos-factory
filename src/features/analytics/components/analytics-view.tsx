@@ -53,8 +53,8 @@ export function AnalyticsView() {
     <>
       <PageHeader
         eyebrow="Analytics"
-        title="Performance across three brands"
-        description="Derived from the insights rollup and the per-post records — the same tables the weekly analysis reads, so a recommendation and the number behind it cannot disagree."
+        title="How your posts are doing"
+        description="Numbers from Instagram Insights. See what's working and what needs fixing."
         actions={
           <Button
             variant="secondary"

@@ -26,7 +26,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { getBrand } from "@/data/brands";
 import { MOCK_NOW } from "@/data/time";
 import { CarouselPreview } from "@/features/queue/components/carousel-preview";
-import { GenerationLog } from "@/features/queue/components/generation-log";
+import { GenerationSteps } from "@/features/queue/components/generation-steps";
 import { HashtagEditor } from "@/features/queue/components/hashtag-editor";
 import { InlineField } from "@/features/queue/components/inline-field";
 import { PostActions } from "@/features/queue/components/post-actions";
@@ -36,7 +36,13 @@ import { VersionHistory } from "@/features/queue/components/version-history";
 import { formatDateTime, formatRelativeTime } from "@/lib/format";
 import { CONTENT_STATUS_META, FORMAT_LABELS, isReviewable } from "@/lib/status";
 import { cn } from "@/lib/utils";
-import type { ContentStatus, Post, PostEditableField, PostVersion } from "@/types";
+import type {
+  ContentStatus,
+  GenerationRun,
+  Post,
+  PostEditableField,
+  PostVersion,
+} from "@/types";
 
 export type ReviewTab = "preview" | "quality" | "sources" | "logs" | "history";
 
@@ -58,6 +64,8 @@ interface ReviewDrawerProps {
   ) => Promise<unknown>;
   /** Ids with an in-flight write, used to disable the action bar. */
   pending: boolean;
+  /** The run that produced this post, when one is on record. */
+  run?: GenerationRun | null;
 }
 
 /**
@@ -77,9 +85,11 @@ export function ReviewDrawer({
   onRestoreVersion,
   onSaveFields,
   pending,
+  run = null,
 }: ReviewDrawerProps) {
   const [tab, setTab] = useState<ReviewTab>(initialTab);
   const [lastPost, setLastPost] = useState<Post | null>(post);
+  const [slideStatus, setSlideStatus] = useState<Record<number, "accepted" | "rejected">>({});
 
   // Keeps the panel populated through its closing animation.
   useEffect(() => {
@@ -90,10 +100,27 @@ export function ReviewDrawer({
   const open = Boolean(post);
 
   useEffect(() => {
-    if (post) setTab(initialTab);
+    if (post) {
+      setTab(initialTab);
+      setSlideStatus({});
+    }
   }, [post?.id, initialTab]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const reviewable = shown ? isReviewable(shown.status) : false;
+
+  const handleAcceptSlide = (slideIndex: number) => {
+    setSlideStatus(prev => ({
+      ...prev,
+      [slideIndex]: prev[slideIndex] === "accepted" ? undefined! : "accepted",
+    }));
+  };
+
+  const handleRejectSlide = (slideIndex: number) => {
+    setSlideStatus(prev => ({
+      ...prev,
+      [slideIndex]: prev[slideIndex] === "rejected" ? undefined! : "rejected",
+    }));
+  };
 
   return (
     <Sheet open={open} onOpenChange={onOpenChange}>
@@ -205,6 +232,9 @@ export function ReviewDrawer({
                             { commit: true, summary: "Edited a carousel slide" },
                           )
                         }
+                        onAcceptSlide={handleAcceptSlide}
+                        onRejectSlide={handleRejectSlide}
+                        slideStatus={slideStatus}
                       />
                     </section>
                   ) : null}
@@ -335,7 +365,7 @@ export function ReviewDrawer({
                 </TabsContent>
 
                 <TabsContent value="logs">
-                  <GenerationLog logs={shown.generationLogs} />
+                  <GenerationSteps run={run} logs={shown.generationLogs} />
                 </TabsContent>
 
                 <TabsContent value="history">

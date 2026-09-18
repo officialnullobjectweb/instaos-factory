@@ -65,7 +65,7 @@ export function DashboardView() {
 
   const description = brand
     ? `${brand.name} · ${brand.positioning} · ${formatNumber(brand.followers)} followers`
-    : "Three brands, one queue. Review what is waiting, then let the scheduler publish.";
+    : "All brands in one place. Check what's waiting, then let the scheduler do its job.";
 
   return (
     <>
@@ -98,10 +98,10 @@ export function DashboardView() {
         }
       />
 
-      <div className="shell-container flex flex-col gap-5 pb-6">
+      <div className="shell-container flex flex-col gap-4 pb-6">
         <StatRow summary={summary} />
 
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
+        <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
           <div className="xl:col-span-8">
             <QueuePreview items={items} />
           </div>
@@ -115,15 +115,14 @@ export function DashboardView() {
           <div className="xl:col-span-4">
             <CalendarPreview items={items} />
           </div>
-
         </div>
 
         <Section
-          title="Operate"
-          description="Automation, planning and system state for the whole workspace."
-          className="pt-1"
+          title="System"
+          description="Automation and health status."
+          className="pt-0"
         >
-          <div className="grid grid-cols-1 gap-5 xl:grid-cols-12">
+          <div className="grid grid-cols-1 gap-4 xl:grid-cols-12">
             <div className="xl:col-span-8">
               <QuickActions />
             </div>

@@ -21,11 +21,21 @@ export const STEP_LABELS: Record<AiStepId, string> = {
   research: "Research topic",
   verify: "Verify facts",
   carousel: "Generate carousel JSON",
+  design: "Select design",
   caption: "Generate caption",
   hashtags: "Generate hashtags",
   alt_text: "Generate alt text",
   quality: "Score quality",
 };
+
+/**
+ * The pipeline, in the order it runs.
+ *
+ * One declaration, read by the job registry, the run tracker and the queue's step
+ * list, so the plan a reviewer sees before a run and the steps the run reports
+ * afterwards cannot drift apart.
+ */
+export const PIPELINE_STEPS = Object.keys(STEP_LABELS) as AiStepId[];
 
 const MAX_JOBS = 40;
 
@@ -65,6 +75,7 @@ export function createJob(brandId: BrandId): AiJob {
     steps: (Object.keys(STEP_LABELS) as AiStepId[]).map(newStep),
     postId: null,
     error: null,
+    queuePosition: null,
     createdAt: now,
     updatedAt: now,
     finishedAt: null,

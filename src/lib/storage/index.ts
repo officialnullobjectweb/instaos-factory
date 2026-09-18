@@ -170,6 +170,7 @@ export async function resetDocuments(keys: string[]): Promise<void> {
 /** Every key this app stores, in the order the seed scripts expect. */
 export const DOCUMENT_KEYS = [
   "posts",
+  "generation-runs",
   "schedule",
   "audit",
   "ai-logs",

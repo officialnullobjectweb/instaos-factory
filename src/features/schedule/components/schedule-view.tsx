@@ -44,6 +44,34 @@ import type { Post, ScheduleEntry } from "@/types";
 
 type ViewMode = "calendar" | "timeline" | "list";
 
+function StatsCard({
+  label,
+  value,
+  color,
+}: {
+  label: string;
+  value: number;
+  color: string;
+}) {
+  return (
+    <div className="flex flex-col gap-1 rounded-lg border border-line bg-surface p-3">
+      <span className="text-[11px] text-ink-3">{label}</span>
+      <div className="flex items-end justify-between">
+        <span className="text-[22px] font-medium tracking-[-0.02em] text-ink tnum">
+          {value}
+        </span>
+        <span className={cn("size-1.5 rounded-full", color)} />
+      </div>
+      <div className="h-1 w-full rounded-full bg-surface-2">
+        <div
+          className={cn("h-full rounded-full transition-all", color)}
+          style={{ width: `${Math.min(100, (value / 10) * 100)}%` }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function startOfUtcDay(iso: string) {
   return iso.slice(0, 10);
 }
@@ -112,8 +140,8 @@ export function ScheduleView() {
     <>
       <PageHeader
         eyebrow="Schedule"
-        title="Publishing pipeline"
-        description="Approved posts get a slot, slots fire automatically. Nothing publishes without a human decision."
+        title="When posts go live"
+        description="Drag approved posts to pick a day. The calendar shows what's booked and what's open."
         actions={
           <>
             {view === "calendar" ? (
@@ -201,20 +229,44 @@ export function ScheduleView() {
         }
       />
 
-      <div className="shell-container flex flex-col gap-5 pb-8">
+      <div className="shell-container flex flex-col gap-4 pb-8">
+        {/* ------------------------------------------------ Stats Row --- */}
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
+          <StatsCard
+            label="Approved"
+            value={approved.length}
+            color="bg-warning"
+          />
+          <StatsCard
+            label="Scheduled"
+            value={scheduledEntries.length}
+            color="bg-ink"
+          />
+          <StatsCard
+            label="Publishing days"
+            value={filled}
+            color="bg-success"
+          />
+          <StatsCard
+            label="Total slots"
+            value={controller.entries.length}
+            color="bg-primary"
+          />
+        </div>
+
         {/* ------------------------------------------------ Approved tray --- */}
         {approved.length > 0 && view === "calendar" ? (
           <Card className="gap-0 border-dashed">
             <CardHeader>
-              <CardTitle className="flex items-center gap-2 text-[13.5px]">
+              <CardTitle className="flex items-center gap-2 text-[13px]">
                 <CalendarClock className="size-3.5 text-ink-2" />
-                Approved, awaiting a slot
+                Approved, awaiting slot
                 <Badge tone="warning" size="sm" className="ml-auto tnum">
                   {approved.length}
                 </Badge>
               </CardTitle>
             </CardHeader>
-            <CardContent className="flex flex-wrap gap-2 pt-0">
+            <CardContent className="flex flex-wrap gap-1.5 pt-0">
               {approved.map((post) => {
                 const brand = getBrand(post.brandId);
                 return (
@@ -227,7 +279,7 @@ export function ScheduleView() {
                       event.dataTransfer.effectAllowed = "copy";
                     }}
                     onClick={() => openDialog(post)}
-                    className="flex max-w-72 cursor-grab items-center gap-2 rounded-full border border-line bg-surface px-3 py-1.5 text-left text-[12.5px] font-medium text-ink transition-colors duration-150 ease-soft hover:bg-surface-2 active:cursor-grabbing"
+                    className="flex max-w-64 cursor-grab items-center gap-1.5 rounded-full border border-line bg-surface px-2.5 py-1 text-left text-[12px] font-medium text-ink transition-colors hover:bg-surface-2 active:cursor-grabbing"
                     title={`${post.title} — drag onto a day, or click to pick a time`}
                   >
                     <span
@@ -236,9 +288,6 @@ export function ScheduleView() {
                       style={{ backgroundColor: brand.colorTheme.accent }}
                     />
                     <span className="truncate">{post.title}</span>
-                    <span className="shrink-0 font-mono text-[10px] text-ink-3 uppercase">
-                      {brand.initials}
-                    </span>
                   </button>
                 );
               })}

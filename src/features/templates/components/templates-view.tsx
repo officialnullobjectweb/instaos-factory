@@ -59,8 +59,8 @@ export function TemplatesView() {
     <>
       <PageHeader
         eyebrow="Templates"
-        title="Reusable creative systems"
-        description="Each template encodes a brand's layout rules, pacing and typography so new content starts from a decision, not a blank canvas."
+        title="Reusable templates"
+        description="Start with a template instead of a blank canvas. Each one has built-in layout rules."
         actions={
           <Button
             variant="primary"

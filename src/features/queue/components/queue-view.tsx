@@ -20,6 +20,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { BulkActions } from "@/features/queue/components/bulk-actions";
 import { ConfirmActionDialog } from "@/features/queue/components/confirm-action-dialog";
+import { GenerationRuns } from "@/features/queue/components/generation-runs";
 import { PostCard } from "@/features/queue/components/post-card";
 import { PostsTable } from "@/features/queue/components/posts-table";
 import { QueueFilters } from "@/features/queue/components/queue-filters";
@@ -39,6 +40,7 @@ import {
   useSelectedIds,
   useAllPosts,
 } from "@/hooks/use-posts";
+import { useGenerationRuns } from "@/hooks/use-generation-runs";
 import { useQueueShortcuts } from "@/hooks/use-queue-shortcuts";
 import { averageQuality } from "@/lib/metrics";
 import { listContainer, listItem } from "@/lib/motion";
@@ -81,6 +83,9 @@ export function QueueView() {
   const error = usePostsError();
   const actions = usePostsActions();
   const { page, pageSize, setPage, setPageSize } = useQueuePagination();
+  // Runs are the queue's other half: a generation that failed produced no post,
+  // so it only exists here.
+  const runs = useGenerationRuns();
 
   const [drawerTab, setDrawerTab] = useState<ReviewTab>("preview");
   const [confirmation, setConfirmation] = useState<Confirmation>(null);
@@ -292,7 +297,7 @@ export function QueueView() {
       <PageHeader
         eyebrow="Content queue"
         title="Review, approve, publish"
-        description={`${posts.length} posts across three brands · average quality ${averageQuality(posts)} · everything here autosaves as you edit.`}
+        description={`${posts.length} posts across 3 brands · avg quality ${averageQuality(posts)} · auto-saves as you edit.`}
         actions={
           <>
             <Button
@@ -341,6 +346,8 @@ export function QueueView() {
       />
 
       <div className="shell-container flex flex-col gap-4 pb-8">
+        <GenerationRuns />
+
         <div className="flex flex-wrap items-center justify-between gap-3">
           <span className="flex items-center gap-2.5">
             {reviewableRows.length > 0 ? (
@@ -472,6 +479,7 @@ export function QueueView() {
             onDelete={(post) => setConfirmation({ kind: "delete", post })}
             onReopen={reopen}
             onSaveField={saveFields}
+            runForPost={runs.runForPost}
           />
         ) : (
           <motion.ul
@@ -501,6 +509,7 @@ export function QueueView() {
                   onDuplicate={duplicate}
                   onDelete={(target) => setConfirmation({ kind: "delete", post: target })}
                   onSaveField={saveFields}
+                  run={runs.runForPost(post.id)}
                 />
               </motion.li>
             ))}
@@ -527,6 +536,7 @@ export function QueueView() {
             onClear={actions.clearSelection}
           />
         </AnimatePresence>
+
       </div>
 
       <ReviewDrawer
@@ -543,6 +553,7 @@ export function QueueView() {
         onRestoreVersion={(post, version) => restoreVersion(post, version)}
         onSaveFields={saveFields}
         pending={openPost ? pendingIds.includes(openPost.id) : false}
+        run={openPost ? runs.runForPost(openPost.id) : null}
       />
 
       <ConfirmActionDialog

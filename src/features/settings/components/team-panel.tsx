@@ -33,7 +33,7 @@ const MEMBERS: Member[] = [
   {
     id: "usr-1",
     name: "Kamal Dhiver",
-    email: "karan@factory.os",
+    email: "kamal@factory.os",
     initials: "KD",
     role: "Owner",
     brands: "all",

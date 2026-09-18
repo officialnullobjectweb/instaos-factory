@@ -16,7 +16,7 @@ import {
   designSlides,
   enforceContentDesignLimits,
   scoreDesignQuality,
-  type DesignedSlide,
+  type LayoutStyle,
 } from "../design-engine";
 
 /**
@@ -393,6 +393,39 @@ function qualityFor(request: GenerateRequest) {
 }
 
 /* -------------------------------------------------------------------------- */
+/*  Design step — picks the visual direction for the written content          */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * The design engine and the carousel templates name their layouts differently —
+ * it reasons in terms of reader state ("data-driven", "grid"), while the template
+ * library ships concrete designs. This is the one place that translation lives.
+ */
+const TEMPLATE_FOR_LAYOUT: Record<LayoutStyle, string> = {
+  editorial: "editorial",
+  "data-driven": "data-viz",
+  grid: "data-viz",
+  narrative: "illustrated",
+  minimalist: "minimal",
+  bold: "bold",
+};
+
+function designFor(request: GenerateRequest) {
+  const brand = getBrand(request.hint?.brandId ?? "studio-noir");
+  const [first] = brand.contentPillars;
+  const topic = request.hint?.topic ?? first;
+
+  const plan = planContent(brand, topic, first);
+  const spec = selectDesign(plan, brand);
+
+  return {
+    template: TEMPLATE_FOR_LAYOUT[spec.layout],
+    rationale: `Offline engine: a ${plan.emotionalArc} arc at a ${plan.tone} tone reads best as the ${spec.layout} layout — ${spec.spacing} spacing, ${spec.emphasis} emphasis, weighted ${spec.visualWeight}.`,
+    typographyNotes: `Typography: ${spec.typography.join(", ")}. Colour role: ${spec.colorRole}.`,
+  };
+}
+
+/* -------------------------------------------------------------------------- */
 /*  Composed payload — non-granular mode                                      */
 /* -------------------------------------------------------------------------- */
 
@@ -422,6 +455,7 @@ const STEP_BUILDERS: Record<AiStepId, (request: GenerateRequest) => unknown> = {
   research: researchFor,
   verify: verifyFor,
   carousel: carouselFor,
+  design: designFor,
   caption: captionFor,
   hashtags: hashtagsFor,
   alt_text: altTextFor,

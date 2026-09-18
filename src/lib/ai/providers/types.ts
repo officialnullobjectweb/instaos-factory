@@ -128,6 +128,18 @@ export const AI_ENV = {
     },
     keys: ["NARA_API_KEY", "NARA_MODEL"],
   },
+  omni: {
+    get baseUrl() {
+      return serverEnv().OMNIROUTE_BASE_URL ?? "http://localhost:20128/v1";
+    },
+    get apiKey() {
+      return serverEnv().OMNIROUTE_API_KEY ?? "";
+    },
+    get model() {
+      return serverEnv().OMNIROUTE_MODEL ?? "auto";
+    },
+    keys: ["OMNIROUTE_BASE_URL", "OMNIROUTE_API_KEY", "OMNIROUTE_MODEL"],
+  },
   local: {
     get enabled() {
       return serverEnv().AI_ENABLE_LOCAL_PROVIDER;
@@ -156,6 +168,18 @@ export const AI_ENV = {
   get granularSteps() {
     return serverEnv().AI_GRANULAR_STEPS;
   },
+  /** Wall-clock ceiling for a whole run, used as each step's deadline. */
+  get jobBudgetMs() {
+    return serverEnv().AI_JOB_BUDGET_MS;
+  },
+  /** No progress for this long means the run is wedged, not slow. */
+  get stepStallMs() {
+    return serverEnv().AI_STEP_STALL_MS;
+  },
+  /** How many runs may hold a provider at once; the rest queue. */
+  get maxConcurrentJobs() {
+    return Math.max(1, serverEnv().AI_MAX_CONCURRENT_JOBS);
+  },
 } as const;
 
 /** Provider order for the fallback chain, overridable for testing. */
@@ -163,10 +187,10 @@ export function providerOrder(): AiProviderId[] {
   const configured = serverEnv()
     .AI_PROVIDER_ORDER.map((entry) => entry.toLowerCase())
     .filter((entry): entry is AiProviderId =>
-      ["gemini", "groq", "nara", "openrouter", "local"].includes(entry),
+      ["gemini", "groq", "nara", "openrouter", "omni", "local"].includes(entry),
     );
 
-  const defaultOrder: AiProviderId[] = ["gemini", "groq", "nara", "openrouter", "local"];
+  const defaultOrder: AiProviderId[] = ["gemini", "groq", "nara", "openrouter", "omni", "local"];
 
   if (!configured || configured.length === 0) return defaultOrder;
 

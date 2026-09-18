@@ -2,11 +2,14 @@
 
 import { ArrowDown, ArrowUp, LoaderCircle } from "lucide-react";
 import Image from "next/image";
+import { Fragment, useId, useState } from "react";
 
 import { AssetPreview } from "@/components/content/asset-preview";
 import { FormatTag, StatusBadge } from "@/components/content/status-badge";
 import { QualityMeter } from "@/components/content/quality-meter";
+import { Badge } from "@/components/ui/badge";
 import { Checkbox } from "@/components/ui/checkbox";
+import { Disclosure, DisclosureButton } from "@/components/ui/disclosure";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -17,13 +20,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { getBrand } from "@/data/brands";
 import { MOCK_NOW } from "@/data/time";
+import { GenerationSteps } from "@/features/queue/components/generation-steps";
 import { InlineField } from "@/features/queue/components/inline-field";
 import { PostActions, QuickDecision } from "@/features/queue/components/post-actions";
 import type { ReviewTab } from "@/features/queue/components/review-drawer";
 import { formatDateTime, formatRelativeTime } from "@/lib/format";
 import { FORMAT_LABELS, isReviewable } from "@/lib/status";
 import { cn } from "@/lib/utils";
-import type { Post, PostEditableField, PostsSort, PostsSortKey } from "@/types";
+import type {
+  GenerationRun,
+  Post,
+  PostEditableField,
+  PostsSort,
+  PostsSortKey,
+} from "@/types";
 
 interface PostsTableProps {
   posts: Post[];
@@ -47,6 +57,12 @@ interface PostsTableProps {
     id: string,
     fields: Partial<Pick<Post, PostEditableField>>,
   ) => Promise<unknown>;
+  /**
+   * The run that produced a post, when one is on record. Preferred over the
+   * post's own log because it also carries the stages that were folded into
+   * others and the provider attempts behind each one.
+   */
+  runForPost?: (postId: string) => GenerationRun | null;
 }
 
 const COLUMNS: Array<{
@@ -94,7 +110,13 @@ export function PostsTable({
   onDelete,
   onReopen,
   onSaveField,
+  runForPost,
 }: PostsTableProps) {
+  /** Which row's generation steps are open. One at a time keeps the table scannable. */
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const baseId = useId();
+  const columnCount = COLUMNS.length + 2;
+
   return (
     <div className="overflow-hidden rounded-xl border border-line bg-surface shadow-card">
       <div className="scrollbar-slim overflow-x-auto">
@@ -111,6 +133,10 @@ export function PostsTable({
                   onCheckedChange={(checked) => onSelectAll(checked === true)}
                   aria-label="Select every post on this page"
                 />
+              </th>
+
+              <th scope="col" className="w-9 py-2.5">
+                <span className="sr-only">Generation steps</span>
               </th>
 
               {COLUMNS.map((column) => {
@@ -163,10 +189,13 @@ export function PostsTable({
               const selected = selectedIds.includes(post.id);
               const focused = focusedId === post.id;
               const pending = pendingIds.includes(post.id);
+              const expanded = expandedId === post.id;
+              const run = runForPost?.(post.id) ?? null;
+              const stepsId = `${baseId}-${post.id}-steps`;
 
               return (
+                <Fragment key={post.id}>
                 <tr
-                  key={post.id}
                   data-post-row={post.id}
                   data-focused={focused || undefined}
                   onClick={(event) => {
@@ -187,6 +216,16 @@ export function PostsTable({
                       checked={selected}
                       onCheckedChange={() => onToggleSelect(post.id)}
                       aria-label={`Select ${post.title}`}
+                    />
+                  </td>
+
+                  <td className="py-3 align-middle">
+                    <DisclosureButton
+                      open={expanded}
+                      onToggle={() => setExpandedId(expanded ? null : post.id)}
+                      label={`${expanded ? "Hide" : "Show"} generation steps for ${post.title}`}
+                      controls={stepsId}
+                      className={cn(!expanded && "opacity-60 group-hover:opacity-100")}
                     />
                   </td>
 
@@ -296,6 +335,41 @@ export function PostsTable({
                     </span>
                   </td>
                 </tr>
+
+                <tr className={cn(!expanded && "border-b border-line last:border-b-0")}>
+                  <td colSpan={columnCount} className="p-0">
+                    <Disclosure open={expanded} id={stepsId} className="bg-surface-2/40">
+                      <div className="flex flex-col gap-3 border-b border-line px-5 py-4">
+                        <span className="flex flex-wrap items-center gap-2">
+                          <span className="text-[11px] tracking-[0.06em] text-ink-3 uppercase">
+                            How this post was generated
+                          </span>
+                          <span className="font-mono text-[10.5px] text-ink-3">
+                            {post.id}
+                          </span>
+                          {run?.status === "failed" || post.failureReason ? (
+                            <Badge tone="danger" size="sm">
+                              failed
+                            </Badge>
+                          ) : null}
+                        </span>
+
+                        <GenerationSteps run={run} logs={post.generationLogs} />
+
+                        <span className="text-[11.5px] text-ink-3">
+                          <button
+                            type="button"
+                            onClick={() => onOpen(post, "logs")}
+                            className="rounded-sm underline-offset-4 hover:text-ink hover:underline"
+                          >
+                            Open the full run in the review drawer
+                          </button>
+                        </span>
+                      </div>
+                    </Disclosure>
+                  </td>
+                </tr>
+                </Fragment>
               );
             })}
           </tbody>
