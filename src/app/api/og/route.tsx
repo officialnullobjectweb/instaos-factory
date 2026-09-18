@@ -8,6 +8,7 @@ export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
   const title = searchParams.get("title") ?? "Instagram Factory OS";
   const subtitle = searchParams.get("subtitle") ?? "";
+  const cta = searchParams.get("cta") ?? "Open App";
 
   return new ImageResponse(
     (
@@ -26,7 +27,7 @@ export async function GET(request: Request) {
         {/* Background image */}
         <img
           src={OG_BACKGROUND}
-          alt=""
+          alt={`${title} — Instagram Factory OS`}
           style={{
             position: "absolute",
             inset: 0,
@@ -118,31 +119,61 @@ export async function GET(request: Request) {
             </p>
           ) : null}
 
-          {/* Bottom bar */}
+          {/* Bottom bar with CTA */}
           <div
             style={{
               display: "flex",
               alignItems: "center",
+              justifyContent: "space-between",
               gap: "12px",
               marginTop: "8px",
             }}
           >
+            <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+              <div
+                style={{
+                  height: "1px",
+                  width: "40px",
+                  background: "rgba(255,255,255,0.3)",
+                }}
+              />
+              <span
+                style={{
+                  fontSize: "12px",
+                  color: "rgba(255,255,255,0.45)",
+                  letterSpacing: "0.03em",
+                }}
+              >
+                Content automation for three brands
+              </span>
+            </div>
+
+            {/* Call-to-action button */}
             <div
               style={{
-                height: "1px",
-                width: "40px",
-                background: "rgba(255,255,255,0.3)",
-              }}
-            />
-            <span
-              style={{
-                fontSize: "12px",
-                color: "rgba(255,255,255,0.45)",
-                letterSpacing: "0.03em",
+                display: "flex",
+                alignItems: "center",
+                gap: "8px",
+                background: "rgba(255,255,255,0.15)",
+                borderRadius: "8px",
+                padding: "10px 20px",
+                backdropFilter: "blur(8px)",
               }}
             >
-              Content automation for three brands
-            </span>
+              <span
+                style={{
+                  fontSize: "14px",
+                  fontWeight: 600,
+                  color: "#ffffff",
+                  letterSpacing: "0.01em",
+                }}
+              >
+                {cta}
+              </span>
+              <span style={{ fontSize: "14px", color: "rgba(255,255,255,0.7)" }}>
+                →
+              </span>
+            </div>
           </div>
         </div>
       </div>
