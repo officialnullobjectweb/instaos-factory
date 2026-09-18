@@ -1,9 +1,8 @@
 import { ImageResponse } from "next/og";
 
-export const runtime = "edge";
+import { OG_BACKGROUND } from "@/lib/og-background";
 
-const BACKGROUND_IMAGE =
-  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSK61v6y95wvCP90SQdZ49wKtKWfN2oyh-gE4oaY25Cr9-0EGRUyjv9RVAM&s=10";
+export const runtime = "edge";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);
@@ -26,7 +25,7 @@ export async function GET(request: Request) {
       >
         {/* Background image */}
         <img
-          src={BACKGROUND_IMAGE}
+          src={OG_BACKGROUND}
           alt=""
           style={{
             position: "absolute",
@@ -44,17 +43,6 @@ export async function GET(request: Request) {
             inset: 0,
             background:
               "linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 40%, rgba(0,0,0,0.1) 70%, transparent 100%)",
-          }}
-        />
-
-        {/* Subtle grain texture */}
-        <div
-          style={{
-            position: "absolute",
-            inset: 0,
-            opacity: 0.03,
-            background:
-              "repeating-conic-gradient(rgba(255,255,255,0.1) 0% 25%, transparent 0% 50%) 0 0 / 4px 4px",
           }}
         />
 
